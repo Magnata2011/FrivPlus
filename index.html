@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meus Jogos — Catálogo</title>
+<meta name="description" content="Catálogo pessoal de jogos, organizado e fácil de navegar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <h1 class="logo">🎮 Meus Jogos</h1>
+      <nav aria-label="Navegação principal">
+        <input
+          type="search"
+          id="search-input"
+          class="search-input"
+          placeholder="Buscar jogo..."
+          aria-label="Buscar jogo pelo nome"
+        >
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo" class="wrap">
+
+    <section aria-labelledby="catalogo-titulo">
+      <h2 id="catalogo-titulo" class="section-title">Catálogo</h2>
+
+      <div id="status-msg" class="status-msg" role="status" aria-live="polite"></div>
+
+      <ul id="games-grid" class="games-grid" aria-label="Lista de jogos">
+        <!-- Cards inseridos via JS a partir de data/games.json -->
+      </ul>
+    </section>
+
+    <section class="suggestions-section" aria-labelledby="sugestoes-titulo">
+      <h2 id="sugestoes-titulo" class="section-title">Caixa de Sugestões</h2>
+      <p class="section-subtitle">Tem um jogo ou ideia para o catálogo? Mande sua sugestão.</p>
+
+      <!--
+        Formulário estático que envia diretamente para um serviço de formulário
+        (ex: Formspree ou Web3Forms). Nenhuma credencial fica exposta aqui —
+        apenas o endpoint público do formulário. Veja o README para configurar
+        a sua própria conta e substituir a URL abaixo.
+      -->
+      <form
+        id="suggestion-form"
+        class="suggestion-form"
+        action="https://formspree.io/f/SEU_FORM_ID"
+        method="POST"
+      >
+        <div class="form-row">
+          <label for="sug-name">Seu nome (opcional)</label>
+          <input type="text" id="sug-name" name="name" autocomplete="name">
+        </div>
+
+        <div class="form-row">
+          <label for="sug-email">Seu e-mail (opcional, caso queira resposta)</label>
+          <input type="email" id="sug-email" name="email" autocomplete="email">
+        </div>
+
+        <div class="form-row">
+          <label for="sug-message">Sua sugestão *</label>
+          <textarea
+            id="sug-message"
+            name="message"
+            rows="4"
+            required
+            aria-required="true"
+            placeholder="Ex: Adicionar o jogo X, ou corrigir o link do jogo Y..."
+          ></textarea>
+        </div>
+
+        <!-- Honeypot anti-spam: campo escondido que bots costumam preencher -->
+        <input type="text" name="_gotcha" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <button type="submit" class="btn-submit">Enviar sugestão</button>
+
+        <p id="form-feedback" class="form-feedback" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Catálogo mantido manualmente via <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a>. Para adicionar um jogo, edite <code>data/games.json</code>.</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js" defer></script>
+</body>
+</html>
