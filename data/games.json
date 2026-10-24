@@ -104,4 +104,11 @@
     "url": "games/hl2/index.html",
     "tags": ["Singleplayer", "Mundo Aberto", "Casual"]
   }
+  {
+    "id": "celeste",
+    "title": "Celeste",
+    "cardImage": "https://m.media-amazon.com/images/I/71ngCV7ZRYL._UF1000,1000_QL80_.jpg",
+    "url": "games/Celeste/index.html",
+    "tags": ["Singleplayer", "Indie", "Casual"]
+  }
 ]
