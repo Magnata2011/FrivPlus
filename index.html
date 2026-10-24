@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FrivPlus</title>
-<meta name="description" content="Catálogo pessoal de jogos, organizado e fácil de navegar.">
+<meta name="description" content="Catálogo pessoal de jogos, organized e fácil de navegar.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -31,13 +31,17 @@
 
   <main id="conteudo" class="wrap">
 
+    <!-- SEÇÃO DO CATÁLOGO CORRIGIDA -->
     <section aria-labelledby="catalogo-titulo">
       <h2 id="catalogo-titulo" class="section-title">Catálogo</h2>
 
       <div id="status-msg" class="status-msg" role="status" aria-live="polite"></div>
 
-      
+      <!-- Elemento inserido para o app.js injetar os cards dos jogos -->
+      <ul id="games-grid" class="games-grid"></ul>
+    </section>
 
+    <!-- SEÇÃO DE SUGESTÕES -->
     <section class="suggestions-section" aria-labelledby="sugestoes-titulo">
       <h2 id="sugestoes-titulo" class="section-title">Caixa de Sugestões</h2>
       <p class="section-subtitle">Tem um jogo ou ideia para o catálogo? Mande sua sugestão.</p>
