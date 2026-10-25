@@ -102,13 +102,20 @@
     "title": "Half Life 2",
     "cardImage": "https://imgproxy.eneba.games/0aVmusLO7VBCuV7uFYOBG-SXDGbkuoRemWJJ4y1otS8/rs:fit:300/ar:1/czM6Ly9wcm9kdWN0/cy5lbmViYS5nYW1l/cy9wcm9kdWN0cy9k/OGItVm1qQzBXWnZZ/Z25QelNoeFZrNjhN/X0t3eTF4R3J3UERU/RktmNy04LmpwZw",
     "url": "games/hl2/index.html",
-    "tags": ["Singleplayer", "Mundo Aberto", "Casual"]
+    "tags": ["Em Manutenção."]
   },
   {
     "id": "celeste",
     "title": "Celeste",
     "cardImage": "https://m.media-amazon.com/images/I/71ngCV7ZRYL._UF1000,1000_QL80_.jpg",
     "url": "games/Celeste/index.html",
+    "tags": ["Singleplayer", "Indie", "Casual"]
+  },
+  {
+    "id": "hollow-knight",
+    "title": "Hollow Knight",
+    "cardImage": "https://i.pinimg.com/474x/6e/24/b0/6e24b0ab10971eb2affa91484af59161.jpg",
+    "url": "games/Hollow Knight/index.html",
     "tags": ["Singleplayer", "Indie", "Casual"]
   }
 ]
