@@ -4,118 +4,196 @@
     "title": "Cuphead",
     "cardImage": "https://i.pinimg.com/736x/83/a2/9e/83a29ee57d0c1797732d63c25f595ab2.jpg",
     "url": "games/cuphead-main/index.html",
-    "tags": ["ação", "indie"]
+    "tags": [
+      "ação",
+      "indie"
+    ]
   },
   {
     "id": "plague-inc",
     "title": "Plague Inc",
     "cardImage": "https://upload.wikimedia.org/wikipedia/en/4/4a/Plagueincevolved_logo.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original",
     "url": "games/PlagueIncEvolved-main/index.html",
-    "tags": ["Estratégia", "Simulação","Singleplayer"]
+    "tags": [
+      "Estratégia",
+      "Simulação",
+      "Singleplayer"
+    ]
   },
   {
     "id": "minecraft",
     "title": "Minecraft",
     "cardImage": "https://i.etsystatic.com/43542521/r/il/bc0efb/6531843055/il_fullxfull.6531843055_2s9u.jpg",
     "url": "games/minecraft/index.html",
-    "tags": ["Sobrevivência", "Sandbox","Simulação", "Mundo aberto","Singleplayer","Multiplayer"]
+    "tags": [
+      "Sobrevivência",
+      "Sandbox",
+      "Simulação",
+      "Mundo aberto",
+      "Singleplayer",
+      "Multiplayer"
+    ]
   },
   {
     "id": "mario-64",
     "title": "Mario 64",
     "cardImage": "https://m.media-amazon.com/images/M/MV5BY2QzZTVhYjctZWMyNy00MDlhLThhYTktZDg2M2EwNTE3ZDZkXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
     "url": "games/mario64/mario64.html",
-    "tags": ["Ação", "Mundo aberto","Fantasia", "Singleplayer"]
+    "tags": [
+      "Ação",
+      "Mundo aberto",
+      "Fantasia",
+      "Singleplayer"
+    ]
   },
   {
     "id": "sonic-mania",
     "title": "Sonic Mania",
     "cardImage": "https://upload.wikimedia.org/wikipedia/en/d/d2/Sonic_Mania_%28artwork%29.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original",
     "url": "games/Sonic Mania/index.html",
-    "tags": ["Ação", "Aventura","Casual", "Singleplayer","Multiplayer","Local"]
+    "tags": [
+      "Ação",
+      "Aventura",
+      "Casual",
+      "Singleplayer",
+      "Multiplayer",
+      "Local"
+    ]
   },
   {
     "id": "pvz",
     "title": "Plants vs zombies",
     "cardImage": "https://images.steamusercontent.com/ugc/2004702731858523342/506E1A92F30DDB944A1924E3C214860F4DF6358A/",
     "url": "games/pvz-main/index.html",
-    "tags": ["Tower Defense", "Estratégia","Casual", "Singleplayer"]
+    "tags": [
+      "Tower Defense",
+      "Estratégia",
+      "Casual",
+      "Singleplayer"
+    ]
   },
   {
     "id": "fnaf1",
     "title": "Five nights at freddy's 1",
     "cardImage": "https://preview.redd.it/fnaf-1-steam-cover-art-render-v0-mu563htokayb1.png?width=640&crop=smart&auto=webp&s=375527c51996cd89629268e78d925241110c0134",
     "url": "games/1/index.html",
-    "tags": ["Singleplayer", "Horror", "Casual"]
+    "tags": [
+      "Singleplayer",
+      "Horror",
+      "Casual"
+    ]
   },
   {
     "id": "fnaf2",
     "title": "Five nights at freddy's 2",
     "cardImage": "https://images.steamusercontent.com/ugc/1815518871788058411/7DA33B637680BC7295D7B175170C4846D16AB7B8/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false",
     "url": "games/2/index.html",
-    "tags": ["Singleplayer", "Horror", "Casual"]
+    "tags": [
+      "Singleplayer",
+      "Horror",
+      "Casual"
+    ]
   },
   {
     "id": "fnaf3",
     "title": "Five nights at freddy's 3",
     "cardImage": "https://m.media-amazon.com/images/M/MV5BZmJhNzVlYTctYmJkYy00YzRlLWE1MjQtYzU4ZDExY2Q3NjBjXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
     "url": "games/3/index.html",
-    "tags": ["Singleplayer", "Horror", "Casual"]
+    "tags": [
+      "Singleplayer",
+      "Horror",
+      "Casual"
+    ]
   },
   {
     "id": "fnaf4",
     "title": "Five nights at freddy's 4",
     "cardImage": "https://i.pinimg.com/736x/ee/88/5f/ee885fcacda59ab38bd93815656fb74e.jpg",
     "url": "games/4/index.html",
-    "tags": ["Singleplayer", "Horror", "Casual", "Terror"]
+    "tags": [
+      "Singleplayer",
+      "Horror",
+      "Casual",
+      "Terror"
+    ]
   },
-   {
+  {
     "id": "fnaf5",
     "title": "Freddy Fazbear's Pizzeria Simulator",
     "cardImage": "https://cdn.mobygames.com/covers/9452933-freddy-fazbears-pizzeria-simulator-xbox-one-front-cover.jpg",
     "url": "games/ps/index.html",
-    "tags": ["Singleplayer", "Horror", "Casual"]
+    "tags": [
+      "Singleplayer",
+      "Horror",
+      "Casual"
+    ]
   },
   {
     "id": "fnafucn",
     "title": "Five nights at freddy's ultimate custom night",
     "cardImage": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cf78cade-5225-4453-a01c-dd401b8fb29b/dd3tfd5-f65c2fb6-6430-4f71-8144-9beebd4564c3.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi9jZjc4Y2FkZS01MjI1LTQ0NTMtYTAxYy1kZDQwMWI4ZmIyOWIvZGQzdGZkNS1mNjVjMmZiNi02NDMwLTRmNzEtODE0NC05YmVlYmQ0NTY0YzMuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.vPF3RVfOYvWO65ZoWW0yya46uVMTmLmIiqYFqM-0w8I",
     "url": "games/ucn/index.html",
-    "tags": ["Singleplayer", "Horror", "Casual"]
+    "tags": [
+      "Singleplayer",
+      "Horror",
+      "Casual"
+    ]
   },
   {
     "id": "fnafsl",
     "title": "Five nights at freddy's Sister Location",
     "cardImage": "https://static.wikia.nocookie.net/freddy-fazbears-pizza/images/8/8b/SL_OldMobile_LaunchImage-Portrait.png/revision/latest/scale-to-width-down/250?cb=20260803041554",
     "url": "games/sl/index.html",
-    "tags": ["Singleplayer", "Horror", "Casual"]
+    "tags": [
+      "Singleplayer",
+      "Horror",
+      "Casual"
+    ]
   },
   {
     "id": "bendy",
     "title": "Bendy and the Ink Machine",
     "cardImage": "https://static.wikia.nocookie.net/whumpapedia/images/0/06/Bendy_and_the_Ink_Machine.jpeg/revision/latest/thumbnail/width/360/height/360?cb=20211101152445",
     "url": "games/BATIMWeb-main/index.html",
-    "tags": ["Singleplayer", "Horror", "Casual"]
-  },
-  {
-    "id": "hl2",
-    "title": "Half Life 2",
-    "cardImage": "https://imgproxy.eneba.games/0aVmusLO7VBCuV7uFYOBG-SXDGbkuoRemWJJ4y1otS8/rs:fit:300/ar:1/czM6Ly9wcm9kdWN0/cy5lbmViYS5nYW1l/cy9wcm9kdWN0cy9k/OGItVm1qQzBXWnZZ/Z25QelNoeFZrNjhN/X0t3eTF4R3J3UERU/RktmNy04LmpwZw",
-    "url": "games/hl2/index.html",
-    "tags": ["Em Manutenção."]
+    "tags": [
+      "Singleplayer",
+      "Horror",
+      "Casual"
+    ]
   },
   {
     "id": "celeste",
     "title": "Celeste",
     "cardImage": "https://m.media-amazon.com/images/I/71ngCV7ZRYL._UF1000,1000_QL80_.jpg",
     "url": "games/Celeste/index.html",
-    "tags": ["Singleplayer", "Indie", "Casual"]
+    "tags": [
+      "Singleplayer",
+      "Indie",
+      "Casual"
+    ]
   },
   {
     "id": "hollow-knight",
     "title": "Hollow Knight",
     "cardImage": "https://i.pinimg.com/474x/6e/24/b0/6e24b0ab10971eb2affa91484af59161.jpg",
     "url": "games/Hollow Knight/index.html",
-    "tags": ["Singleplayer", "Indie", "Casual"]
+    "tags": [
+      "Singleplayer",
+      "Indie",
+      "Casual"
+    ]
+  },
+  {
+    "id": "sonic-adventure-2-web-port",
+    "title": "Sonic Adventure 2 — Web Port",
+    "cardImage": "https://upload.wikimedia.org/wikipedia/en/2/2c/SonicAdventure2.jpg",
+    "url": "https://github.com/ThatRealHedgehog23/SA2-WEB-PORT",
+    "tags": [
+      "Sonic",
+      "Ação",
+      "Aventura",
+      "Web Port",
+      "Projeto externo"
+    ]
   }
 ]
