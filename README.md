@@ -12,7 +12,7 @@ Catálogo de jogos com painel administrativo protegido por Supabase Auth. A inte
 
 1. Instale as dependências com `npm install`.
 2. Copie `.env.example` para `.env.local`.
-3. Configure `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY` e `SUPABASE_SERVICE_ROLE_KEY` com os valores do projeto Supabase. A chave `service_role` é exclusivamente servidor-side; nunca use um prefixo `NEXT_PUBLIC_` nela.
+3. Configure `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY` e `SUPABASE_SERVICE_ROLE_KEY` com os valores do projeto Supabase. `NEXT_PUBLIC_LEGACY_GAMES_BASE_URL` já aponta para a raiz pública dos jogos no GitHub Pages. A chave `service_role` é exclusivamente server-side; nunca use um prefixo `NEXT_PUBLIC_` nela.
 4. Configure `FRIV_ADMIN_EMAIL_1` e `FRIV_ADMIN_EMAIL_2` com os dois e-mails autorizados. Esses valores são lidos apenas pelo servidor.
 5. Aplique as migrations `supabase/migrations/20261107000000_game_admin.sql`, `supabase/migrations/20261107010000_game_custom_ids_and_cover_urls.sql` e `supabase/migrations/20261107020000_user_profiles.sql` pelo Supabase CLI (`supabase db push`) ou pelo SQL Editor, nesta ordem.
 6. Crie no Supabase Auth as contas dos dois administradores, usando os e-mails definidos nas variáveis privadas. O cadastro público cria contas comuns, sem privilégios administrativos.
@@ -23,6 +23,12 @@ O painel fica em `/admin`. Usuários autenticados que não correspondam a um dos
 Na página inicial, a pessoa não autenticada vê **Entrar**. Após autenticação, somente os e-mails administrativos autorizados veem **Adicionar jogo**, com campos para ID, nome, link HTTPS da capa, tags e link HTTPS do jogo. O cadastro rápido publica o jogo diretamente. A rota de gravação verifica novamente a identidade e a autorização no servidor.
 
 O formulário de entrada também oferece **Criar conta** e **Entrar com Google**. A disponibilidade destes recursos depende da configuração de cadastro e do provedor Google no Supabase Auth.
+
+## Hospedagem do app e dos jogos
+
+O app Next.js deve ser publicado na Vercel. Os arquivos grandes dos jogos continuam na pasta `games/` do GitHub Pages e não são copiados para a implantação da Vercel. `NEXT_PUBLIC_LEGACY_GAMES_BASE_URL` aponta para a raiz pública dos jogos e, por padrão, usa `https://magnata2011.github.io/FrivPlus/`. Se o endereço do GitHub Pages mudar, atualize essa variável na Vercel.
+
+Não redirecione a página inicial do GitHub Pages para uma URL de preview protegida da Vercel. Faça a troca somente depois que existir um domínio de produção público e o app estiver configurado; mantenha a pasta `games/` no GitHub Pages para que os links dos jogos continuem funcionando.
 
 ## Perfis de usuário
 
@@ -52,6 +58,7 @@ No projeto da Vercel, abra **Settings → Environment Variables** e cadastre:
 | --- | --- | --- |
 | `NEXT_PUBLIC_SUPABASE_URL` | URL pública do projeto Supabase | Navegador |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Chave pública/anon do Supabase | Navegador |
+| `NEXT_PUBLIC_LEGACY_GAMES_BASE_URL` | Raiz pública da pasta `games/` no GitHub Pages | Navegador |
 | `SUPABASE_SERVICE_ROLE_KEY` | Operações administrativas do servidor | **Privada** |
 | `FRIV_ADMIN_EMAIL_1` | Primeiro e-mail autorizado | **Privada** |
 | `FRIV_ADMIN_EMAIL_2` | Segundo e-mail autorizado | **Privada** |

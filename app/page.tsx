@@ -7,6 +7,10 @@ import Link from "next/link";
 
 export const dynamic = "force-dynamic";
 
+const LEGACY_GAMES_BASE_URL =
+  process.env.NEXT_PUBLIC_LEGACY_GAMES_BASE_URL ??
+  "https://magnata2011.github.io/FrivPlus/";
+
 export default async function HomePage() {
   const userStatus = await getCurrentUserStatus();
   const legacyGames = games.map((game) => ({
@@ -17,7 +21,7 @@ export default async function HomePage() {
     category: game.tags[0] ?? "Jogos",
     tags: game.tags,
     featured: false,
-    gameUrl: `/${game.url}`,
+    gameUrl: new URL(game.url, LEGACY_GAMES_BASE_URL).toString(),
   }));
 
   return (
