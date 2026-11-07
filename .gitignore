@@ -1,0 +1,6 @@
+.next/
+node_modules/
+.env*
+!.env.example
+next-env.d.ts
+npm-debug.log*
