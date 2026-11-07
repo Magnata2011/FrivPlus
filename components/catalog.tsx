@@ -4,7 +4,6 @@ import { useEffect, useMemo, useState } from "react";
 import type { PublicGame } from "@/lib/types";
 
 export function Catalog({ initialGames }: { initialGames: PublicGame[] }) {
-  const [games, setGames] = useState(initialGames);
   const [query, setQuery] = useState("");
 
   useEffect(() => {
@@ -15,34 +14,15 @@ export function Catalog({ initialGames }: { initialGames: PublicGame[] }) {
     return () => search.removeEventListener("input", onSearch);
   }, []);
 
-  useEffect(() => {
-    let active = true;
-    fetch("/api/games", { cache: "no-store" })
-      .then(async (response) => {
-        if (!response.ok) return [];
-        const result = (await response.json()) as { games?: PublicGame[] };
-        return Array.isArray(result.games) ? result.games : [];
-      })
-      .then((remoteGames) => {
-        if (!active || remoteGames.length === 0) return;
-        const knownIds = new Set(remoteGames.map((game) => game.id));
-        setGames([...remoteGames, ...initialGames.filter((game) => !knownIds.has(game.id))]);
-      })
-      .catch(() => {
-        if (active) setGames(initialGames);
-      });
-    return () => { active = false; };
-  }, [initialGames]);
-
   const visibleGames = useMemo(() => {
-    if (!query) return games;
-    return games.filter((game) =>
+    if (!query) return initialGames;
+    return initialGames.filter((game) =>
       [game.title, game.category, ...game.tags]
         .join(" ")
         .toLocaleLowerCase()
         .includes(query),
     );
-  }, [games, query]);
+  }, [initialGames, query]);
 
   return (
     <section className="catalog" aria-labelledby="catalog-title">
@@ -64,9 +44,7 @@ export function Catalog({ initialGames }: { initialGames: PublicGame[] }) {
                 </div>
                 <div className="game-card-body">
                   <p className="game-card-title">{game.title}</p>
-                  {game.description && <p className="game-card-description">{game.description}</p>}
                   <div className="tags">
-                    {game.featured && <span className="tag featured-tag">Destaque</span>}
                     <span className="tag">{game.category}</span>
                     {game.tags.slice(0, 2).map((tag) => <span className="tag" key={tag}>{tag}</span>)}
                   </div>

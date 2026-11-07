@@ -1,26 +1,16 @@
 import games from "@/data/games.json";
 import { Catalog } from "@/components/catalog";
-import { QuickAddGame } from "@/components/quick-add-game";
-import { getCurrentUserStatus } from "@/lib/admin-auth";
-import { LogoutButton } from "@/components/logout-button";
 import Link from "next/link";
 
-export const dynamic = "force-dynamic";
+const LEGACY_GAMES_BASE_URL = "https://magnata2011.github.io/FrivPlus/";
 
-const LEGACY_GAMES_BASE_URL =
-  process.env.NEXT_PUBLIC_LEGACY_GAMES_BASE_URL ??
-  "https://magnata2011.github.io/FrivPlus/";
-
-export default async function HomePage() {
-  const userStatus = await getCurrentUserStatus();
+export default function HomePage() {
   const legacyGames = games.map((game) => ({
     id: game.id,
     title: game.title,
-    description: "",
     coverUrl: game.cardImage,
     category: game.tags[0] ?? "Jogos",
     tags: game.tags,
-    featured: false,
     gameUrl: new URL(game.url, LEGACY_GAMES_BASE_URL).toString(),
   }));
 
@@ -40,15 +30,6 @@ export default async function HomePage() {
               type="search"
               placeholder="Buscar jogo..."
             />
-            {userStatus.isAdmin && <QuickAddGame />}
-            {userStatus.signedIn ? (
-              <>
-                <Link className="button button-outline button-small" href="/profile">Meu perfil</Link>
-                <LogoutButton />
-              </>
-            ) : (
-              <Link className="button button-outline button-small" href="/login">Entrar</Link>
-            )}
           </div>
         </div>
       </header>
