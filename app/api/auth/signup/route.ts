@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { getSiteUrl } from "@/lib/site-url";
 
 export async function POST(request: Request) {
   let credentials: { email?: unknown; password?: unknown };
@@ -34,6 +35,9 @@ export async function POST(request: Request) {
   const { data, error } = await supabase.auth.signUp({
     email: credentials.email.trim(),
     password: credentials.password,
+    options: {
+      emailRedirectTo: new URL("/auth/callback", getSiteUrl(request.url)).toString(),
+    },
   });
   if (error) {
     return NextResponse.json(

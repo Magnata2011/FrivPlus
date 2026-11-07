@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { getSiteUrl } from "@/lib/site-url";
 
 export async function GET(request: NextRequest) {
   let supabase;
@@ -12,7 +13,7 @@ export async function GET(request: NextRequest) {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo: `${request.nextUrl.origin}/auth/callback`,
+      redirectTo: new URL("/auth/callback", getSiteUrl(request.url)).toString(),
     },
   });
   if (error || !data.url) {

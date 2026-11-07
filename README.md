@@ -12,12 +12,13 @@ Catálogo de jogos com painel administrativo protegido por Supabase Auth. A inte
 
 1. Instale as dependências com `npm install`.
 2. Copie `.env.example` para `.env.local`.
-3. Configure `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY` e `SUPABASE_SERVICE_ROLE_KEY` com os valores do projeto Supabase. `NEXT_PUBLIC_LEGACY_GAMES_BASE_URL` já aponta para a raiz pública dos jogos no GitHub Pages. A chave `service_role` é exclusivamente server-side; nunca use um prefixo `NEXT_PUBLIC_` nela.
+3. Configure `NEXT_PUBLIC_SUPABASE_URL` e `NEXT_PUBLIC_SUPABASE_ANON_KEY` com os valores do projeto Supabase. Defina `NEXT_PUBLIC_SITE_URL` como a URL pública do app (localmente, `http://localhost:3000`). `NEXT_PUBLIC_LEGACY_GAMES_BASE_URL` já aponta para a raiz pública dos jogos no GitHub Pages. Para os recursos administrativos, configure também `SUPABASE_SERVICE_ROLE_KEY`; ela é exclusivamente server-side e nunca deve usar o prefixo `NEXT_PUBLIC_`.
 4. Configure `FRIV_ADMIN_EMAIL_1` e `FRIV_ADMIN_EMAIL_2` com os dois e-mails autorizados. Esses valores são lidos apenas pelo servidor.
 5. Aplique as migrations `supabase/migrations/20261107000000_game_admin.sql`, `supabase/migrations/20261107010000_game_custom_ids_and_cover_urls.sql` e `supabase/migrations/20261107020000_user_profiles.sql` pelo Supabase CLI (`supabase db push`) ou pelo SQL Editor, nesta ordem.
-6. Crie no Supabase Auth as contas dos dois administradores, usando os e-mails definidos nas variáveis privadas. O cadastro público cria contas comuns, sem privilégios administrativos.
-7. Para habilitar Google, configure o provedor Google em **Supabase → Authentication → Providers** e adicione `http://localhost:3000/auth/callback` (e o domínio de produção seguido de `/auth/callback`) à lista de URLs de redirecionamento do Supabase. Credenciais OAuth do Google são configuradas no painel Supabase, nunca no navegador.
-8. Execute `npm run dev` e acesse `http://localhost:3000`.
+6. No Supabase, deixe habilitado o provedor **Email** em **Authentication → Sign In / Providers** e configure **Authentication → URL Configuration** com o domínio público em **Site URL** e `https://frivplus.vercel.app/auth/callback` em **Redirect URLs** (adicione também `http://localhost:3000/auth/callback` para desenvolvimento). O cadastro público exige senha com pelo menos 8 caracteres. Com confirmação de e-mail habilitada, a pessoa deve clicar no link recebido para concluir a sessão. O SMTP padrão do Supabase é limitado a testes; para enviar confirmações a qualquer endereço, configure um provedor SMTP próprio.
+7. Crie no Supabase Auth as contas dos dois administradores, usando os e-mails definidos nas variáveis privadas. O cadastro público cria contas comuns, sem privilégios administrativos.
+8. Para habilitar Google, configure o provedor Google em **Supabase → Authentication → Providers** e adicione o domínio de produção seguido de `/auth/callback` à lista de URLs de redirecionamento do Supabase. Credenciais OAuth do Google são configuradas no painel Supabase, nunca no navegador.
+9. Execute `npm run dev` e acesse `http://localhost:3000`.
 
 O painel fica em `/admin`. Usuários autenticados que não correspondam a um dos e-mails autorizados recebem acesso negado. A comparação do e-mail usa `trim()` e ignora diferenças entre maiúsculas e minúsculas.
 Na página inicial, a pessoa não autenticada vê **Entrar**. Após autenticação, somente os e-mails administrativos autorizados veem **Adicionar jogo**, com campos para ID, nome, link HTTPS da capa, tags e link HTTPS do jogo. O cadastro rápido publica o jogo diretamente. A rota de gravação verifica novamente a identidade e a autorização no servidor.
@@ -58,6 +59,7 @@ No projeto da Vercel, abra **Settings → Environment Variables** e cadastre:
 | --- | --- | --- |
 | `NEXT_PUBLIC_SUPABASE_URL` | URL pública do projeto Supabase | Navegador |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Chave pública/anon do Supabase | Navegador |
+| `NEXT_PUBLIC_SITE_URL` | URL pública do app, usada nos retornos de autenticação | Navegador |
 | `NEXT_PUBLIC_LEGACY_GAMES_BASE_URL` | Raiz pública da pasta `games/` no GitHub Pages | Navegador |
 | `SUPABASE_SERVICE_ROLE_KEY` | Operações administrativas do servidor | **Privada** |
 | `FRIV_ADMIN_EMAIL_1` | Primeiro e-mail autorizado | **Privada** |
