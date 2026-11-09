@@ -1,0 +1,243 @@
+Overview of changes made and how to reproduce them elsewhere
+=========================================================
+
+This document explains the edits I made to the Deltarune-HTML project to
+fix save-sync corruption, guard WebGL/runner behavior, and add debugging
+logs. It contains code snippets and step-by-step instructions you can copy
+into another project.
+
+High-level summary
+------------------
+- Problem: Saves were being exported from IndexedDB 1 localStorage 1
+  IndexedDB and becoming "corrupted" because JSON.stringify/parse cannot
+  represent binary types (ArrayBuffer / TypedArray / Blob) or preserve
+  Date objects.
+- Also: runner code expected a `timestamp` index on the `FILE_DATA` store
+  and sometimes crashed due to missing canvas/other runtime issues.
+- Changes applied:
+  1. Implemented binary-safe serialization/deserialization in `savesync.js`.
+  2. Updated export/import logic to use the new serializers and to
+     preserve/verify timestamp metadata.
+  3. Auto-create `FILE_DATA` object store and `timestamp` index during
+     open if the store is missing (upgrade path).
+  4. Avoid importing companion meta keys ("::ts") into IndexedDB.
+  5. Preserve typed-array constructor names (TA:) during serialization,
+     and reconstruct typed arrays on deserialization.
+  6. Added debug logging in all chapter runner files where the runner
+     reads/writes the `FILES` store (put / get) to compare size/type.
+  7. Patched runner to coerce timestamps safely in entries comparison.
+  8. Added guards to avoid calling the WebGL init (`he(...)`) with an
+     undefined canvas.
+
+Files edited (summary)
+----------------------
+- `savesync.js`
+  - Added helpers: `arrayBufferToBase64`, `base64ToArrayBuffer`,
+    `blobToBase64`.
+  - Added `serializeForLocalStorage(value)` async recursive serializer.
+  - Added `deserializeFromLocalStorage(str)` recursive deserializer.
+  - Rewrote `exportToLocalStorage()` and `importFromLocalStorage()` to
+    use these helpers.
+  - Added size checks, companion timestamp meta keys `::ts`.
+  - Modified `openDB()` to attempt an upgrade and create the store/index
+    if missing.
+  - Modified `getAllFromIndexedDB()` to open cursors and collect per-key
+    timestamps (via `timestamp` index if present) and return them.
+  - Skips importing `::ts` meta keys and excludes them from parent
+    notifications.
+
+- `chapter1..4/runner.js`
+  - Added `tsToNumber` style checks in the `uk` method (comparison of
+    timestamps) so `.getTime()` isn't called on non-Date values.
+  - Added debug logs at both places where the runner `put`s into and
+    `get`s from the `FILES` store (key, size, type, success lines).
+  - Guarded calls to the `he` WebGL-init function by checking for a
+    canvas (fallback to `document.querySelector('canvas')`).
+
+Detailed code snippets you can copy
+----------------------------------
+
+1) Binary-safe serialization helpers (copy into your save-sync script)
+
+function arrayBufferToBase64(buffer) {
+  var binary = '';
+  var bytes = new Uint8Array(buffer);
+  for (var i = 0; i < bytes.byteLength; i++) binary += String.fromCharCode(bytes[i]);
+  return btoa(binary);
+}
+
+function base64ToArrayBuffer(base64) {
+  var binary = atob(base64);
+  var len = binary.length;
+  var bytes = new Uint8Array(len);
+  for (var i = 0; i < len; i++) bytes[i] = binary.charCodeAt(i);
+  return bytes.buffer;
+}
+
+function blobToBase64(blob) {
+  return new Promise((resolve, reject) => {
+    var reader = new FileReader();
+    reader.onload = function() {
+      var dataUrl = reader.result || '';
+      var comma = dataUrl.indexOf(',');
+      resolve(dataUrl.slice(comma + 1));
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
+}
+
+// Async recursive serializer
+async function serializeForLocalStorage(value) {
+  if (value === null) return 'JS:__NULL__';
+  if (value === undefined) return 'JS:__UNDEFINED__';
+  if (value instanceof Date) return 'DATE:' + value.getTime();
+  if (value instanceof ArrayBuffer) return 'AB:' + arrayBufferToBase64(value);
+  if (ArrayBuffer.isView(value)) {
+    var ctorName = (value.constructor && value.constructor.name) || 'Uint8Array';
+    return 'TA:' + ctorName + ':' + arrayBufferToBase64(value.buffer);
+  }
+  if (value instanceof Blob) {
+    var b64 = await blobToBase64(value);
+    return 'BL:' + b64;
+  }
+  if (typeof value === 'object') {
+    var out = Array.isArray(value) ? [] : {};
+    for (var k in value) if (Object.prototype.hasOwnProperty.call(value, k)) out[k] = await serializeForLocalStorage(value[k]);
+    return 'OBJ:' + JSON.stringify(out);
+  }
+  return 'JS:' + JSON.stringify(value);
+}
+
+function deserializeFromLocalStorage(str) {
+  if (str === null) return null;
+  if (str === 'JS:__NULL__') return null;
+  if (str === 'JS:__UNDEFINED__') return undefined;
+  if (str.indexOf('AB:') === 0) return base64ToArrayBuffer(str.slice(3));
+  if (str.indexOf('TA:') === 0) {
+    var rest = str.slice(3);
+    var idx = rest.indexOf(':');
+    if (idx === -1) return base64ToArrayBuffer(rest);
+    var ctor = rest.slice(0, idx);
+    var b64 = rest.slice(idx + 1);
+    var ab = base64ToArrayBuffer(b64);
+    try { var T = typeof globalThis !== 'undefined' && globalThis[ctor] ? globalThis[ctor] : null; if (T) return new T(ab); } catch (e) {}
+    return ab;
+  }
+  if (str.indexOf('BL:') === 0) return new Blob([base64ToArrayBuffer(str.slice(3))], { type: 'application/octet-stream' });
+  if (str.indexOf('DATE:') === 0) return new Date(Number(str.slice(5)));
+  if (str.indexOf('JS:') === 0) return JSON.parse(str.slice(3));
+  if (str.indexOf('OBJ:') === 0) {
+    var inner = JSON.parse(str.slice(4));
+    function rev(v) {
+      if (v === null) return null;
+      if (typeof v === 'string') return deserializeFromLocalStorage(v);
+      if (Array.isArray(v)) return v.map(rev);
+      if (typeof v === 'object') { var o = Array.isArray(v) ? [] : {}; for (var p in v) if (Object.prototype.hasOwnProperty.call(v, p)) o[p] = rev(v[p]); return o; }
+      return v;
+    }
+    return rev(inner);
+  }
+  return str;
+}
+
+2) Using the serializer in export/import (pseudocode / copy)
+
+// export
+const serialized = await serializeForLocalStorage(value);
+localStorage.setItem(localStorageKey, serialized);
+// optionally save companion timestamp meta
+localStorage.setItem(localStorageKey + '::ts', String(companionTimestampValue));
+
+// import
+const dataString = localStorage.getItem(localKey);
+const data = deserializeFromLocalStorage(dataString);
+// write into indexeddb store
+store.put(data, key);
+
+3) Preserve timestamps and create an index on upgrade
+
+When opening the DB you can attempt an upgrade if the store is missing:
+
+const openReq = indexedDB.open(dbName, version + 1);
+openReq.onupgradeneeded = function(evt) {
+  const db = evt.target.result;
+  if (!db.objectStoreNames.contains(storeName)) {
+    const os = db.createObjectStore(storeName);
+    os.createIndex && os.createIndex('timestamp', 'timestamp', { unique: false });
+  }
+};
+
+4) Read per-key timestamps and preserve them during export
+
+Use store.index('timestamp').openKeyCursor() to iterate keys and collect timestamps:
+
+const timestamps = {};
+const idxCursor = store.index('timestamp').openKeyCursor();
+idxCursor.onsuccess = ev => { const cur = ev.target.result; if (cur) { timestamps[cur.primaryKey] = cur.key; cur.continue(); } };
+
+When exporting each key, also store `localStorage.setItem(localKey + '::ts', timestamps[key])`.
+
+5) Skip companion `::ts` meta keys during import
+
+When iterating localStorage keys to import, skip keys that end with '::ts', e.g.
+
+if (localKey.endsWith('::ts')) continue;
+
+6) Add debug logs to runner where it writes/reads FILES
+
+At the runner point where the code does `objectStore('FILES').put(b, g);` add a `console.debug()` before/after to log:
+
+console.debug('[Runner FILES] put -> key:', g, 'size:', (b && (b.byteLength||b.length)) || 0, 'type:', b && b.constructor && b.constructor.name);
+// ... put ...
+console.debug('[Runner FILES] put succeeded ->', g);
+
+And on get success:
+console.debug('[Runner FILES] get -> key:', e, 'size:', (g.byteLength||g.length) || 0, 'type:', g && g.constructor && g.constructor.name);
+
+7) Safe timestamp comparisons in runner
+
+Replace direct `u.timestamp.getTime() == w.timestamp.getTime()` comparisons with a small coercion helper:
+
+function tsToNumber(t) {
+  if (t === null || t === undefined) return NaN;
+  return (typeof t.getTime === 'function') ? t.getTime() : Number(t);
+}
+
+var ut = u ? tsToNumber(u.timestamp) : NaN;
+var wt = w ? tsToNumber(w.timestamp) : NaN;
+if (!(w && ut === wt)) { f.push(q); e++; }
+
+8) Guard WebGL init call
+
+When calling your WebGL helper (here `he(k.canvas, xe)`), guard it with a canvas lookup fallback so you don't call with undefined `k.canvas`:
+
+var __canvas_for_he = k.canvas || (typeof document !== 'undefined' && document.querySelector ? document.querySelector('canvas') : null);
+ze = __canvas_for_he ? he(__canvas_for_he, xe) : 0;
+
+Testing & diagnostics
+---------------------
+1) Inspect `localStorage` after export: keys will start with your prefix (e.g. `dt/_savedata/...`) and values will begin with prefixes like `TA:Uint8Array:`, `AB:`, `BL:`, `OBJ:`, `DATE:`, or `JS:`.
+2) Inspect IndexedDB in DevTools to check store `FILE_DATA` and index `timestamp`.
+3) Use the debug logs added to runner to compare sizes/types on `put` and `get` for each file key.
+4) If corruption persists, add an integrity checksum to store at export: compute a SHA-1 or CRC32 of the bytes and store it as meta; verify after import to locate the step where bytes changed.
+
+Caveats and notes
+-----------------
+- localStorage size is limited (~5-10MB) and base64 inflates data by ~33%. If saves are large, prefer not to export full binary to localStorage. The code includes a soft size limit and will skip very large entries.
+- Creating object stores via an automatic upgrade may introduce a race with the game's own DB initialization if both attempt version upgrades; handle carefully.
+- Reconstructing typed arrays by constructor name assumes the constructor (e.g. `Uint8Array`) is available as a global; this is normally true in browsers.
+- If the game expects a Blob specifically or a specific binary shape, ensure your deserialization returns the exact same type (Blob vs TypedArray vs ArrayBuffer). You can test/adjust per-case.
+
+Quick sanity commands (browser console)
+-------------------------------------
+// See one localStorage entry
+console.log(localStorage.getItem('dt/_savedata/filech3_0'));
+
+// Read an IndexedDB key (replace key/name as needed)
+var r = indexedDB.open('/_savedata');
+r.onsuccess = function() { var db = r.result; var tx = db.transaction(['FILE_DATA'],'readonly'); var store = tx.objectStore('FILE_DATA'); var get = store.get('/_savedata/filech3_0'); get.onsuccess = function(){ console.log('IndexedDB value:', get.result); } }
+
+If you want, I can also produce a standalone small script that implements these helpers and a test harness (round-trip test using a sample ArrayBuffer / TypedArray) that you can drop into any page to validate behavior before integrating into a live project.
+
+End of notes

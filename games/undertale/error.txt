@@ -1,0 +1,1793 @@
+[Taskbar] Functions ready and exported globally
+(index):82 Live reload enabled.
+firebaseconfig.js:37 Firebase initialized successfully
+lifecycle.js:566 DB Used
+appWindow.js:45 [2025-10-15T12:42:42.731Z] [SaveSystem] Loading save data for ut
+appWindow.js:45 [2025-10-15T12:42:42.783Z] [SaveSystem] No save data found for ut
+appWindow.js:45 [2025-10-15T12:42:42.783Z] [SaveSystem] No remote save data found for ut
+Undertale-HTML/:58 tick-worker element not found. Worker disabled. To enable, add a <script id="tick-worker"> containing the worker code.
+(anonymous) @ Undertale-HTML/:58
+(anonymous) @ Undertale-HTML/:87Understand this warning
+savesync.js:37 [WigdosXP Unified Save] WigdosXP Unified Save System starting... 
+savesync.js:88 [WigdosXP Unified Save] ✓ Unified save system ready 
+savesync.js:88 [WigdosXP Unified Save] Timeout reached; starting game as fallback. 
+savesync.js:88 [WigdosXP Unified Save] Starting game... 
+savesync.js:88 [WigdosXP Unified Save] Set undertale_loaded flag 
+savesync.js:88 
+savesync.js:88 ***************************************
+savesync.js:88 *  YoYo Games Emscripten Runner V2.0  *
+savesync.js:88 ***************************************
+savesync.js:88 CommandLine: -game game.unx 
+5savesync.js:88 Warning: Prevented call into an uninitialised yyal from Audio_EngineInvokeCallback
+savesync.js:88 Warning: Prevented call into an uninitialised yyal from Audio_EngineInvokeCallback
+runner.js:159 Uncaught TypeError: Cannot read properties of undefined (reading 'ck')
+    at ce (runner.js:159:18)
+    at mh (runner.js:252:175)
+    at runner.wasm
+    at runner.wasm
+    at runner.wasm
+    at c (runner.js:284:56)
+ce @ runner.js:159
+mh @ runner.js:252
+$func11551 @ runner.wasm:0x394a89
+$func11641 @ runner.wasm:0x3b1afc
+$func4259 @ runner.wasm:0x162de0
+c @ runner.js:284
+requestAnimationFrame
+Eh @ runner.js:284
+$func4257 @ runner.wasm:0x162241
+$ti @ runner.wasm:0x2569b7
+k._main @ runner.js:306
+Ui @ runner.js:309
+b @ runner.js:311
+Ti @ runner.js:311
+Si @ runner.js:309
+Eb @ runner.js:33
+a @ runner.js:303
+(anonymous) @ runner.js:303
+Promise.then
+(anonymous) @ runner.js:36
+Promise.then
+Mb @ runner.js:36
+(anonymous) @ runner.js:303
+(anonymous) @ runner.js:303Understand this error
+158savesync.js:88 Warning: Prevented call into an uninitialised yyal from Audio_EngineInvokeCallback
+savesync.js:88 [WigdosXP Unified Save] ✓ IndexedDB found, initializing... 
+savesync.js:88 [WigdosXP Unified Save] Initializing IndexedDB sync... 
+savesync.js:88 [WigdosXP Unified Save] Initializing WigdosXP sync... 
+savesync.js:88 [WigdosXP Unified Save] Requesting initial save data from WigdosXP... 
+savesync.js:88 [WigdosXP Unified Save] ✓ Unified save system initialized 
+savesync.js:88 Warning: Prevented call into an uninitialised yyal from Audio_EngineInvokeCallback
+appWindow.js:43 [2025-10-15T12:42:45.814Z] [SaveSystem] Game requesting initial save data {type: 'getInitialSaveData', gameId: 'ut', messageId: 'initial_load_1760532165813'}
+savesync.js:88 [WigdosXP Unified Save] No save data in IndexedDB to export 
+savesync.js:88 [WigdosXP Unified Save] ✓ IndexedDB sync initialized 
+appWindow.js:45 [2025-10-15T12:42:45.815Z] [SaveSystem] Processing initial save data request for ut
+8savesync.js:88 Warning: Prevented call into an uninitialised yyal from Audio_EngineInvokeCallback
+appWindow.js:45 [2025-10-15T12:42:45.848Z] [SaveSystem] No save data found for ut
+savesync.js:88 [WigdosXP Unified Save] Received initial save data from WigdosXP 
+savesync.js:88 [WigdosXP Unified Save] Received message from WigdosXP: initialSaveDataResponse
+242savesync.js:88 Warning: Prevented call into an uninitialised yyal from Audio_EngineInvokeCallback
+savesync.js:88 [WigdosXP Unified Save] ✓ Sent ready signal to WigdosXP 
+appWindow.js:43 [2025-10-15T12:42:46.815Z] [SaveSystem] Game integration ready ut
+1000savesync.js:88 Warning: Prevented call into an uninitialised yyal from Audio_EngineInvokeCallback
+savesync.js:88 [WigdosXP Unified Save] ✓ localStorage → WigdosXP parent frame 
+1250savesync.js:88 Warning: Prevented call into an uninitialised yyal from Audio_EngineInvokeCallback
+savesync.js:88 [WigdosXP Unified Save] No save data in IndexedDB to export 
+981savesync.js:88 Warning: Prevented call into an uninitialised yyal from Audio_EngineInvokeCallback
+appWindow.js:45 [2025-10-15T12:42:59.742Z] [SaveSystem] Cross-origin iframe detected, using postMessage
+appWindow.js:45 [2025-10-15T12:42:59.742Z] [SaveSystem] Save attempt 1/3 for ut
+savesync.js:88 Warning: Prevented call into an uninitialised yyal from Audio_EngineInvokeCallback
+savesync.js:88 [WigdosXP Unified Save] Received message from WigdosXP: getAllLocalStorageData
+savesync.js:88 [WigdosXP Unified Save] ✓ Sent save data to WigdosXP 
+appWindow.js:45 [2025-10-15T12:42:59.745Z] [SaveSystem] Save data received for ut, uploading to Firebase
+appWindow.js:45 [2025-10-15T12:42:59.815Z] [SaveSystem] Successfully uploaded save data for ut
+appWindow.js:43 [2025-10-15T12:42:59.865Z] [SaveSystem] Backup management failed FirebaseError: Missing or insufficient permissions.
+log @ appWindow.js:43
+warn @ appWindow.js:51
+manageBackups @ appWindow.js:985
+await in manageBackups
+uploadSaveDataToFirebase @ appWindow.js:941
+await in uploadSaveDataToFirebase
+handleResponse @ appWindow.js:865Understand this warning
+appWindow.js:45 [2025-10-15T12:42:59.865Z] [SaveSystem] Firebase upload successful for ut
+appWindow.js:45 [2025-10-15T12:42:59.865Z] [SaveSystem] Cross-origin game data saved for ut
+appWindow.js:45 [2025-10-15T12:43:01.514Z] [SaveSystem] Loading save data for ut
+appWindow.js:43 [2025-10-15T12:43:01.564Z] [SaveSystem] Save data found for ut {keys: 1}
+Undertale-HTML/:58 tick-worker element not found. Worker disabled. To enable, add a <script id="tick-worker"> containing the worker code.
+(anonymous) @ Undertale-HTML/:58
+(anonymous) @ Undertale-HTML/:87Understand this warning
+savesync.js:37 [WigdosXP Unified Save] WigdosXP Unified Save System starting... 
+savesync.js:88 [WigdosXP Unified Save] ✓ Unified save system ready 
+appWindow.js:45 [2025-10-15T12:43:01.582Z] [SaveSystem] Loading save data for ut
+appWindow.js:43 [2025-10-15T12:43:01.629Z] [SaveSystem] Save data found for ut {keys: 1}
+savesync.js:88 
+savesync.js:88 ***************************************
+savesync.js:88 *  YoYo Games Emscripten Runner V2.0  *
+savesync.js:88 ***************************************
+savesync.js:88 CommandLine: -game game.unx 
+savesync.js:88 Warning: Prevented call into an uninitialised yyal from Audio_EngineInvokeCallback
+savesync.js:88 Warning: Prevented call into an uninitialised yyal from Audio_EngineInvokeCallback
+savesync.js:88 MemoryManager allocated: 25462
+savesync.js:88 
+savesync.js:88 ***************************************
+savesync.js:88  *     GameMaker v2024.0.999.32908    *
+savesync.js:88 ***************************************
+savesync.js:88 ----------------- EmscriptenWebGLContextAttributes ----------------------------
+savesync.js:88 ctx.alpha = 1
+savesync.js:88 ctx.depth = 1
+savesync.js:88 ctx.stencil = 1
+savesync.js:88 ctx.antialias = 0
+savesync.js:88 ctx.premultipliedAlpha = 1
+savesync.js:88 ctx.preserveDrawingBuffer = 0
+savesync.js:88 ctx.powerPreference = 1
+savesync.js:88 ctx.failIfMajorPerformanceCaveat = 0
+savesync.js:88 ctx.majorVersion = 1
+savesync.js:88 ctx.minorVersion = 0
+savesync.js:88 ctx.enableExtensionsByDefault = 0
+savesync.js:88 ctx.explicitSwapControl = 0
+savesync.js:88 ctx.renderViaOffscreenBackBuffer = 0
+savesync.js:88 ctx.proxyContextToMainThread = 0
+runner.js:63 [Violation] Permissions policy violation: accelerometer is not allowed in this document.
+1556242 @ runner.js:63
+Ye @ runner.js:161
+a @ runner.js:257
+$func4259 @ runner.wasm:0x163ef9
+c @ runner.js:284
+requestAnimationFrame
+Eh @ runner.js:284
+$func4257 @ runner.wasm:0x162241
+$ti @ runner.wasm:0x2569b7
+k._main @ runner.js:306
+Ui @ runner.js:309
+b @ runner.js:311
+(anonymous) @ runner.js:311
+setTimeout
+Ti @ runner.js:311
+Si @ runner.js:309
+Eb @ runner.js:33
+a @ runner.js:303
+(anonymous) @ runner.js:303
+Promise.then
+(anonymous) @ runner.js:36
+Promise.then
+Mb @ runner.js:36
+(anonymous) @ runner.js:303
+(anonymous) @ runner.js:303Understand this error
+runner.js:63 The deviceorientation events are blocked by permissions policy. See https://github.com/w3c/webappsec-permissions-policy/blob/master/features.md#sensor-features
+1556242 @ runner.js:63
+Ye @ runner.js:161
+a @ runner.js:257
+$func4259 @ runner.wasm:0x163ef9
+c @ runner.js:284
+requestAnimationFrame
+Eh @ runner.js:284
+$func4257 @ runner.wasm:0x162241
+$ti @ runner.wasm:0x2569b7
+k._main @ runner.js:306
+Ui @ runner.js:309
+b @ runner.js:311
+(anonymous) @ runner.js:311
+setTimeout
+Ti @ runner.js:311
+Si @ runner.js:309
+Eb @ runner.js:33
+a @ runner.js:303
+(anonymous) @ runner.js:303
+Promise.then
+(anonymous) @ runner.js:36
+Promise.then
+Mb @ runner.js:36
+(anonymous) @ runner.js:303
+(anonymous) @ runner.js:303Understand this warning
+savesync.js:88 Warning: Prevented call into an uninitialised yyal from Audio_EngineInvokeCallback
+savesync.js:88 Prepare cache error Error: unable to cache, API not found
+savesync.js:88 Warning: Prevented call into an uninitialised yyal from Audio_EngineInvokeCallback
+savesync.js:88 Starting WAD
+savesync.js:88 GML_async_wget2_data called for game.unx
+savesync.js:88 __gx_check_cache for game.unx cached files {} manifest files {}
+savesync.js:88 in cache game.unx == 0
+savesync.js:88 XHR: game.unx
+savesync.js:88 Warning: Prevented call into an uninitialised yyal from Audio_EngineInvokeCallback
+savesync.js:88 Warning: Prevented call into an uninitialised yyal from Audio_EngineInvokeCallback
+savesync.js:88 loaded 0% (393216 of 99957620) bytes
+3savesync.js:88 Warning: Prevented call into an uninitialised yyal from Audio_EngineInvokeCallback
+savesync.js:88 Warning: Prevented call into an uninitialised yyal from Audio_EngineInvokeCallback
+savesync.js:88 Warning: Prevented call into an uninitialised yyal from Audio_EngineInvokeCallback
+2savesync.js:88 Warning: Prevented call into an uninitialised yyal from Audio_EngineInvokeCallback
+savesync.js:88 loaded 100% (99957620 of 99957620) bytes
+savesync.js:88 Success Loaded game file 0x5b13f8 size 99957620
+savesync.js:88 00000000 464f524d6c3bf50547454e3820060000 FORMl;..GEN8 ...
+savesync.js:88 00000010 0111000098f1c1003c39aa00a4bd0100 ........<9......
+savesync.js:88 00000020 39999800000000000000000000000000 9...............
+savesync.js:88 00000030 000000000000000098f1c10002000000 ................
+savesync.js:88 05f53b34 110011000b000b00f5fff5ff06000600 ................
+savesync.js:88 05f53b44 efffeffffafffafff5fff5ffefffefff ................
+savesync.js:88 05f53b54 d8ffd8fffafffaffe4ffe4ff11001100 ................
+savesync.js:88 05f53b64 00000000060006002800280011001100 ........(.(.....
+savesync.js:88 Warning: Prevented call into an uninitialised yyal from Audio_EngineInvokeCallback
+savesync.js:88 WGS_RunnerInit called
+savesync.js:88 Setting g_ActualDisplayWidth to 2240 g_ActualDisplayHeight to 1260
+savesync.js:88 INI ProjectGuid=
+savesync.js:88 Reading File assets/game.unx took 0 ms
+savesync.js:88 _GetSaveFileName in:gamecontrollerdb.txt out:_savedata/gamecontrollerdb.txt
+savesync.js:88 Window size set to width: 640, height: 480
+savesync.js:88 OpenGL: version string OpenGL ES 2.0 (WebGL 1.0 (OpenGL ES 2.0 Chromium))
+savesync.js:88 OpenGL: vendor string WebKit
+savesync.js:88 OpenGL GLSL: version string OpenGL ES GLSL ES 1.00 (WebGL GLSL ES 1.0 (OpenGL ES GLSL ES 1.0 Chromium))
+savesync.js:88 OpenGL version - detected 2.0
+savesync.js:88 OpenGL: VBOs supported
+savesync.js:88 OpenGL: Non-power-of-two textures supported
+savesync.js:88 Extensions: ANGLE_instanced_arrays EXT_blend_minmax EXT_clip_control EXT_color_buffer_half_float EXT_depth_clamp EXT_disjoint_timer_query EXT_float_blend EXT_frag_depth EXT_polygon_offset_clamp EXT_shader_texture_lod EXT_texture_compression_bptc EXT_texture_compression_rgtc EXT_texture_filter_anisotropic EXT_texture_mirror_clamp_to_edge EXT_sRGB KHR_parallel_shader_compile OES_element_index_uint OES_fbo_render_mipmap OES_standard_derivatives OES_texture_float OES_texture_float_linear OES_texture_half_float OES_texture_half_float_linear OES_vertex_array_object WEBGL_blend_func_extended WEBGL_color_buffer_float WEBGL_compressed_texture_astc WEBGL_compressed_texture_etc WEBGL_compressed_texture_etc1 WEBGL_compressed_texture_pvrtc WEBGL_compressed_texture_s3tc WEBGL_compressed_texture_s3tc_srgb WEBGL_debug_renderer_info WEBGL_debug_shaders WEBGL_depth_texture WEBGL_draw_buffers WEBGL_lose_context WEBGL_multi_draw WEBGL_polygon_mode GL_ANGLE_instanced_arrays GL_EXT_blend_minmax GL_EXT_clip_control GL_EXT_color_buffer_half_float GL_EXT_depth_clamp GL_EXT_disjoint_timer_query GL_EXT_float_blend GL_EXT_frag_depth GL_EXT_polygon_offset_clamp GL_EXT_shader_texture_lod GL_EXT_texture_compression_bptc GL_EXT_texture_compression_rgtc GL_EXT_texture_filter_anisotropic GL_EXT_texture_mirror_clamp_to_edge GL_EXT_sRGB GL_KHR_parallel_shader_compile GL_OES_element_index_uint GL_OES_fbo_render_mipmap GL_OES_standard_derivatives GL_OES_texture_float GL_OES_texture_float_linear GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_vertex_array_object GL_WEBGL_blend_func_extended GL_WEBGL_color_buffer_float GL_WEBGL_compressed_texture_astc GL_WEBGL_compressed_texture_etc GL_WEBGL_compressed_texture_etc1 GL_WEBGL_compressed_texture_pvrtc GL_WEBGL_compressed_texture_s3tc GL_WEBGL_compressed_texture_s3tc_srgb GL_WEBGL_debug_renderer_info GL_WEBGL_debug_shaders GL_WEBGL_depth_texture GL_WEBGL_draw_buffers GL_WEBGL_lose_context GL_WEBGL_multi_draw GL_WEBGL_polygon_mode
+savesync.js:88 About to check extension!OpenGL: packed 24bit depth/8bit stencil supported
+savesync.js:88 Anisotropic filtering supported, max aniso 16
+savesync.js:88 OpenGL: 4 channel half-float surface formats supported (through extensions)
+savesync.js:88 OpenGL: 4 channel float surface formats supported (through extensions)
+savesync.js:88 Collision Event time(microsecs)=500
+savesync.js:88 Variable_Global_Init()
+savesync.js:88 PrepareGame()
+savesync.js:88 Audio_Init()
+savesync.js:88 Audio group 0 -> Loaded
+savesync.js:88 GAMEPAD: Initialising SDL support
+savesync.js:88 Attempting to set gamepadcount to 4
+savesync.js:88 GAMEPAD: Setting up initial connections
+savesync.js:88 GAMEPAD: Number of detected joysticks/controllers: 0
+savesync.js:88 Game_Prepare()
+savesync.js:88 Script_Prepare() 
+savesync.js:88 TimeLine_Prepare() 
+savesync.js:88 Object_Prepare() 
+savesync.js:88 Room_Prepare() 
+savesync.js:88 Finished PrepareGame() 
+savesync.js:88 Run_Start
+savesync.js:88 Done g_EffectsManager.Init()
+savesync.js:88 Done RenderStateManager
+savesync.js:88 CreateColPairs took 0.000000s 401 usecs for 1741 object types obj_col_numb=0 physobjcount=368 resizes 0 final size 1626
+savesync.js:88 Done ObjectLists
+savesync.js:88 Done Extension_Initialize
+savesync.js:88 About to startroom
+savesync.js:88 _GetSaveFileName in:decomp_vars.ini out:_savedata/decomp_vars.ini
+savesync.js:88 Attempting to save decomp vars...
+savesync.js:88 _GetSaveFileName in:decomp_vars.ini out:_savedata/decomp_vars.ini
+savesync.js:88 Successfully saved decomp vars
+savesync.js:88 _GetSaveFileName in:trophies.ini out:_savedata/trophies.ini
+savesync.js:88 Attempting to save trophies...
+savesync.js:88 _GetSaveFileName in:trophies.ini out:_savedata/trophies.ini
+index.js:75 warning:  FS.syncfs operations in flight at once, probably just doing extra work
+printErr @ index.js:75
+Nb @ runner.js:115
+1559151 @ runner.js:67
+Ye @ runner.js:161
+a @ runner.js:257
+$func1441 @ runner.wasm:0x43563
+$func2844 @ runner.wasm:0xc839f
+$func10263 @ runner.wasm:0x34d1e4
+$func8600 @ runner.wasm:0x2ef174
+$func8505 @ runner.wasm:0x2e7489
+$func2847 @ runner.wasm:0xced31
+$func1518 @ runner.wasm:0x4ca03
+$func5305 @ runner.wasm:0x1c5c9e
+$func5293 @ runner.wasm:0x1c308b
+$func1631 @ runner.wasm:0x5603f
+$func5682 @ runner.wasm:0x1f6d4c
+$func3792 @ runner.wasm:0x1371dd
+$func5677 @ runner.wasm:0x1f5525
+$func4259 @ runner.wasm:0x16f7f3
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+Eh @ runner.js:284
+$func4257 @ runner.wasm:0x162241
+$ti @ runner.wasm:0x2569b7
+k._main @ runner.js:306
+Ui @ runner.js:309
+b @ runner.js:311
+(anonymous) @ runner.js:311
+setTimeout
+Ti @ runner.js:311
+Si @ runner.js:309
+Eb @ runner.js:33
+a @ runner.js:303
+(anonymous) @ runner.js:303
+Promise.then
+(anonymous) @ runner.js:36
+Promise.then
+Mb @ runner.js:36
+(anonymous) @ runner.js:303
+(anonymous) @ runner.js:303Understand this error
+savesync.js:88 Successfully saved trophies
+savesync.js:88 Total memory used = 24098642 (0x016fb752) bytes 22.98MB
+savesync.js:88 Free memory = 3451128 (0x0034a8f8) bytes 3.29MB
+savesync.js:88 Peak memory used = 46744566 (0x02c943f6) bytes 44.58MB
+savesync.js:88 **********************************.
+savesync.js:88 Entering main loop.
+savesync.js:88 **********************************.
+savesync.js:88 _GetSaveFileName in:config.ini out:_savedata/config.ini
+savesync.js:88 _GetSaveFileName in:undertale.ini out:_savedata/undertale.ini
+savesync.js:88 _GetSaveFileName in:system_information_962 out:_savedata/system_information_962
+2savesync.js:88 focuscb::focus event received
+savesync.js:88 GML_async_wget2_data called for mus_story.ogg
+savesync.js:88 __gx_check_cache for mus_story.ogg cached files {} manifest files {}
+savesync.js:88 in cache mus_story.ogg == 0
+savesync.js:88 Loaded 100% (606909 of 606909) bytes
+savesync.js:88 Loaded game file at 0x7fe8ac8 with size 606909
+savesync.js:88 [WigdosXP Unified Save] Timeout reached; starting game as fallback. 
+savesync.js:88 [WigdosXP Unified Save] Starting game... 
+savesync.js:88 [WigdosXP Unified Save] ✓ IndexedDB found, initializing... 
+savesync.js:88 [WigdosXP Unified Save] Initializing IndexedDB sync... 
+savesync.js:88 [WigdosXP Unified Save] Initializing WigdosXP sync... 
+savesync.js:88 [WigdosXP Unified Save] Requesting initial save data from WigdosXP... 
+savesync.js:88 [WigdosXP Unified Save] ✓ Unified save system initialized 
+appWindow.js:43 [2025-10-15T12:43:04.588Z] [SaveSystem] Game requesting initial save data {type: 'getInitialSaveData', gameId: 'ut', messageId: 'initial_load_1760532184586'}
+appWindow.js:45 [2025-10-15T12:43:04.588Z] [SaveSystem] Processing initial save data request for ut
+savesync.js:88 [WigdosXP Unified Save] ✓ IndexedDB → localStorage: 2
+savesync.js:88 [WigdosXP Unified Save] ✓ localStorage → WigdosXP parent frame 
+savesync.js:88 [WigdosXP Unified Save] ✓ IndexedDB sync initialized 
+appWindow.js:43 [2025-10-15T12:43:04.636Z] [SaveSystem] Found save data for ut {keys: 1}
+savesync.js:88 [WigdosXP Unified Save] Received initial save data from WigdosXP 
+savesync.js:88 [WigdosXP Unified Save] Loading initial save data: 1
+savesync.js:88 [WigdosXP Unified Save] Received message from WigdosXP: initialSaveDataResponse
+savesync.js:88 [WigdosXP Unified Save] ✓ Restored to IndexedDB: /_savedata/decomp_vars.ini
+savesync.js:88 [WigdosXP Unified Save] ✓ Restored to IndexedDB: /_savedata/trophies.ini
+savesync.js:88 [WigdosXP Unified Save] ✓ localStorage → IndexedDB: 2
+savesync.js:88 [WigdosXP Unified Save] ✓ WigdosXP → localStorage → IndexedDB complete 
+appWindow.js:45 [2025-10-15T12:43:04.744Z] [SaveSystem] Cross-origin save timeout for ut
+log @ appWindow.js:45
+warn @ appWindow.js:51
+(anonymous) @ appWindow.js:904
+setTimeout
+(anonymous) @ appWindow.js:903
+pushSaveViaPostMessage @ appWindow.js:841
+pushSaveViaPostMessageWithRetry @ appWindow.js:827
+pushIframeSaveToFirestore @ appWindow.js:812
+closeCrossOrigin @ appWindow.js:506
+close @ appWindow.js:468
+closeBtn.onclick @ appWindow.js:206Understand this warning
+savesync.js:88 _GetSaveFileName in:undertale.ini out:_savedata/undertale.ini
+savesync.js:88 GML_async_wget2_data called for mus_intronoise.ogg
+savesync.js:88 __gx_check_cache for mus_intronoise.ogg cached files {} manifest files {}
+savesync.js:88 in cache mus_intronoise.ogg == 0
+savesync.js:88 Loaded 100% (35393 of 35393) bytes
+savesync.js:88 Loaded game file at 0x8095db8 with size 35393
+2savesync.js:88 _GetSaveFileName in:undertale.ini out:_savedata/undertale.ini
+savesync.js:88 _GetSaveFileName in:file0 out:_savedata/file0
+savesync.js:88 GML_async_wget2_data called for mus_menu0.ogg
+savesync.js:88 __gx_check_cache for mus_menu0.ogg cached files {} manifest files {}
+savesync.js:88 in cache mus_menu0.ogg == 0
+4savesync.js:88 _GetSaveFileName in:undertale.ini out:_savedata/undertale.ini
+savesync.js:88 Loaded 34% (65536 of 188581) bytes
+savesync.js:88 Loaded 100% (188581 of 188581) bytes
+savesync.js:88 Loaded game file at 0x7fe8ac8 with size 188581
+savesync.js:88 _GetSaveFileName in:undertale.ini out:_savedata/undertale.ini
+savesync.js:88 [WigdosXP Unified Save] Save data loaded; starting game. 
+13savesync.js:88 _GetSaveFileName in:undertale.ini out:_savedata/undertale.ini
+savesync.js:88 [WigdosXP Unified Save] ✓ Sent ready signal to WigdosXP 
+appWindow.js:43 [2025-10-15T12:43:05.589Z] [SaveSystem] Game integration ready ut
+7savesync.js:88 _GetSaveFileName in:undertale.ini out:_savedata/undertale.ini
+appWindow.js:45 [2025-10-15T12:43:06.565Z] [SaveSystem] Cross-origin load timeout for ut
+log @ appWindow.js:45
+warn @ appWindow.js:51
+(anonymous) @ appWindow.js:1110
+setTimeout
+(anonymous) @ appWindow.js:1109
+loadSaveViaPostMessage @ appWindow.js:1059
+loadFirestoreToIframe @ appWindow.js:1042
+await in loadFirestoreToIframe
+appWindow.iframe.onload @ appWindow.js:751Understand this warning
+appWindow.js:45 [2025-10-15T12:43:06.565Z] [SaveSystem] No remote save data found for ut
+appWindow.js:45 [2025-10-15T12:43:06.631Z] [SaveSystem] Cross-origin load timeout for ut
+log @ appWindow.js:45
+warn @ appWindow.js:51
+(anonymous) @ appWindow.js:1110
+setTimeout
+(anonymous) @ appWindow.js:1109
+loadSaveViaPostMessage @ appWindow.js:1059
+loadFirestoreToIframe @ appWindow.js:1042
+await in loadFirestoreToIframe
+appWindow.iframe.onload @ appWindow.js:751Understand this warning
+appWindow.js:45 [2025-10-15T12:43:06.631Z] [SaveSystem] No remote save data found for ut
+savesync.js:88 [WigdosXP Unified Save] ✓ IndexedDB → localStorage: 2
+savesync.js:88 GML_async_wget2_data called for mus_cymbal.ogg
+savesync.js:88 __gx_check_cache for mus_cymbal.ogg cached files {} manifest files {}
+savesync.js:88 in cache mus_cymbal.ogg == 0
+savesync.js:88 Loaded 100% (49050 of 49050) bytes
+savesync.js:88 Loaded game file at 0x7fe8ac8 with size 49050
+savesync.js:88 [WigdosXP Unified Save] ✓ IndexedDB → localStorage: 2
+savesync.js:88 _GetSaveFileName in:undertale.ini out:_savedata/undertale.ini
+runner.js:108 Uncaught TypeError: w.timestamp.getTime is not a function
+    at runner.js:108:39
+    at Array.forEach (<anonymous>)
+    at Object.sk (runner.js:107:450)
+    at runner.js:103:254
+    at f.objectStore.index.openKeyCursor.onsuccess (runner.js:105:359)
+(anonymous) @ runner.js:108
+sk @ runner.js:107
+(anonymous) @ runner.js:103
+f.objectStore.index.openKeyCursor.onsuccess @ runner.js:105
+IndexedDB
+(anonymous) @ runner.js:105
+sl @ runner.js:103
+jk @ runner.js:105
+(anonymous) @ runner.js:103
+ik @ runner.js:105
+zk @ runner.js:103
+(anonymous) @ runner.js:115
+Nb @ runner.js:115
+1559151 @ runner.js:67
+Ye @ runner.js:161
+a @ runner.js:257
+$func1441 @ runner.wasm:0x43563
+$func2844 @ runner.wasm:0xc839f
+$func10263 @ runner.wasm:0x34d1e4
+$func8600 @ runner.wasm:0x2ef174
+$func8505 @ runner.wasm:0x2e7489
+$func2847 @ runner.wasm:0xced31
+$func1518 @ runner.wasm:0x4ca03
+$func5305 @ runner.wasm:0x1c5c9e
+$func5293 @ runner.wasm:0x1c308b
+$func1631 @ runner.wasm:0x5603f
+$func587 @ runner.wasm:0xde90
+$func5973 @ runner.wasm:0x20e606
+$func5972 @ runner.wasm:0x20dd3f
+$func5673 @ runner.wasm:0x1f3ed4
+$func8728 @ runner.wasm:0x300a2f
+$func4259 @ runner.wasm:0x16fe06
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284Understand this error
+savesync.js:88 [WigdosXP Unified Save] ✓ IndexedDB → localStorage: 2
+index.js:75 warning:  FS.syncfs operations in flight at once, probably just doing extra work
+printErr @ index.js:75
+Nb @ runner.js:115
+1559151 @ runner.js:67
+Ye @ runner.js:161
+a @ runner.js:257
+$func1441 @ runner.wasm:0x43563
+$func2844 @ runner.wasm:0xc839f
+$func10263 @ runner.wasm:0x34d1e4
+$func8600 @ runner.wasm:0x2ef174
+$func8505 @ runner.wasm:0x2e7489
+$func2847 @ runner.wasm:0xced31
+$func1518 @ runner.wasm:0x4ca03
+$func5305 @ runner.wasm:0x1c5c9e
+$func5293 @ runner.wasm:0x1c308b
+$func1631 @ runner.wasm:0x5603f
+$func587 @ runner.wasm:0xde90
+$func3790 @ runner.wasm:0x136e4b
+$func8728 @ runner.wasm:0x300a27
+$func4259 @ runner.wasm:0x16fe06
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284Understand this error
+savesync.js:88 GML_async_wget2_data called for mus_flowey.ogg
+savesync.js:88 __gx_check_cache for mus_flowey.ogg cached files {} manifest files {}
+savesync.js:88 in cache mus_flowey.ogg == 0
+index.js:75 [post-exception status] Exception thrown, see JavaScript console
+printErr @ index.js:75
+Module.setStatus @ index.js:131
+window.onerror @ index.js:128
+IndexedDB
+(anonymous) @ runner.js:105
+sl @ runner.js:103
+jk @ runner.js:105
+(anonymous) @ runner.js:103
+ik @ runner.js:105
+zk @ runner.js:103
+(anonymous) @ runner.js:115
+Nb @ runner.js:115
+1559151 @ runner.js:67
+Ye @ runner.js:161
+a @ runner.js:257
+$func1441 @ runner.wasm:0x43563
+$func2844 @ runner.wasm:0xc839f
+$func10263 @ runner.wasm:0x34d1e4
+$func8600 @ runner.wasm:0x2ef174
+$func8505 @ runner.wasm:0x2e7489
+$func2847 @ runner.wasm:0xced31
+$func1518 @ runner.wasm:0x4ca03
+$func5305 @ runner.wasm:0x1c5c9e
+$func5293 @ runner.wasm:0x1c308b
+$func1631 @ runner.wasm:0x5603f
+$func587 @ runner.wasm:0xde90
+$func3790 @ runner.wasm:0x136e4b
+$func8728 @ runner.wasm:0x300a27
+$func4259 @ runner.wasm:0x16fe06
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284Understand this error
+runner.js:108 Uncaught TypeError: w.timestamp.getTime is not a function
+    at runner.js:108:39
+    at Array.forEach (<anonymous>)
+    at Object.sk (runner.js:107:450)
+    at runner.js:103:254
+    at f.objectStore.index.openKeyCursor.onsuccess (runner.js:105:359)
+(anonymous) @ runner.js:108
+sk @ runner.js:107
+(anonymous) @ runner.js:103
+f.objectStore.index.openKeyCursor.onsuccess @ runner.js:105
+IndexedDB
+(anonymous) @ runner.js:105
+sl @ runner.js:103
+jk @ runner.js:105
+(anonymous) @ runner.js:103
+ik @ runner.js:105
+zk @ runner.js:103
+(anonymous) @ runner.js:115
+Nb @ runner.js:115
+1559151 @ runner.js:67
+Ye @ runner.js:161
+a @ runner.js:257
+$func1441 @ runner.wasm:0x43563
+$func2844 @ runner.wasm:0xc839f
+$func10263 @ runner.wasm:0x34d1e4
+$func8600 @ runner.wasm:0x2ef174
+$func8505 @ runner.wasm:0x2e7489
+$func2847 @ runner.wasm:0xced31
+$func1518 @ runner.wasm:0x4ca03
+$func5305 @ runner.wasm:0x1c5c9e
+$func5293 @ runner.wasm:0x1c308b
+$func1631 @ runner.wasm:0x5603f
+$func587 @ runner.wasm:0xde90
+$func3790 @ runner.wasm:0x136e4b
+$func8728 @ runner.wasm:0x300a27
+$func4259 @ runner.wasm:0x16fe06
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284Understand this error
+savesync.js:88 Loaded 39% (65536 of 167897) bytes
+savesync.js:88 Loaded 100% (167897 of 167897) bytes
+savesync.js:88 Loaded game file at 0x7ff9840 with size 167897
+2savesync.js:88 [WigdosXP Unified Save] ✓ IndexedDB → localStorage: 2
+index.esm2017.js:13567  POST https://firestore.googleapis.com/google.firestore.v1.Firestore/Write/channel?VER=8&database=projects%2Fwigdos-9aa6a%2Fdatabases%2F(default)&gsessionid=6BZD68jK6qFBWIqeMAoc3z5IydjHlFYlKMC_XMNbNl0&SID=O2S-XeZw_D2gS-p9Zk6V2A&RID=59636&TYPE=terminate&zx=gk50lfkydzvk net::ERR_BLOCKED_BY_CLIENT
+$n @ channelrequest.js:1105
+dr.close @ webchannelbasetransport.js:239
+oo @ index.esm2017.js:13567
+close @ index.esm2017.js:13383
+close @ index.esm2017.js:13958
+zo @ index.esm2017.js:13919
+(anonymous) @ index.esm2017.js:13912
+(anonymous) @ index.esm2017.js:14866
+(anonymous) @ index.esm2017.js:18066
+(anonymous) @ index.esm2017.js:18106
+Promise.then
+ta @ index.esm2017.js:18099
+enqueue @ index.esm2017.js:18065
+enqueueAndForget @ index.esm2017.js:18045
+handleDelayElapsed @ index.esm2017.js:14865
+(anonymous) @ index.esm2017.js:14853
+setTimeout
+start @ index.esm2017.js:14847
+createAndSchedule @ index.esm2017.js:14847
+enqueueAfterDelay @ index.esm2017.js:18138
+jo @ index.esm2017.js:13907
+md @ index.esm2017.js:14629
+await in md
+Ed @ index.esm2017.js:14680
+await in Ed
+onMessage @ index.esm2017.js:14140
+(anonymous) @ index.esm2017.js:13999
+(anonymous) @ index.esm2017.js:14018
+(anonymous) @ index.esm2017.js:18066
+(anonymous) @ index.esm2017.js:18106
+Promise.then
+ta @ index.esm2017.js:18099
+enqueue @ index.esm2017.js:18065
+enqueueAndForget @ index.esm2017.js:18045
+(anonymous) @ index.esm2017.js:14018
+(anonymous) @ index.esm2017.js:13999
+_o @ index.esm2017.js:13408
+(anonymous) @ index.esm2017.js:13619
+(anonymous) @ index.esm2017.js:13571
+Bt @ eventtarget.js:91
+Vt @ eventtarget.js:490
+mr.Aa @ webchannelbasetransport.js:429
+je @ structs.js:194
+Oe @ channelrequest.js:920
+D.Pa @ channelrequest.js:626
+D.nb @ channelrequest.js:656
+Bt @ eventtarget.js:91
+Vt @ eventtarget.js:490
+Pn @ xhrio.js:923
+D.kb @ xhrio.js:1053
+D.La @ xhrio.js:1051
+An @ fetchxmlhttpfactory.js:237
+D.Xa @ fetchxmlhttpfactory.js:419Understand this error
+savesync.js:88 [WigdosXP Unified Save] ✓ IndexedDB → localStorage: 2
+index.esm2017.js:13567  POST https://firestore.googleapis.com/google.firestore.v1.Firestore/Listen/channel?VER=8&database=projects%2Fwigdos-9aa6a%2Fdatabases%2F(default)&gsessionid=n2qyptuuw1tGFTcJZ4gSjxxrljVeX71bWKF5PgTD0ZI&SID=SPXiP1ZwdetD0NBZYkpZmQ&RID=25975&TYPE=terminate&zx=mmn5rqxwowyb net::ERR_BLOCKED_BY_CLIENT
+$n @ channelrequest.js:1105
+dr.close @ webchannelbasetransport.js:239
+oo @ index.esm2017.js:13567
+close @ index.esm2017.js:13383
+close @ index.esm2017.js:13958
+zo @ index.esm2017.js:13919
+(anonymous) @ index.esm2017.js:13912
+(anonymous) @ index.esm2017.js:14866
+(anonymous) @ index.esm2017.js:18066
+(anonymous) @ index.esm2017.js:18106
+Promise.then
+ta @ index.esm2017.js:18099
+enqueue @ index.esm2017.js:18065
+enqueueAndForget @ index.esm2017.js:18045
+handleDelayElapsed @ index.esm2017.js:14865
+(anonymous) @ index.esm2017.js:14853
+setTimeout
+start @ index.esm2017.js:14847
+createAndSchedule @ index.esm2017.js:14847
+enqueueAfterDelay @ index.esm2017.js:18138
+jo @ index.esm2017.js:13907
+rd @ index.esm2017.js:14458
+(anonymous) @ index.esm2017.js:15800
+Promise.then
+Zd @ index.esm2017.js:15799
+Ld @ index.esm2017.js:15125
+(anonymous) @ index.esm2017.js:17290
+(anonymous) @ index.esm2017.js:18066
+(anonymous) @ index.esm2017.js:18106
+Promise.then
+ta @ index.esm2017.js:18099
+enqueue @ index.esm2017.js:18065
+enqueueAndForget @ index.esm2017.js:18045
+next @ index.esm2017.js:17289
+(anonymous) @ index.esm2017.js:16769
+setTimeout
+Sc @ index.esm2017.js:16765
+next @ index.esm2017.js:16732
+Uu @ index.esm2017.js:15246
+$u @ index.esm2017.js:15185
+Pd @ index.esm2017.js:15137
+ff @ index.esm2017.js:16120
+await in ff
+tf @ index.esm2017.js:15903
+await in tf
+(anonymous) @ index.esm2017.js:14584
+dd @ index.esm2017.js:14584
+await in dd
+onMessage @ index.esm2017.js:14058
+(anonymous) @ index.esm2017.js:13999
+(anonymous) @ index.esm2017.js:14018
+(anonymous) @ index.esm2017.js:18066
+(anonymous) @ index.esm2017.js:18106
+Promise.then
+ta @ index.esm2017.js:18099
+enqueue @ index.esm2017.js:18065
+enqueueAndForget @ index.esm2017.js:18045
+(anonymous) @ index.esm2017.js:14018
+(anonymous) @ index.esm2017.js:13999
+_o @ index.esm2017.js:13408
+(anonymous) @ index.esm2017.js:13619
+(anonymous) @ index.esm2017.js:13571
+Bt @ eventtarget.js:91
+Vt @ eventtarget.js:490
+mr.Aa @ webchannelbasetransport.js:429
+je @ structs.js:194
+Oe @ channelrequest.js:920
+D.Pa @ channelrequest.js:626
+D.nb @ channelrequest.js:656
+Bt @ eventtarget.js:91
+Vt @ eventtarget.js:490
+Pn @ xhrio.js:923
+D.kb @ xhrio.js:1053
+D.La @ xhrio.js:1051
+An @ fetchxmlhttpfactory.js:237
+D.Xa @ fetchxmlhttpfactory.js:419
+Promise.then
+Cn @ fetchxmlhttpfactory.js:468
+D.Xa @ fetchxmlhttpfactory.js:425
+Promise.then
+Cn @ fetchxmlhttpfactory.js:468
+D.Xa @ fetchxmlhttpfactory.js:425
+Promise.then
+Cn @ fetchxmlhttpfactory.js:468
+D.Xa @ fetchxmlhttpfactory.js:425
+Promise.then
+Cn @ fetchxmlhttpfactory.js:468
+D.Xa @ fetchxmlhttpfactory.js:425
+Promise.then
+Cn @ fetchxmlhttpfactory.js:468
+D.Xa @ fetchxmlhttpfactory.js:425
+Promise.then
+Cn @ fetchxmlhttpfactory.js:468
+D.Xa @ fetchxmlhttpfactory.js:425
+Promise.then
+Cn @ fetchxmlhttpfactory.js:468
+D.Xa @ fetchxmlhttpfactory.js:425
+Promise.then
+Cn @ fetchxmlhttpfactory.js:468
+D.Xa @ fetchxmlhttpfactory.js:425
+Promise.then
+Cn @ fetchxmlhttpfactory.js:468
+D.Xa @ fetchxmlhttpfactory.js:425
+Promise.then
+Cn @ fetchxmlhttpfactory.js:468
+D.Xa @ fetchxmlhttpfactory.js:425
+Promise.then
+Cn @ fetchxmlhttpfactory.js:468
+D.Xa @ fetchxmlhttpfactory.js:425
+Promise.then
+Cn @ fetchxmlhttpfactory.js:468
+D.Xa @ fetchxmlhttpfactory.js:425
+Promise.then
+Cn @ fetchxmlhttpfactory.js:468
+D.Xa @ fetchxmlhttpfactory.js:425
+Promise.then
+Cn @ fetchxmlhttpfactory.js:468
+D.Xa @ fetchxmlhttpfactory.js:425
+Promise.then
+Cn @ fetchxmlhttpfactory.js:468
+D.Xa @ fetchxmlhttpfactory.js:425
+Promise.then
+Cn @ fetchxmlhttpfactory.js:468
+D.Xa @ fetchxmlhttpfactory.js:425
+Promise.then
+Cn @ fetchxmlhttpfactory.js:468
+D.Xa @ fetchxmlhttpfactory.js:425
+Promise.then
+Cn @ fetchxmlhttpfactory.js:468
+D.Xa @ fetchxmlhttpfactory.js:425
+Promise.then
+Cn @ fetchxmlhttpfactory.js:468
+D.Xa @ fetchxmlhttpfactory.js:425
+Promise.then
+Cn @ fetchxmlhttpfactory.js:468
+D.Xa @ fetchxmlhttpfactory.js:425Understand this error
+savesync.js:88 GML_async_wget2_data called for mus_toriel.ogg
+savesync.js:88 __gx_check_cache for mus_toriel.ogg cached files {} manifest files {}
+savesync.js:88 in cache mus_toriel.ogg == 0
+savesync.js:88 Loaded 20% (65536 of 327418) bytes
+savesync.js:88 Loaded 100% (327418 of 327418) bytes
+savesync.js:88 Loaded game file at 0x812d058 with size 327418
+savesync.js:88 [WigdosXP Unified Save] ✓ IndexedDB → localStorage: 2
+2savesync.js:88 focuscb:::blur event received
+savesync.js:88 [WigdosXP Unified Save] ✓ IndexedDB → localStorage: 2
+savesync.js:88 Pause event has been registered for this frame
+2savesync.js:88 focuscb::focus event received
+savesync.js:88 focuscb:::blur event received
+savesync.js:88 focuscb::focus event received
+savesync.js:88 Pause event has been unregistered
+savesync.js:88 focuscb:::blur event received
+savesync.js:88 focuscb::focus event received
+2savesync.js:88 focuscb:::blur event received
+2savesync.js:88 focuscb::focus event received
+2savesync.js:88 focuscb:::blur event received
+3savesync.js:88 [WigdosXP Unified Save] ✓ IndexedDB → localStorage: 2
+2savesync.js:88 focuscb::focus event received
+savesync.js:88 Pause event has been registered for this frame
+2savesync.js:88 focuscb:::blur event received
+2savesync.js:88 focuscb::focus event received
+2savesync.js:88 focuscb:::blur event received
+2savesync.js:88 focuscb::focus event received
+2savesync.js:88 focuscb:::blur event received
+savesync.js:88 [WigdosXP Unified Save] ✓ IndexedDB → localStorage: 2
+2savesync.js:88 focuscb::focus event received
+savesync.js:88 focuscb:::blur event received
+savesync.js:88 [WigdosXP Unified Save] ✓ IndexedDB → localStorage: 2
+savesync.js:88 focuscb::focus event received
+savesync.js:88 Pause event has been registered for this frame
+savesync.js:88 focuscb:::blur event received
+savesync.js:88 Pause event has been unregistered
+savesync.js:88 focuscb:::blur event received
+savesync.js:88 focuscb::focus event received
+savesync.js:88 focuscb::focus event received
+savesync.js:88 GML_async_wget2_data called for mus_ruins.ogg
+savesync.js:88 __gx_check_cache for mus_ruins.ogg cached files {} manifest files {}
+savesync.js:88 in cache mus_ruins.ogg == 0
+savesync.js:88 Loaded 1% (16375 of 894013) bytes
+savesync.js:88 Loaded 100% (894013 of 894013) bytes
+savesync.js:88 Loaded game file at 0x812d058 with size 894013
+savesync.js:88 [WigdosXP Unified Save] ✓ IndexedDB → localStorage: 2
+2index.js:75 warning:  FS.syncfs operations in flight at once, probably just doing extra work
+printErr @ index.js:75
+Nb @ runner.js:115
+1559151 @ runner.js:67
+Ye @ runner.js:161
+a @ runner.js:257
+$func1441 @ runner.wasm:0x43563
+$func9759 @ runner.wasm:0x331535
+$func1298 @ runner.wasm:0x39567
+$func10291 @ runner.wasm:0x34e1df
+$func8600 @ runner.wasm:0x2ef174
+$func8505 @ runner.wasm:0x2e7489
+$func2847 @ runner.wasm:0xced31
+$func1518 @ runner.wasm:0x4ca03
+$func5305 @ runner.wasm:0x1c5c9e
+$func5293 @ runner.wasm:0x1c308b
+$func1631 @ runner.wasm:0x5603f
+$func587 @ runner.wasm:0xde90
+$func5973 @ runner.wasm:0x20e606
+$func5972 @ runner.wasm:0x20dd3f
+$func5673 @ runner.wasm:0x1f3ed4
+$func8728 @ runner.wasm:0x300a2f
+$func4259 @ runner.wasm:0x16fe06
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284Understand this error
+index.js:75 warning:  FS.syncfs operations in flight at once, probably just doing extra work
+printErr @ index.js:75
+Nb @ runner.js:115
+1559151 @ runner.js:67
+Ye @ runner.js:161
+a @ runner.js:257
+$func1441 @ runner.wasm:0x43563
+$func2844 @ runner.wasm:0xc839f
+$func10263 @ runner.wasm:0x34d1e4
+$func8600 @ runner.wasm:0x2ef174
+$func8505 @ runner.wasm:0x2e7489
+$func2847 @ runner.wasm:0xced31
+$func1518 @ runner.wasm:0x4ca03
+$func5305 @ runner.wasm:0x1c5c9e
+$func5293 @ runner.wasm:0x1c308b
+$func1631 @ runner.wasm:0x5603f
+$func587 @ runner.wasm:0xde90
+$func5973 @ runner.wasm:0x20e606
+$func5972 @ runner.wasm:0x20dd3f
+$func5673 @ runner.wasm:0x1f3ed4
+$func8728 @ runner.wasm:0x300a2f
+$func4259 @ runner.wasm:0x16fe06
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284Understand this error
+index.js:75 [post-exception status] Exception thrown, see JavaScript console
+printErr @ index.js:75
+Module.setStatus @ index.js:131
+window.onerror @ index.js:128
+IndexedDB
+(anonymous) @ runner.js:105
+sl @ runner.js:103
+jk @ runner.js:105
+(anonymous) @ runner.js:103
+ik @ runner.js:105
+zk @ runner.js:103
+(anonymous) @ runner.js:115
+Nb @ runner.js:115
+1559151 @ runner.js:67
+Ye @ runner.js:161
+a @ runner.js:257
+$func1441 @ runner.wasm:0x43563
+$func9759 @ runner.wasm:0x331535
+$func1298 @ runner.wasm:0x39567
+$func10291 @ runner.wasm:0x34e1df
+$func8600 @ runner.wasm:0x2ef174
+$func8505 @ runner.wasm:0x2e7489
+$func2847 @ runner.wasm:0xced31
+$func1518 @ runner.wasm:0x4ca03
+$func5305 @ runner.wasm:0x1c5c9e
+$func5293 @ runner.wasm:0x1c308b
+$func1631 @ runner.wasm:0x5603f
+$func587 @ runner.wasm:0xde90
+$func5973 @ runner.wasm:0x20e606
+$func5972 @ runner.wasm:0x20dd3f
+$func5673 @ runner.wasm:0x1f3ed4
+$func8728 @ runner.wasm:0x300a2f
+$func4259 @ runner.wasm:0x16fe06
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284Understand this error
+runner.js:108 Uncaught TypeError: w.timestamp.getTime is not a function
+    at runner.js:108:39
+    at Array.forEach (<anonymous>)
+    at Object.sk (runner.js:107:450)
+    at runner.js:103:254
+    at f.objectStore.index.openKeyCursor.onsuccess (runner.js:105:359)
+(anonymous) @ runner.js:108
+sk @ runner.js:107
+(anonymous) @ runner.js:103
+f.objectStore.index.openKeyCursor.onsuccess @ runner.js:105
+IndexedDB
+(anonymous) @ runner.js:105
+sl @ runner.js:103
+jk @ runner.js:105
+(anonymous) @ runner.js:103
+ik @ runner.js:105
+zk @ runner.js:103
+(anonymous) @ runner.js:115
+Nb @ runner.js:115
+1559151 @ runner.js:67
+Ye @ runner.js:161
+a @ runner.js:257
+$func1441 @ runner.wasm:0x43563
+$func9759 @ runner.wasm:0x331535
+$func1298 @ runner.wasm:0x39567
+$func10291 @ runner.wasm:0x34e1df
+$func8600 @ runner.wasm:0x2ef174
+$func8505 @ runner.wasm:0x2e7489
+$func2847 @ runner.wasm:0xced31
+$func1518 @ runner.wasm:0x4ca03
+$func5305 @ runner.wasm:0x1c5c9e
+$func5293 @ runner.wasm:0x1c308b
+$func1631 @ runner.wasm:0x5603f
+$func587 @ runner.wasm:0xde90
+$func5973 @ runner.wasm:0x20e606
+$func5972 @ runner.wasm:0x20dd3f
+$func5673 @ runner.wasm:0x1f3ed4
+$func8728 @ runner.wasm:0x300a2f
+$func4259 @ runner.wasm:0x16fe06
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284Understand this error
+index.js:75 [post-exception status] Exception thrown, see JavaScript console
+printErr @ index.js:75
+Module.setStatus @ index.js:131
+window.onerror @ index.js:128
+IndexedDB
+(anonymous) @ runner.js:105
+sl @ runner.js:103
+jk @ runner.js:105
+(anonymous) @ runner.js:103
+ik @ runner.js:105
+zk @ runner.js:103
+(anonymous) @ runner.js:115
+Nb @ runner.js:115
+1559151 @ runner.js:67
+Ye @ runner.js:161
+a @ runner.js:257
+$func1441 @ runner.wasm:0x43563
+$func9759 @ runner.wasm:0x331535
+$func1298 @ runner.wasm:0x39567
+$func10291 @ runner.wasm:0x34e1df
+$func8600 @ runner.wasm:0x2ef174
+$func8505 @ runner.wasm:0x2e7489
+$func2847 @ runner.wasm:0xced31
+$func1518 @ runner.wasm:0x4ca03
+$func5305 @ runner.wasm:0x1c5c9e
+$func5293 @ runner.wasm:0x1c308b
+$func1631 @ runner.wasm:0x5603f
+$func587 @ runner.wasm:0xde90
+$func5973 @ runner.wasm:0x20e606
+$func5972 @ runner.wasm:0x20dd3f
+$func5673 @ runner.wasm:0x1f3ed4
+$func8728 @ runner.wasm:0x300a2f
+$func4259 @ runner.wasm:0x16fe06
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284Understand this error
+runner.js:108 Uncaught TypeError: w.timestamp.getTime is not a function
+    at runner.js:108:39
+    at Array.forEach (<anonymous>)
+    at Object.sk (runner.js:107:450)
+    at runner.js:103:254
+    at f.objectStore.index.openKeyCursor.onsuccess (runner.js:105:359)
+(anonymous) @ runner.js:108
+sk @ runner.js:107
+(anonymous) @ runner.js:103
+f.objectStore.index.openKeyCursor.onsuccess @ runner.js:105
+IndexedDB
+(anonymous) @ runner.js:105
+sl @ runner.js:103
+jk @ runner.js:105
+(anonymous) @ runner.js:103
+ik @ runner.js:105
+zk @ runner.js:103
+(anonymous) @ runner.js:115
+Nb @ runner.js:115
+1559151 @ runner.js:67
+Ye @ runner.js:161
+a @ runner.js:257
+$func1441 @ runner.wasm:0x43563
+$func9759 @ runner.wasm:0x331535
+$func1298 @ runner.wasm:0x39567
+$func10291 @ runner.wasm:0x34e1df
+$func8600 @ runner.wasm:0x2ef174
+$func8505 @ runner.wasm:0x2e7489
+$func2847 @ runner.wasm:0xced31
+$func1518 @ runner.wasm:0x4ca03
+$func5305 @ runner.wasm:0x1c5c9e
+$func5293 @ runner.wasm:0x1c308b
+$func1631 @ runner.wasm:0x5603f
+$func587 @ runner.wasm:0xde90
+$func5973 @ runner.wasm:0x20e606
+$func5972 @ runner.wasm:0x20dd3f
+$func5673 @ runner.wasm:0x1f3ed4
+$func8728 @ runner.wasm:0x300a2f
+$func4259 @ runner.wasm:0x16fe06
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284Understand this error
+index.js:75 [post-exception status] Exception thrown, see JavaScript console
+printErr @ index.js:75
+Module.setStatus @ index.js:131
+window.onerror @ index.js:128
+IndexedDB
+(anonymous) @ runner.js:105
+sl @ runner.js:103
+jk @ runner.js:105
+(anonymous) @ runner.js:103
+ik @ runner.js:105
+zk @ runner.js:103
+(anonymous) @ runner.js:115
+Nb @ runner.js:115
+1559151 @ runner.js:67
+Ye @ runner.js:161
+a @ runner.js:257
+$func1441 @ runner.wasm:0x43563
+$func2844 @ runner.wasm:0xc839f
+$func10263 @ runner.wasm:0x34d1e4
+$func8600 @ runner.wasm:0x2ef174
+$func8505 @ runner.wasm:0x2e7489
+$func2847 @ runner.wasm:0xced31
+$func1518 @ runner.wasm:0x4ca03
+$func5305 @ runner.wasm:0x1c5c9e
+$func5293 @ runner.wasm:0x1c308b
+$func1631 @ runner.wasm:0x5603f
+$func587 @ runner.wasm:0xde90
+$func5973 @ runner.wasm:0x20e606
+$func5972 @ runner.wasm:0x20dd3f
+$func5673 @ runner.wasm:0x1f3ed4
+$func8728 @ runner.wasm:0x300a2f
+$func4259 @ runner.wasm:0x16fe06
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284Understand this error
+runner.js:108 Uncaught TypeError: w.timestamp.getTime is not a function
+    at runner.js:108:39
+    at Array.forEach (<anonymous>)
+    at Object.sk (runner.js:107:450)
+    at runner.js:103:254
+    at f.objectStore.index.openKeyCursor.onsuccess (runner.js:105:359)
+(anonymous) @ runner.js:108
+sk @ runner.js:107
+(anonymous) @ runner.js:103
+f.objectStore.index.openKeyCursor.onsuccess @ runner.js:105
+IndexedDB
+(anonymous) @ runner.js:105
+sl @ runner.js:103
+jk @ runner.js:105
+(anonymous) @ runner.js:103
+ik @ runner.js:105
+zk @ runner.js:103
+(anonymous) @ runner.js:115
+Nb @ runner.js:115
+1559151 @ runner.js:67
+Ye @ runner.js:161
+a @ runner.js:257
+$func1441 @ runner.wasm:0x43563
+$func2844 @ runner.wasm:0xc839f
+$func10263 @ runner.wasm:0x34d1e4
+$func8600 @ runner.wasm:0x2ef174
+$func8505 @ runner.wasm:0x2e7489
+$func2847 @ runner.wasm:0xced31
+$func1518 @ runner.wasm:0x4ca03
+$func5305 @ runner.wasm:0x1c5c9e
+$func5293 @ runner.wasm:0x1c308b
+$func1631 @ runner.wasm:0x5603f
+$func587 @ runner.wasm:0xde90
+$func5973 @ runner.wasm:0x20e606
+$func5972 @ runner.wasm:0x20dd3f
+$func5673 @ runner.wasm:0x1f3ed4
+$func8728 @ runner.wasm:0x300a2f
+$func4259 @ runner.wasm:0x16fe06
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284
+requestAnimationFrame
+c @ runner.js:284Understand this error
+2savesync.js:88 focuscb:::blur event received
+2savesync.js:88 focuscb::focus event received
+2savesync.js:88 focuscb:::blur event received
+savesync.js:88 [WigdosXP Unified Save] ✓ IndexedDB → localStorage: 2
