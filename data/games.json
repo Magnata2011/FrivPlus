@@ -123,13 +123,13 @@
     "title": "Undertale",
     "cardImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxXA0lfiPD6TDdy8l3LNPtVy0JFCq7WVJJGfVgRUnN_A6sXenZcc_AZ_U&s=10",
     "url": "games/undertale/index.html",
-    "tags": ["Singleplayer", "Indie", "Casual", "Em breve!"]
+    "tags": ["Singleplayer", "Indie", "Casual"]
   },
   {
     "id": "deltarune",
     "title": "Deltarune",
     "cardImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFtEUlPCEl4SjxRh6Nvbe-p3vH7WsQpnxqPUvrpNLMBvXtwEN8lKci8Pg&s=10",
     "url": "games/deltarune/index.html",
-    "tags": ["Singleplayer", "Indie", "Casual", "Em breve!"]
+    "tags": ["Singleplayer", "Indie", "Casual"]
   }
 ]
