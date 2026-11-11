@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { LogoutButton } from "@/components/logout-button";
 
 export function DeleteAccountForm({ username }: { username: string | null }) {
   const confirmationUsername = `@${username ?? "sem_usuario"}`;
@@ -83,6 +84,13 @@ export function DeleteAccountForm({ username }: { username: string | null }) {
           />
         </label>
         {error && <p className="form-error" role="alert">{error}</p>}
+        <div className="delete-account-logout">
+          <div>
+            <strong>Não quer excluir sua conta?</strong>
+            <span>Você pode apenas sair e voltar quando quiser.</span>
+          </div>
+          <LogoutButton />
+        </div>
         <button
           className="button button-danger-bright"
           type="submit"

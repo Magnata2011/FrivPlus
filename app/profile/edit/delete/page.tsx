@@ -2,7 +2,6 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { DeleteAccountForm } from "@/components/delete-account-form";
 import { ProfileSettingsTabs } from "@/components/profile-settings-tabs";
-import { LogoutButton } from "@/components/logout-button";
 import { isMaintenanceAdminEmail } from "@/lib/maintenance";
 import { createSupabaseServerClient, isSupabaseConfigured } from "@/lib/supabase/server";
 
@@ -69,7 +68,6 @@ export default async function DeleteAccountPage() {
             {isMaintenanceAdminEmail(user.email) && (
               <Link className="account-link" href="/admin">Painel admin</Link>
             )}
-            <LogoutButton />
           </div>
         </div>
       </header>

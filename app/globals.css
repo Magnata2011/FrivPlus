@@ -178,6 +178,10 @@ img { display: block; max-width: 100%; }
 .delete-account-confirm { display: flex; align-items: center; gap: 9px; color: var(--text); }
 .delete-account-confirm input { width: 18px; height: 18px; accent-color: #ff2448; }
 .delete-account-username { color: #ff3155; font-size: 1rem; }
+.delete-account-logout { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+.delete-account-logout > div { display: grid; gap: 3px; }
+.delete-account-logout > div strong { font-size: .9rem; }
+.delete-account-logout > div span { color: var(--muted); font-size: .82rem; }
 .button-danger-bright { justify-self: start; border-color: #ff2448; background: #ff2448; color: #fff; }
 .button-danger-bright:hover:not(:disabled) { background: #db1537; }
 .friendship-action { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
