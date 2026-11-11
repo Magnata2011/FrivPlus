@@ -8,11 +8,20 @@ export type EditableProfile = {
   bio: string;
 };
 
-export function ProfileEditor({ profile: initialProfile }: { profile: EditableProfile }) {
+export function ProfileEditor({
+  profile: initialProfile,
+  avatarUrl: initialAvatarUrl,
+}: {
+  profile: EditableProfile;
+  avatarUrl: string | null;
+}) {
   const [profile, setProfile] = useState(initialProfile);
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
   const [saving, setSaving] = useState(false);
+  const [avatarUrl, setAvatarUrl] = useState(initialAvatarUrl);
+  const [avatarFile, setAvatarFile] = useState<File | null>(null);
+  const [uploadingAvatar, setUploadingAvatar] = useState(false);
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -50,16 +59,77 @@ export function ProfileEditor({ profile: initialProfile }: { profile: EditablePr
     }
   }
 
+  async function uploadAvatar() {
+    if (!avatarFile) {
+      setError("Escolha uma imagem antes de enviar.");
+      return;
+    }
+    setError("");
+    setNotice("");
+    setUploadingAvatar(true);
+    const formData = new FormData();
+    formData.set("avatar", avatarFile);
+
+    try {
+      const response = await fetch("/api/profile/avatar", { method: "POST", body: formData });
+      const result = await response.json() as { avatarUrl?: string; error?: string };
+      if (response.status === 401) {
+        window.location.assign("/login?next=%2Fprofile");
+        return;
+      }
+      if (!response.ok || !result.avatarUrl) {
+        setError(result.error ?? "Não foi possível atualizar a foto.");
+        return;
+      }
+      setAvatarUrl(result.avatarUrl);
+      setAvatarFile(null);
+      setNotice("Foto de perfil atualizada.");
+    } catch {
+      setError("Erro de conexão ao enviar a foto.");
+    } finally {
+      setUploadingAvatar(false);
+    }
+  }
+
   return (
     <section className="profile-card">
       <div className="profile-avatar-area">
-        <div className="profile-avatar profile-avatar-placeholder" aria-hidden="true">
-          {(profile.display_name || profile.username || "?").slice(0, 1).toUpperCase()}
-        </div>
+        {avatarUrl ? (
+          <div
+            className="profile-avatar profile-avatar-image"
+            role="img"
+            aria-label="Foto de perfil"
+            style={{ backgroundImage: `url("${avatarUrl}")` }}
+          />
+        ) : (
+          <div className="profile-avatar profile-avatar-placeholder" aria-hidden="true">
+            {(profile.display_name || profile.username || "?").slice(0, 1).toUpperCase()}
+          </div>
+        )}
         <div>
           <strong>{profile.display_name || "Seu perfil"}</strong>
           <span>{profile.username ? `@${profile.username}` : "Escolha um nome de usuário"}</span>
         </div>
+      </div>
+      <div className="avatar-upload">
+        <label className="label">
+          Foto de perfil
+          <input
+            className="field-input"
+            type="file"
+            accept="image/png,image/jpeg,image/webp"
+            onChange={(event) => setAvatarFile(event.target.files?.[0] ?? null)}
+          />
+          <span className="field-hint">PNG, JPG ou WebP; até 3 MB. A imagem ficará pública.</span>
+        </label>
+        <button
+          className="button button-outline"
+          disabled={!avatarFile || uploadingAvatar}
+          onClick={uploadAvatar}
+          type="button"
+        >
+          {uploadingAvatar ? "Enviando foto..." : "Enviar foto"}
+        </button>
       </div>
       <form className="profile-form" onSubmit={submit}>
         <label className="label">

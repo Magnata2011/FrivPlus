@@ -27,5 +27,10 @@ export async function MaintenanceAdminControl({ enabled }: { enabled: boolean })
     );
   }
 
-  return <MaintenanceToggle enabled={enabled} />;
+  return (
+    <div className="maintenance-admin-actions">
+      <MaintenanceToggle enabled={enabled} />
+      <Link className="maintenance-admin-link" href="/admin">Abrir painel do administrador</Link>
+    </div>
+  );
 }

@@ -123,6 +123,10 @@ img { display: block; max-width: 100%; }
 .form-error { border: 1px solid #783e46; background: #351d23; color: #ffc2c7; }
 .notice { border: 1px solid #315e49; background: #172a22; color: #b7f0d1; }
 .text-button { justify-self: center; color: var(--muted); font-size: .88rem; }
+.auth-divider { display: flex; align-items: center; gap: 12px; color: var(--faint); font-size: .8rem; }
+.auth-divider::before, .auth-divider::after { height: 1px; flex: 1; background: var(--line); content: ""; }
+.google-button { width: 100%; }
+.auth-optional-note { text-align: center; }
 .profile-page { padding-top: 56px; padding-bottom: 80px; }
 .profile-page h1 { margin: 10px 0 6px; font: 700 clamp(2.2rem, 5vw, 3.5rem)/1.05 var(--font-display); letter-spacing: -.06em; }
 .profile-page > p { color: var(--muted); }
@@ -147,9 +151,22 @@ img { display: block; max-width: 100%; }
 .profile-avatar-area span { color: var(--muted); font-size: .85rem; }
 .profile-avatar { width: 64px; height: 64px; border-radius: 50%; background: var(--surface-raised); }
 .profile-avatar-placeholder { display: grid; place-items: center; color: var(--accent-hover); font: 700 1.6rem var(--font-display); }
+.profile-avatar-image { background-position: center; background-size: cover; }
+.avatar-upload { display: flex; align-items: flex-end; gap: 12px; margin-bottom: 24px; }
+.avatar-upload .label { flex: 1; }
 .profile-form { display: grid; gap: 18px; }
 .field-textarea { min-height: 110px; resize: vertical; }
 .profile-form-footer { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-top: 16px; border-top: 1px solid var(--line); }
+.admin-page { padding-top: 56px; padding-bottom: 80px; }
+.admin-page > h1 { margin: 10px 0 6px; font: 700 clamp(2.2rem, 5vw, 3.5rem)/1.05 var(--font-display); letter-spacing: -.06em; }
+.admin-intro { margin: 0 0 28px; color: var(--muted); }
+.admin-card { display: flex; justify-content: space-between; align-items: center; gap: 22px; margin-top: 16px; padding: 22px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.admin-card h2 { margin: 4px 0; font: 600 1.2rem var(--font-display); }
+.admin-card p { margin: 0; color: var(--muted); }
+.admin-card-label { color: var(--accent-hover); font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.admin-status { color: var(--muted); font-size: .85rem; }
+.catalog-maintenance-notice { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 10px; padding: 12px 20px; border-bottom: 1px solid #f0ad4e35; background: #f0ad4e0d; color: #f2c77f; font-size: .87rem; text-align: center; }
+.catalog-maintenance-notice a { text-decoration: underline; text-underline-offset: 3px; }
 
 .maintenance-page {
   display: grid;
@@ -245,9 +262,11 @@ img { display: block; max-width: 100%; }
 .maintenance-footer { color: var(--faint); font-size: .82rem; text-align: center; }
 .maintenance-admin-link { display: inline-block; margin-top: 24px; color: var(--faint); font-size: .78rem; }
 .maintenance-admin-link:hover { color: var(--muted); }
+.maintenance-admin-actions { display: grid; justify-items: center; gap: 2px; margin-top: 22px; }
+.maintenance-admin-actions .maintenance-admin-link { margin-top: 8px; }
+.maintenance-continue { margin-top: 18px; }
 .maintenance-control { display: grid; justify-items: center; gap: 8px; }
 .maintenance-admin-error { margin: 20px 0 0; color: #ffc2c7; font-size: .85rem; }
-.maintenance-poster > .maintenance-control { margin-top: 22px; }
 .header-actions > .account-nav > .maintenance-control { display: flex; }
 .header-actions > .account-nav .maintenance-control .button { min-height: 38px; padding: 7px 10px; font-size: .8rem; }
 .maintenance-control .form-error { max-width: 360px; }
@@ -265,6 +284,9 @@ img { display: block; max-width: 100%; }
   .auth-card { padding: 24px 20px; }
   .account-email-card, .profile-form-footer { align-items: flex-start; flex-direction: column; }
   .account-email-card { padding: 16px; }
+  .admin-card { align-items: flex-start; flex-direction: column; padding: 18px; }
+  .avatar-upload { align-items: stretch; flex-direction: column; }
+  .maintenance-continue { width: 100%; }
   .game-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; }
   .game-card-body { padding: 10px; }
   .section-heading { align-items: start; flex-direction: column; }

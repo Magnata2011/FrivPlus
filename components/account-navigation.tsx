@@ -20,7 +20,7 @@ export async function AccountNavigation({ maintenanceEnabled }: { maintenanceEna
     console.error("Não foi possível verificar a sessão do usuário.", error);
     return (
       <nav className="account-nav" aria-label="Conta">
-        <span className="form-error" role="status">Falha ao verificar sua conta.</span>
+        <Link className="account-link" href="/login">Entrar (opcional)</Link>
       </nav>
     );
   }
@@ -31,12 +31,15 @@ export async function AccountNavigation({ maintenanceEnabled }: { maintenanceEna
         <>
           <Link className="button button-outline" href="/profile">Minha conta</Link>
           {isMaintenanceAdminEmail(user.email) && (
-            <MaintenanceToggle enabled={maintenanceEnabled} />
+            <>
+              <Link className="button button-outline" href="/admin">Painel admin</Link>
+              <MaintenanceToggle enabled={maintenanceEnabled} />
+            </>
           )}
         </>
       ) : (
         <>
-          <Link className="account-link" href="/login">Entrar</Link>
+          <Link className="account-link" href="/login">Entrar (opcional)</Link>
           <Link className="button button-outline" href="/signup">Criar conta</Link>
         </>
       )}

@@ -14,9 +14,33 @@ export function LoginForm({
   const [loading, setLoading] = useState(false);
   const notice = authError === "auth_unavailable"
     ? "A autenticação ainda não foi configurada."
+    : authError === "oauth_failed"
+      ? "Não foi possível concluir o login Google. Tente novamente."
     : authError
       ? "Não foi possível confirmar o cadastro. Entre novamente ou tente cadastrar outra vez."
       : "";
+
+  async function signInWithGoogle() {
+    setError("");
+    setLoading(true);
+    try {
+      const response = await fetch("/api/auth/google", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nextPath }),
+      });
+      const result = await response.json() as { url?: string; error?: string };
+      if (!response.ok || !result.url) {
+        setError(result.error ?? "Não foi possível iniciar o login Google.");
+        return;
+      }
+      window.location.assign(result.url);
+    } catch {
+      setError("Erro de conexão ao iniciar o login Google.");
+    } finally {
+      setLoading(false);
+    }
+  }
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -80,6 +104,16 @@ export function LoginForm({
       <button className="button button-primary" disabled={loading} type="submit">
         {loading ? "Entrando..." : "Entrar"}
       </button>
+      <div className="auth-divider"><span>ou</span></div>
+      <button
+        className="button button-outline google-button"
+        disabled={loading}
+        onClick={signInWithGoogle}
+        type="button"
+      >
+        {loading ? "Conectando..." : "Continuar com Google"}
+      </button>
+      <p className="field-hint auth-optional-note">Criar conta e entrar são opcionais para jogar.</p>
       <Link className="text-button" href="/signup">Ainda não tem uma conta? Cadastre-se</Link>
       <Link className="text-button" href="/">Voltar ao catálogo</Link>
     </form>

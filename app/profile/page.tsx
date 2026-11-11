@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { LogoutButton } from "@/components/logout-button";
 import { ProfileEditor } from "@/components/profile-editor";
+import { isMaintenanceAdminEmail } from "@/lib/maintenance";
 import { createSupabaseServerClient, isSupabaseConfigured } from "@/lib/supabase/server";
 
 export const dynamic = "force-dynamic";
@@ -37,7 +38,7 @@ export default async function ProfilePage() {
 
   const { data: profile, error: profileError } = await supabase
     .from("profiles")
-    .select("username, display_name, bio")
+    .select("username, display_name, bio, avatar_path")
     .eq("id", user.id)
     .single();
 
@@ -47,12 +48,16 @@ export default async function ProfilePage() {
       <main className="auth-shell">
         <section className="auth-card">
           <h1>Perfil ainda não disponível</h1>
-          <p>Execute a migration de perfis do Supabase e entre novamente.</p>
+          <p>Execute as migrations de perfis e avatares do Supabase e entre novamente.</p>
           <Link className="button button-outline" href="/">Voltar ao catálogo</Link>
         </section>
       </main>
     );
   }
+
+  const avatarUrl = profile.avatar_path
+    ? supabase.storage.from("avatars").getPublicUrl(profile.avatar_path).data.publicUrl
+    : null;
 
   return (
     <>
@@ -64,6 +69,9 @@ export default async function ProfilePage() {
           </Link>
           <div className="profile-actions">
             <Link className="account-link" href="/">Voltar ao catálogo</Link>
+            {isMaintenanceAdminEmail(user.email) && (
+              <Link className="account-link" href="/admin">Painel admin</Link>
+            )}
             <LogoutButton />
           </div>
         </div>
@@ -81,7 +89,7 @@ export default async function ProfilePage() {
             {user.email_confirmed_at ? "E-mail confirmado" : "E-mail não confirmado"}
           </span>
         </section>
-        <ProfileEditor profile={profile} />
+        <ProfileEditor profile={profile} avatarUrl={avatarUrl} />
       </main>
     </>
   );
