@@ -43,7 +43,14 @@ export function Catalog({ initialGames }: { initialGames: PublicGame[] }) {
         <ul className="game-grid">
           {visibleGames.map((game) => (
             <li className="game-card" key={game.id}>
-              <a href={game.gameUrl} target="_blank" rel="noopener noreferrer">
+              <a
+                href={game.gameUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => window.dispatchEvent(new CustomEvent("frivplus:playing-game", {
+                  detail: { gameId: game.id },
+                }))}
+              >
                 <div className="game-cover">
                   <img src={game.coverUrl} alt={`Capa de ${game.title}`} loading="lazy" />
                 </div>

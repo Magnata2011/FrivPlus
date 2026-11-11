@@ -47,7 +47,7 @@ export default async function EditProfilePage() {
       <main className="auth-shell">
         <section className="auth-card">
           <h1>Perfil ainda não disponível</h1>
-          <p>Execute as migrations de perfis e avatares do Supabase e entre novamente.</p>
+          <p>Execute as migrations de perfil e avatares do Supabase e tente novamente.</p>
           <Link className="button button-outline" href="/">Voltar ao catálogo</Link>
         </section>
       </main>

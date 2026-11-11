@@ -2,6 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FriendshipButton } from "@/components/friendship-button";
 import { createSupabaseServerClient, isSupabaseConfigured } from "@/lib/supabase/server";
+import { PresenceBadge } from "@/components/presence-badge";
+import { catalogGames } from "@/lib/catalog-games";
 
 export const dynamic = "force-dynamic";
 
@@ -82,6 +84,10 @@ export default async function PublicProfilePage({
                 <span>@{profile.username}</span>
                 <FriendshipButton username={profile.username} />
               </div>
+              <PresenceBadge
+                online={profile.is_online}
+                gameName={catalogGames.find(({ id }) => id === profile.current_game_id)?.title ?? null}
+              />
             </div>
             <section className="profile-preview-about" aria-labelledby="profile-about-title">
               <h2 id="profile-about-title">Sobre mim</h2>

@@ -20,9 +20,11 @@ Catálogo público de jogos. As contas são opcionais; é possível abrir os jog
 6. Execute `supabase/migrations/20261111040000_public_profile_search_and_banners.sql` para habilitar banners e busca pública de perfis.
 7. Execute `supabase/migrations/20261111050000_account_deletion_and_friendships.sql` para habilitar exclusão de conta e solicitações de amizade.
 8. Execute `supabase/migrations/20261111060000_chat_and_changelogs.sql` para habilitar mensagens privadas, grupos, envio de imagens e changelogs públicos.
-9. Copie `.env.example` para `.env.local` e preencha as variáveis do Supabase, `NEXT_PUBLIC_SITE_URL` e `MAINTENANCE_ADMIN_EMAIL` com o e-mail da conta autorizada.
-10. No Supabase, defina a URL do site e permita os callbacks `http://localhost:3000/auth/callback**` e `https://SEU-DOMINIO/auth/callback**`.
-11. Configure as mesmas variáveis no ambiente de produção da Vercel. `SUPABASE_SERVICE_ROLE_KEY` é usada somente no servidor para controles administrativos, publicação de changelogs e exclusão segura de contas; nunca a exponha no navegador.
+9. Execute `supabase/migrations/20261111070000_chat_file_attachments.sql` para habilitar vídeos e documentos no chat.
+10. Execute `supabase/migrations/20261111080000_site_presence.sql` para habilitar status online e jogo atual nos perfis.
+11. Copie `.env.example` para `.env.local` e preencha as variáveis do Supabase, `NEXT_PUBLIC_SITE_URL` e `MAINTENANCE_ADMIN_EMAIL` com o e-mail da conta autorizada.
+12. No Supabase, defina a URL do site e permita os callbacks `http://localhost:3000/auth/callback**` e `https://SEU-DOMINIO/auth/callback**`.
+13. Configure as mesmas variáveis no ambiente de produção da Vercel. `SUPABASE_SERVICE_ROLE_KEY` é usada somente no servidor para controles administrativos, publicação de changelogs e exclusão segura de contas; nunca a exponha no navegador.
 
 O cadastro pode exigir confirmação por e-mail, conforme a configuração do Supabase. A chave `SUPABASE_SERVICE_ROLE_KEY` é necessária somente no servidor para salvar configurações administrativas e excluir contas; nunca deve ser exposta no navegador.
 
@@ -38,7 +40,9 @@ A migration `20261111040000_public_profile_search_and_banners.sql` cria um bucke
 
 A migration `20261111050000_account_deletion_and_friendships.sql` habilita solicitações de amizade nos perfis públicos. Uma solicitação recebida pode ser aceita pelo mesmo botão.
 
-A migration `20261111060000_chat_and_changelogs.sql` habilita conversas privadas com amizades aceitas, grupos de até 20 participantes e imagens privadas de até 5 MB. No painel administrativo, o responsável pode publicar changelogs com título e mensagem; eles aparecem na página inicial e podem ser dispensados pelo visitante. A publicação administrativa e a exclusão de conta exigem `SUPABASE_SERVICE_ROLE_KEY` configurada no servidor.
+A migration `20261111080000_site_presence.sql` habilita presença online e jogo atual do FrivPlus nos perfis públicos. A presença é atualizada enquanto a pessoa usa o site; clicar em um jogo do catálogo atualiza o perfil para **Jogando [nome do jogo]**. Como os jogos abrem em outra página, o jogo exibido é o último iniciado naquela aba; o status fica offline quando a sessão FrivPlus deixa de enviar atividade por três minutos.
+
+A migration `20261111060000_chat_and_changelogs.sql` habilita conversas privadas com amizades aceitas, grupos de até 20 participantes e imagens privadas de até 5 MB. A migration `20261111070000_chat_file_attachments.sql` amplia o limite para anexos de até 25 MB e aceita vídeos MP4/WebM/MOV e documentos PDF/TXT/Office, com download privado pelos membros da conversa. No painel administrativo, o responsável pode publicar changelogs com título e mensagem; eles aparecem como avisos flutuantes na página inicial e podem ser dispensados pelo visitante. A publicação administrativa e a exclusão de conta exigem `SUPABASE_SERVICE_ROLE_KEY` configurada no servidor.
 
 O módulo `lib/game-progress.ts` prepara salvamentos locais usando localStorage para dados pequenos e IndexedDB para dados maiores, com um controlador de autosave que jogos podem chamar após mudanças no progresso. A integração de um jogo deve carregar seu estado com `loadGameProgress` e chamar `schedule` do `createGameProgressAutoSave` quando o progresso mudar. Isso ainda não integra os jogos automaticamente nem sincroniza progresso entre dispositivos: cada jogo precisa chamar a API de salvamento. Jogos abertos em outros domínios também não podem ser acessados pelo FrivPlus sem integração explícita deles.
 

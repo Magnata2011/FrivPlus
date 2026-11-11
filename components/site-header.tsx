@@ -12,7 +12,7 @@ export function SiteHeader() {
           <span>FrivPlus</span>
         </Link>
         <div className="header-actions">
-          <Link className="header-chat-link" href="/chat">Chat</Link>
+          <Link className="button button-outline header-chat-link" href="/chat">Chat</Link>
           <CatalogSearch games={catalogGames} />
           <AccountNavigation />
         </div>

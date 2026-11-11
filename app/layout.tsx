@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { createSupabaseServerClient, isSupabaseConfigured } from "@/lib/supabase/server";
 import { SiteHeader } from "@/components/site-header";
+import { PresenceHeartbeat } from "@/components/presence-heartbeat";
 import "./globals.css";
 
 export const dynamic = "force-dynamic";
@@ -16,12 +17,14 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   let theme: "dark" | "light" = "dark";
+  let userId: string | null = null;
   if (isSupabaseConfigured()) {
     const supabase = await createSupabaseServerClient();
     const { data: { user }, error: authError } = await supabase.auth.getUser();
     if (authError) {
       console.error("Não foi possível carregar a preferência visual da conta.", authError);
     } else if (user) {
+      userId = user.id;
       const { data: profile, error: profileError } = await supabase
         .from("profiles")
         .select("theme")
@@ -40,6 +43,7 @@ export default async function RootLayout({
     <html lang="pt-BR" data-theme={theme}>
       <body>
         <SiteHeader />
+        <PresenceHeartbeat userId={userId} />
         {children}
       </body>
     </html>

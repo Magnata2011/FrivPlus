@@ -1,8 +1,10 @@
 import { NextResponse } from "next/server";
+import { getChatAttachmentType, sanitizeChatAttachmentName } from "@/lib/chat-attachments";
 import { createSupabaseServerClient, isSupabaseConfigured } from "@/lib/supabase/server";
 
-const MAX_IMAGE_SIZE = 5 * 1024 * 1024;
 const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+const MAX_IMAGE_SIZE = 5 * 1024 * 1024;
+const MAX_ATTACHMENT_SIZE = 25 * 1024 * 1024;
 
 type ChatMessageRow = {
   id: string;
@@ -10,6 +12,8 @@ type ChatMessageRow = {
   sender_name: string;
   body: string;
   image_path: string | null;
+  attachment_name: string | null;
+  attachment_type: string | null;
   created_at: string;
 };
 
@@ -74,9 +78,11 @@ export async function GET(
       senderId: message.sender_id,
       senderName: message.sender_name,
       body: message.body,
-      imageUrl: message.image_path
-        ? `/api/chat/${conversationId}/images/${message.id}`
+      attachmentUrl: message.image_path
+        ? `/api/chat/${conversationId}/files/${message.id}`
         : null,
+      attachmentName: message.attachment_name ?? "Imagem",
+      attachmentType: message.attachment_type ?? "image/jpeg",
       createdAt: message.created_at,
     }));
 
@@ -98,63 +104,94 @@ export async function POST(
     return NextResponse.json({ error: "Conversa não encontrada." }, { status: 404 });
   }
 
-  let body: string;
-  let file: File | null = null;
-  const contentType = request.headers.get("content-type") ?? "";
+  let payload: unknown;
   try {
-    if (contentType.includes("multipart/form-data")) {
-      const formData = await request.formData();
-      body = typeof formData.get("body") === "string" ? formData.get("body") as string : "";
-      const image = formData.get("image");
-      file = image instanceof File && image.size > 0 ? image : null;
-    } else {
-      const payload: unknown = await request.json();
-      if (!payload || typeof payload !== "object" || !("body" in payload) || typeof payload.body !== "string") {
-        return NextResponse.json({ error: "A mensagem é inválida." }, { status: 400 });
-      }
-      body = payload.body;
-    }
+    payload = await request.json();
   } catch {
     return NextResponse.json({ error: "Dados da mensagem inválidos." }, { status: 400 });
   }
-
-  const cleanBody = body.trim();
-  if (!cleanBody && !file) {
-    return NextResponse.json({ error: "Escreva uma mensagem ou escolha uma imagem." }, { status: 400 });
+  if (!payload || typeof payload !== "object" || !("body" in payload) ||
+      typeof payload.body !== "string") {
+    return NextResponse.json({ error: "A mensagem é inválida." }, { status: 400 });
   }
+
+  const body = payload.body;
+  const cleanBody = body.trim();
   if (cleanBody.length > 2000) {
     return NextResponse.json({ error: "A mensagem deve ter até 2000 caracteres." }, { status: 400 });
   }
 
-  let imagePath: string | null = null;
-  if (file) {
-    if (file.size > MAX_IMAGE_SIZE) {
-      return NextResponse.json({ error: "A imagem deve ter até 5 MB." }, { status: 400 });
+  let attachmentPath: string | null = null;
+  let attachmentName: string | null = null;
+  let attachmentType: string | null = null;
+  if ("attachment" in payload && payload.attachment !== null) {
+    if (!payload.attachment || typeof payload.attachment !== "object" ||
+        !("path" in payload.attachment) || typeof payload.attachment.path !== "string" ||
+        !("name" in payload.attachment) || typeof payload.attachment.name !== "string" ||
+        !("type" in payload.attachment) || typeof payload.attachment.type !== "string") {
+      return NextResponse.json({ error: "O anexo da mensagem é inválido." }, { status: 400 });
     }
-    const bytes = new Uint8Array(await file.arrayBuffer());
-    const imageType = getImageType(bytes);
-    if (!imageType) {
-      return NextResponse.json({ error: "Use uma imagem PNG, JPG ou WebP válida." }, { status: 400 });
+    const type = getChatAttachmentType(payload.attachment.name, payload.attachment.type);
+    const sanitizedName = sanitizeChatAttachmentName(payload.attachment.name);
+    const pathParts = payload.attachment.path.split("/");
+    const expectedFileName = pathParts[2] ?? "";
+    if (!type || !sanitizedName || pathParts.length !== 3 ||
+        pathParts[0] !== conversationId || pathParts[1] !== auth.user.id ||
+        !new RegExp(`^${UUID_PATTERN.source.slice(1, -1)}\\.${type.extension}$`, "i").test(expectedFileName)) {
+      return NextResponse.json({ error: "O anexo da mensagem é inválido." }, { status: 400 });
     }
-    imagePath = `${conversationId}/${auth.user.id}/${crypto.randomUUID()}`;
-    const { error: uploadError } = await auth.supabase.storage
+
+    const { data: uploadedFiles, error: listError } = await auth.supabase.storage
       .from("chat-images")
-      .upload(imagePath, file, { contentType: imageType, upsert: false });
-    if (uploadError) {
-      console.error("Não foi possível enviar a imagem do chat.", uploadError);
-      return NextResponse.json({ error: "Não foi possível enviar a imagem. Verifique a migration de chat." }, { status: 500 });
+      .list(`${conversationId}/${auth.user.id}`, { search: expectedFileName, limit: 1 });
+    if (listError) {
+      console.error("Não foi possível verificar o upload do anexo.", listError);
+      return NextResponse.json({ error: "Não foi possível confirmar o envio do arquivo." }, { status: 500 });
     }
+    const uploadedFile = uploadedFiles?.find(({ name }) => name === expectedFileName);
+    const uploadedMetadata = uploadedFile?.metadata;
+    const uploadedSize = Number(uploadedMetadata?.size);
+    if (!uploadedFile || !uploadedMetadata ||
+        uploadedMetadata.mimetype !== type.contentType ||
+        !Number.isFinite(uploadedSize) || uploadedSize <= 0 ||
+        uploadedSize > (type.kind === "image" ? MAX_IMAGE_SIZE : MAX_ATTACHMENT_SIZE)) {
+      return NextResponse.json(
+        { error: "O arquivo não foi enviado ou ultrapassa o limite permitido." },
+        { status: 400 },
+      );
+    }
+    if (type.kind === "image") {
+      const { data: image, error: imageError } = await auth.supabase.storage
+        .from("chat-images")
+        .download(payload.attachment.path);
+      if (imageError) {
+        console.error("Não foi possível verificar a imagem enviada no chat.", imageError);
+        return NextResponse.json({ error: "Não foi possível validar a imagem enviada." }, { status: 500 });
+      }
+      const signature = new Uint8Array(await image.slice(0, 12).arrayBuffer());
+      if (getImageType(signature) !== type.contentType) {
+        return NextResponse.json({ error: "O conteúdo da imagem não corresponde ao formato informado." }, { status: 400 });
+      }
+    }
+
+    attachmentPath = payload.attachment.path;
+    attachmentName = sanitizedName;
+    attachmentType = type.contentType;
+  } else if (!cleanBody) {
+    return NextResponse.json({ error: "Escreva uma mensagem ou escolha um arquivo." }, { status: 400 });
   }
 
-  const { data, error } = await auth.supabase.rpc("send_chat_message", {
+  const { data, error } = await auth.supabase.rpc("send_chat_attachment_message", {
     p_conversation_id: conversationId,
     p_body: cleanBody,
-    p_image_path: imagePath,
+    p_attachment_path: attachmentPath,
+    p_attachment_name: attachmentName,
+    p_attachment_type: attachmentType,
   });
   if (error) {
-    if (imagePath) {
-      const { error: cleanupError } = await auth.supabase.storage.from("chat-images").remove([imagePath]);
-      if (cleanupError) console.error("Não foi possível remover uma imagem de mensagem rejeitada.", cleanupError);
+    if (attachmentPath) {
+      const { error: cleanupError } = await auth.supabase.storage.from("chat-images").remove([attachmentPath]);
+      if (cleanupError) console.error("Não foi possível remover um anexo de mensagem rejeitada.", cleanupError);
     }
     if (error.code === "42501") {
       return NextResponse.json({ error: "Você não tem acesso a esta conversa." }, { status: 403 });

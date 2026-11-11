@@ -98,6 +98,9 @@ export function CatalogSearch({ games }: { games: PublicGame[] }) {
                       href={game.gameUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => window.dispatchEvent(new CustomEvent("frivplus:playing-game", {
+                        detail: { gameId: game.id },
+                      }))}
                     >
                       <img className="game-search-cover" src={game.coverUrl} alt="" />
                       <span className="profile-search-identity">

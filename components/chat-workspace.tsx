@@ -1,6 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState, type FormEvent } from "react";
+import { createClient } from "@supabase/supabase-js";
+import { getChatAttachmentType } from "@/lib/chat-attachments";
 
 export type ChatFriend = {
   id: string;
@@ -32,7 +34,9 @@ type ChatMessage = {
   senderId: string;
   senderName: string;
   body: string;
-  imageUrl: string | null;
+  attachmentUrl: string | null;
+  attachmentName: string | null;
+  attachmentType: string | null;
   createdAt: string;
 };
 
@@ -49,7 +53,7 @@ export function ChatWorkspace({
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [draft, setDraft] = useState("");
-  const [selectedImage, setSelectedImage] = useState<File | null>(null);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [selectedFriends, setSelectedFriends] = useState<string[]>([]);
   const [groupName, setGroupName] = useState("");
   const [creating, setCreating] = useState(false);
@@ -148,36 +152,106 @@ export function ChatWorkspace({
 
   async function sendMessage(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!selectedId || (!draft.trim() && !selectedImage)) return;
+    if (!selectedId || (!draft.trim() && !selectedFile)) return;
     setError("");
     setSending(true);
+    let uploadedPath: string | null = null;
 
     try {
-      let response: Response;
-      if (selectedImage) {
-        const formData = new FormData();
-        formData.set("body", draft);
-        formData.set("image", selectedImage);
-        response = await fetch(`/api/chat/${selectedId}/messages`, { method: "POST", body: formData });
-      } else {
-        response = await fetch(`/api/chat/${selectedId}/messages`, {
+      let attachment: { path: string; name: string; type: string } | null = null;
+      if (selectedFile) {
+        const fileType = getChatAttachmentType(selectedFile.name, selectedFile.type);
+        const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+        const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+        if (!fileType || !supabaseUrl || !anonKey) {
+          setError("O formato do arquivo não é aceito ou a autenticação está indisponível.");
+          return;
+        }
+
+        const uploadResponse = await fetch(`/api/chat/${selectedId}/uploads`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ body: draft }),
+          body: JSON.stringify({
+            name: selectedFile.name,
+            type: selectedFile.type,
+            size: selectedFile.size,
+          }),
         });
+        const uploadResult = await uploadResponse.json() as {
+          path?: string;
+          token?: string;
+          name?: string;
+          type?: string;
+          error?: string;
+        };
+        if (!uploadResponse.ok || !uploadResult.path || !uploadResult.token ||
+            !uploadResult.name || !uploadResult.type) {
+          setError(uploadResult.error ?? "Não foi possível preparar o envio do arquivo.");
+          return;
+        }
+
+        const supabase = createClient(supabaseUrl, anonKey, {
+          auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
+        });
+        const { error: uploadError } = await supabase.storage
+          .from("chat-images")
+          .uploadToSignedUrl(uploadResult.path, uploadResult.token, selectedFile, {
+            contentType: uploadResult.type,
+          });
+        if (uploadError) {
+          setError("Não foi possível enviar o arquivo. Tente novamente.");
+          return;
+        }
+        uploadedPath = uploadResult.path;
+        attachment = {
+          path: uploadResult.path,
+          name: uploadResult.name,
+          type: uploadResult.type,
+        };
       }
+
+      const response = await fetch(`/api/chat/${selectedId}/messages`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ body: draft, attachment }),
+      });
       const result = await response.json() as { error?: string };
       if (!response.ok) {
         setError(result.error ?? "Não foi possível enviar a mensagem.");
+        if (uploadedPath) {
+          const cleanupResponse = await fetch(`/api/chat/${selectedId}/uploads`, {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ path: uploadedPath }),
+          });
+          if (!cleanupResponse.ok) {
+            console.error("Não foi possível remover um anexo que não foi enviado.", await cleanupResponse.text());
+          }
+          uploadedPath = null;
+        }
         return;
       }
       setDraft("");
-      setSelectedImage(null);
+      setSelectedFile(null);
       await loadMessages(selectedId);
       const refresh = await fetch("/api/chat", { cache: "no-store" });
       const refreshed = await refresh.json() as { conversations?: ChatConversation[] };
       if (refresh.ok && refreshed.conversations) setConversations(refreshed.conversations);
     } catch {
+      if (uploadedPath) {
+        try {
+          const cleanupResponse = await fetch(`/api/chat/${selectedId}/uploads`, {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ path: uploadedPath }),
+          });
+          if (!cleanupResponse.ok) {
+            console.error("Não foi possível remover um anexo que não foi enviado.", await cleanupResponse.text());
+          }
+        } catch (cleanupError) {
+          console.error("Erro de conexão ao remover um anexo que não foi enviado.", cleanupError);
+        }
+      }
       setError("Erro de conexão ao enviar a mensagem.");
     } finally {
       setSending(false);
@@ -297,20 +371,51 @@ export function ChatWorkspace({
                     </time>
                   </div>
                   {message.body && <p>{message.body}</p>}
-                  {message.imageUrl && (
-                    <a href={message.imageUrl} target="_blank" rel="noopener noreferrer">
-                      <img className="chat-message-image" src={message.imageUrl} alt="Imagem enviada na conversa" />
-                    </a>
+                  {message.attachmentUrl && message.attachmentType?.startsWith("image/") && (
+                    <div className="chat-attachment">
+                      <a href={message.attachmentUrl} target="_blank" rel="noopener noreferrer">
+                        <img
+                          className="chat-message-image"
+                          src={message.attachmentUrl}
+                          alt={message.attachmentName ?? "Imagem enviada na conversa"}
+                        />
+                      </a>
+                      <a className="button button-outline chat-download-button" href={`${message.attachmentUrl}?download=1`}>
+                        Baixar imagem
+                      </a>
+                    </div>
+                  )}
+                  {message.attachmentUrl && message.attachmentType?.startsWith("video/") && (
+                    <div className="chat-attachment">
+                      <video className="chat-message-video" controls playsInline preload="metadata">
+                        <source src={message.attachmentUrl} type={message.attachmentType} />
+                        Seu navegador não consegue reproduzir este vídeo.
+                      </video>
+                      <a className="button button-outline chat-download-button" href={`${message.attachmentUrl}?download=1`}>
+                        Baixar vídeo
+                      </a>
+                    </div>
+                  )}
+                  {message.attachmentUrl &&
+                    !message.attachmentType?.startsWith("image/") &&
+                    !message.attachmentType?.startsWith("video/") && (
+                      <div className="chat-file-attachment">
+                        <span className="chat-file-icon" aria-hidden="true">↓</span>
+                        <span className="chat-file-name">{message.attachmentName ?? "Arquivo"}</span>
+                        <a className="button button-outline chat-download-button" href={`${message.attachmentUrl}?download=1`}>
+                          Baixar arquivo
+                        </a>
+                      </div>
                   )}
                 </article>
               ))}
               <div ref={messagesEndRef} />
             </div>
             <form className="chat-composer" onSubmit={sendMessage}>
-              {selectedImage && (
+              {selectedFile && (
                 <div className="chat-image-selection">
-                  <span>{selectedImage.name}</span>
-                  <button type="button" onClick={() => setSelectedImage(null)} aria-label="Remover imagem">×</button>
+                  <span>{selectedFile.name}</span>
+                  <button type="button" onClick={() => setSelectedFile(null)} aria-label="Remover anexo">×</button>
                 </div>
               )}
               <textarea
@@ -322,17 +427,31 @@ export function ChatWorkspace({
               />
               <div className="chat-composer-actions">
                 <label className="button button-outline chat-image-button">
-                  Enviar imagem
+                  Anexar arquivo
                   <input
                     type="file"
-                    accept="image/png,image/jpeg,image/webp"
-                    onChange={(event) => setSelectedImage(event.target.files?.[0] ?? null)}
+                    accept="image/png,image/jpeg,image/webp,video/mp4,video/webm,video/quicktime,.pdf,.txt,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+                    onChange={(event) => {
+                      const file = event.target.files?.[0] ?? null;
+                      event.target.value = "";
+                      const fileType = file ? getChatAttachmentType(file.name, file.type) : null;
+                      const maxSize = fileType?.kind === "image" ? 5 * 1024 * 1024 : 25 * 1024 * 1024;
+                      if (file && file.size > maxSize) {
+                        setError(fileType?.kind === "image"
+                          ? "Imagens podem ter até 5 MB."
+                          : "Vídeos e documentos podem ter até 25 MB.");
+                        return;
+                      }
+                      setError("");
+                      setSelectedFile(file);
+                    }}
                   />
                 </label>
-                <button className="button button-primary" type="submit" disabled={sending || (!draft.trim() && !selectedImage)}>
+                <button className="button button-primary" type="submit" disabled={sending || (!draft.trim() && !selectedFile)}>
                   {sending ? "Enviando..." : "Enviar"}
                 </button>
               </div>
+              <span className="field-hint">Imagens até 5 MB; vídeos e documentos (PDF, Office ou TXT) até 25 MB.</span>
             </form>
           </>
         ) : (
