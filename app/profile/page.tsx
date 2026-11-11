@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { LogoutButton } from "@/components/logout-button";
 import { isMaintenanceAdminEmail } from "@/lib/maintenance";
 import { createSupabaseServerClient, isSupabaseConfigured } from "@/lib/supabase/server";
 
@@ -75,7 +74,6 @@ export default async function ProfilePage() {
             {isMaintenanceAdminEmail(user.email) && (
               <Link className="account-link" href="/admin">Painel admin</Link>
             )}
-            <LogoutButton />
           </div>
         </div>
       </header>
