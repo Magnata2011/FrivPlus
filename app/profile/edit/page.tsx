@@ -38,7 +38,7 @@ export default async function EditProfilePage() {
 
   const { data: profile, error: profileError } = await supabase
     .from("profiles")
-    .select("username, display_name, bio, avatar_path, theme")
+    .select("username, display_name, bio, avatar_path, banner_path, theme")
     .eq("id", user.id)
     .single();
 
@@ -57,6 +57,9 @@ export default async function EditProfilePage() {
 
   const avatarUrl = profile.avatar_path
     ? supabase.storage.from("avatars").getPublicUrl(profile.avatar_path).data.publicUrl
+    : null;
+  const bannerUrl = profile.banner_path
+    ? supabase.storage.from("profile-banners").getPublicUrl(profile.banner_path).data.publicUrl
     : null;
 
   return (
@@ -89,7 +92,7 @@ export default async function EditProfilePage() {
             {user.email_confirmed_at ? "E-mail confirmado" : "E-mail não confirmado"}
           </span>
         </section>
-        <ProfileEditor profile={profile} avatarUrl={avatarUrl} />
+        <ProfileEditor profile={profile} avatarUrl={avatarUrl} bannerUrl={bannerUrl} />
       </main>
     </>
   );

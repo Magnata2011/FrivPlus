@@ -29,7 +29,7 @@ export async function GET() {
 
   const { data: profile, error } = await supabase
     .from("profiles")
-    .select("id, username, display_name, bio, avatar_path, theme, created_at, updated_at")
+    .select("id, username, display_name, bio, avatar_path, banner_path, theme, created_at, updated_at")
     .eq("id", user.id)
     .single();
 
@@ -131,7 +131,7 @@ export async function PATCH(request: Request) {
     .from("profiles")
     .update(updates)
     .eq("id", user.id)
-    .select("id, username, display_name, bio, theme, created_at, updated_at")
+    .select("id, username, display_name, bio, avatar_path, banner_path, theme, created_at, updated_at")
     .single();
 
   if (error || !profile) {

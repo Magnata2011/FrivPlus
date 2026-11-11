@@ -37,7 +37,7 @@ export default async function ProfilePage() {
 
   const { data: profile, error: profileError } = await supabase
     .from("profiles")
-    .select("username, display_name, bio, avatar_path")
+    .select("username, display_name, bio, avatar_path, banner_path")
     .eq("id", user.id)
     .single();
 
@@ -56,6 +56,9 @@ export default async function ProfilePage() {
 
   const avatarUrl = profile.avatar_path
     ? supabase.storage.from("avatars").getPublicUrl(profile.avatar_path).data.publicUrl
+    : null;
+  const bannerUrl = profile.banner_path
+    ? supabase.storage.from("profile-banners").getPublicUrl(profile.banner_path).data.publicUrl
     : null;
   const displayName = profile.display_name || profile.username || "Seu perfil";
 
@@ -78,7 +81,12 @@ export default async function ProfilePage() {
       </header>
       <main className="wrap profile-page">
         <div className="profile-preview">
-          <div className="profile-preview-banner" aria-hidden="true" />
+          <div
+            className="profile-preview-banner"
+            role={bannerUrl ? "img" : undefined}
+            aria-label={bannerUrl ? `Banner de ${displayName}` : undefined}
+            style={bannerUrl ? { backgroundImage: `url("${bannerUrl}")` } : undefined}
+          />
           <div className="profile-preview-content">
             <div className="profile-preview-heading">
               {avatarUrl ? (
@@ -93,13 +101,13 @@ export default async function ProfilePage() {
                   {displayName.slice(0, 1).toUpperCase()}
                 </div>
               )}
-              <div className="profile-preview-identity">
-                <h1>{displayName}</h1>
-                <span>{profile.username ? `@${profile.username}` : "FrivPlus"}</span>
-              </div>
               <Link className="button button-primary profile-customize-button" href="/profile/edit">
                 Personalizar perfil
               </Link>
+            </div>
+            <div className="profile-preview-identity">
+              <h1>{displayName}</h1>
+              <span>{profile.username ? `@${profile.username}` : "FrivPlus"}</span>
             </div>
             <section className="profile-preview-about" aria-labelledby="profile-about-title">
               <h2 id="profile-about-title">Sobre mim</h2>

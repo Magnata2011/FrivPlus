@@ -12,9 +12,11 @@ export type EditableProfile = {
 export function ProfileEditor({
   profile: initialProfile,
   avatarUrl: initialAvatarUrl,
+  bannerUrl: initialBannerUrl,
 }: {
   profile: EditableProfile;
   avatarUrl: string | null;
+  bannerUrl: string | null;
 }) {
   const [profile, setProfile] = useState(initialProfile);
   const [error, setError] = useState("");
@@ -23,6 +25,9 @@ export function ProfileEditor({
   const [avatarUrl, setAvatarUrl] = useState(initialAvatarUrl);
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
   const [uploadingAvatar, setUploadingAvatar] = useState(false);
+  const [bannerUrl, setBannerUrl] = useState(initialBannerUrl);
+  const [bannerFile, setBannerFile] = useState<File | null>(null);
+  const [uploadingBanner, setUploadingBanner] = useState(false);
   const [savingTheme, setSavingTheme] = useState(false);
 
   async function saveTheme(theme: EditableProfile["theme"]) {
@@ -125,6 +130,38 @@ export function ProfileEditor({
     }
   }
 
+  async function uploadBanner() {
+    if (!bannerFile) {
+      setError("Escolha uma imagem antes de enviar.");
+      return;
+    }
+    setError("");
+    setNotice("");
+    setUploadingBanner(true);
+    const formData = new FormData();
+    formData.set("banner", bannerFile);
+
+    try {
+      const response = await fetch("/api/profile/banner", { method: "POST", body: formData });
+      const result = await response.json() as { bannerUrl?: string; error?: string };
+      if (response.status === 401) {
+        window.location.assign("/login?next=%2Fprofile%2Fedit");
+        return;
+      }
+      if (!response.ok || !result.bannerUrl) {
+        setError(result.error ?? "Não foi possível atualizar o banner.");
+        return;
+      }
+      setBannerUrl(result.bannerUrl);
+      setBannerFile(null);
+      setNotice("Banner atualizado.");
+    } catch {
+      setError("Erro de conexão ao enviar o banner.");
+    } finally {
+      setUploadingBanner(false);
+    }
+  }
+
   return (
     <section className="profile-card">
       <div className="profile-avatar-area">
@@ -163,6 +200,32 @@ export function ProfileEditor({
           type="button"
         >
           {uploadingAvatar ? "Enviando foto..." : "Enviar foto"}
+        </button>
+      </div>
+      <div className="banner-upload">
+        <div
+          className="banner-upload-preview"
+          role={bannerUrl ? "img" : undefined}
+          aria-label={bannerUrl ? "Prévia do banner do perfil" : "Prévia do banner padrão"}
+          style={bannerUrl ? { backgroundImage: `url("${bannerUrl}")` } : undefined}
+        />
+        <label className="label">
+          Banner do perfil
+          <input
+            className="field-input"
+            type="file"
+            accept="image/png,image/jpeg,image/webp"
+            onChange={(event) => setBannerFile(event.target.files?.[0] ?? null)}
+          />
+          <span className="field-hint">PNG, JPG ou WebP; até 5 MB.</span>
+        </label>
+        <button
+          className="button button-outline"
+          disabled={!bannerFile || uploadingBanner}
+          onClick={() => void uploadBanner()}
+          type="button"
+        >
+          {uploadingBanner ? "Enviando banner..." : "Enviar banner"}
         </button>
       </div>
       <section className="profile-appearance" aria-labelledby="profile-appearance-title">

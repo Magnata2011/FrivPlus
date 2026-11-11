@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { AccountNavigation } from "@/components/account-navigation";
 import { Catalog } from "@/components/catalog";
+import { CatalogSearch } from "@/components/catalog-search";
 import games from "@/data/games.json";
 
 const LEGACY_GAMES_BASE_URL = "https://magnata2011.github.io/FrivPlus/";
@@ -24,13 +25,7 @@ export function GameCatalogPage({ maintenanceEnabled }: { maintenanceEnabled: bo
             <span>FrivPlus</span>
           </Link>
           <div className="header-actions">
-            <label className="sr-only" htmlFor="catalog-search">Buscar jogos</label>
-            <input
-              className="search-input"
-              id="catalog-search"
-              type="search"
-              placeholder="Buscar jogo..."
-            />
+            <CatalogSearch />
             <AccountNavigation />
           </div>
         </div>

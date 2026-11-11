@@ -17,9 +17,10 @@ Catálogo público de jogos. As contas são opcionais; é possível abrir os jog
 3. Execute também `supabase/migrations/20261111010000_user_profiles.sql` para criar perfis privados automaticamente quando novas contas forem cadastradas.
 4. Execute `supabase/migrations/20261111020000_profile_avatars.sql` para habilitar fotos de perfil.
 5. Execute `supabase/migrations/20261111030000_profile_theme.sql` para habilitar a preferência de tema por conta.
-6. Copie `.env.example` para `.env.local` e preencha as variáveis do Supabase, `NEXT_PUBLIC_SITE_URL` e `MAINTENANCE_ADMIN_EMAIL` com o e-mail da conta autorizada.
-7. No Supabase, defina a URL do site e permita os callbacks `http://localhost:3000/auth/callback**` e `https://SEU-DOMINIO/auth/callback**`.
-8. Configure as mesmas variáveis no ambiente de produção da Vercel. `SUPABASE_SERVICE_ROLE_KEY` é usada somente no servidor para salvar a configuração e nunca deve ser exposta no navegador.
+6. Execute `supabase/migrations/20261111040000_public_profile_search_and_banners.sql` para habilitar banners e busca pública de perfis.
+7. Copie `.env.example` para `.env.local` e preencha as variáveis do Supabase, `NEXT_PUBLIC_SITE_URL` e `MAINTENANCE_ADMIN_EMAIL` com o e-mail da conta autorizada.
+8. No Supabase, defina a URL do site e permita os callbacks `http://localhost:3000/auth/callback**` e `https://SEU-DOMINIO/auth/callback**`.
+9. Configure as mesmas variáveis no ambiente de produção da Vercel. `SUPABASE_SERVICE_ROLE_KEY` é usada somente no servidor para salvar a configuração e nunca deve ser exposta no navegador.
 
 O cadastro pode exigir confirmação por e-mail, conforme a configuração do Supabase. A chave `SUPABASE_SERVICE_ROLE_KEY` é necessária somente no servidor para salvar a configuração de manutenção e nunca deve ser exposta no navegador.
 
@@ -30,6 +31,8 @@ Quando a manutenção estiver ligada, qualquer visitante pode escolher **Continu
 ## Avatares e salvamento de progresso
 
 A migration de avatares cria um bucket público para imagens de perfil. Somente o usuário autenticado pode enviar ou substituir seu próprio avatar; são aceitos PNG, JPG e WebP de até 3 MB.
+
+A migration `20261111040000_public_profile_search_and_banners.sql` cria um bucket público de banners (PNG, JPG ou WebP, até 5 MB) e funções RPC que expõem somente nome, usuário, bio e caminhos das imagens públicas dos perfis com usuário definido. Execute essa migration no Supabase antes de usar o envio de banner ou a busca pública de perfis.
 
 O módulo `lib/game-progress.ts` prepara salvamentos locais usando localStorage para dados pequenos e IndexedDB para dados maiores, com um controlador de autosave que jogos podem chamar após mudanças no progresso. A integração de um jogo deve carregar seu estado com `loadGameProgress` e chamar `schedule` do `createGameProgressAutoSave` quando o progresso mudar. Isso ainda não integra os jogos automaticamente nem sincroniza progresso entre dispositivos: cada jogo precisa chamar a API de salvamento. Jogos abertos em outros domínios também não podem ser acessados pelo FrivPlus sem integração explícita deles.
 
