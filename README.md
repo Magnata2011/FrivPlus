@@ -1,6 +1,6 @@
 # FrivPlus
 
-Catálogo público de jogos. A lista e os dados dos cards ficam em `data/games.json`; os arquivos dos jogos são servidos pelo GitHub Pages na pasta `games/`.
+Catálogo público de jogos com contas por e-mail e senha. Os dados dos cards ficam em `data/games.json`; o Undertale é servido pelo GitHub Pages e o Deltarune usa a publicação original do projeto.
 
 ## Desenvolvimento
 
@@ -10,8 +10,21 @@ Catálogo público de jogos. A lista e os dados dos cards ficam em `data/games.j
 - `npm run lint` — executa o ESLint.
 - `npm run build` — gera o build de produção.
 
-Não é necessário configurar banco de dados ou variáveis de ambiente.
+### Autenticação
+
+1. Configure um projeto Supabase e habilite autenticação por e-mail e senha.
+2. Execute `supabase/migrations/20261110000000_site_maintenance.sql` no SQL Editor do Supabase.
+3. Execute também `supabase/migrations/20261111010000_user_profiles.sql` para criar perfis privados automaticamente quando novas contas forem cadastradas.
+4. Copie `.env.example` para `.env.local` e preencha as variáveis do Supabase, `NEXT_PUBLIC_SITE_URL` e `MAINTENANCE_ADMIN_EMAIL` com o e-mail da conta autorizada.
+5. No Supabase, defina a URL do site e permita os callbacks `http://localhost:3000/auth/callback` e `https://SEU-DOMINIO/auth/callback`.
+6. Configure as mesmas variáveis no ambiente de produção da Vercel. `SUPABASE_SERVICE_ROLE_KEY` é usada somente no servidor para salvar a configuração e nunca deve ser exposta no navegador.
+
+O cadastro pode exigir confirmação por e-mail, conforme a configuração do Supabase. A chave `SUPABASE_SERVICE_ROLE_KEY` é necessária somente no servidor para salvar a configuração de manutenção e nunca deve ser exposta no navegador.
+
+Depois de entrar com o e-mail autorizado, use o botão de manutenção no cartaz ou no cabeçalho para ligar/desligar o aviso. O estado fica salvo no Supabase.
 
 ## Publicação
 
-O app Next.js é publicado na Vercel. Os jogos continuam no GitHub Pages em `https://magnata2011.github.io/FrivPlus/`; mantenha a pasta `games/` no repositório para que os links do catálogo funcionem.
+O app Next.js é publicado na Vercel. O Undertale e os jogos legados ficam no GitHub Pages em `https://magnata2011.github.io/FrivPlus/`. O diretório local do Deltarune é excluído da publicação por ultrapassar o limite do CDN usado por essa cópia; o catálogo abre a publicação funcional em `https://byalvaro19.github.io/deltarune/`.
+
+Para configurar a autenticação e o controle de manutenção na Vercel, siga [vercelREADME.md](./vercelREADME.md).
