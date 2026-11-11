@@ -2,7 +2,6 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { DeleteAccountForm } from "@/components/delete-account-form";
 import { ProfileSettingsTabs } from "@/components/profile-settings-tabs";
-import { isMaintenanceAdminEmail } from "@/lib/maintenance";
 import { createSupabaseServerClient, isSupabaseConfigured } from "@/lib/supabase/server";
 
 export const dynamic = "force-dynamic";
@@ -57,20 +56,6 @@ export default async function DeleteAccountPage() {
 
   return (
     <>
-      <header className="site-header">
-        <div className="wrap header-inner">
-          <Link className="brand" href="/">
-            <span className="brand-mark">F</span>
-            <span>FrivPlus</span>
-          </Link>
-          <div className="profile-actions">
-            <Link className="account-link" href="/profile">Ver meu perfil</Link>
-            {isMaintenanceAdminEmail(user.email) && (
-              <Link className="account-link" href="/admin">Painel admin</Link>
-            )}
-          </div>
-        </div>
-      </header>
       <main className="wrap profile-page">
         <div className="eyebrow">Sua conta</div>
         <h1>Configurações de perfil</h1>

@@ -10,18 +10,23 @@ export function Catalog({ initialGames }: { initialGames: PublicGame[] }) {
     const search = document.getElementById("catalog-search") as HTMLInputElement | null;
     if (!search) return;
     const onSearch = () => setQuery(search.value.trim().toLocaleLowerCase());
+    onSearch();
     search.addEventListener("input", onSearch);
     return () => search.removeEventListener("input", onSearch);
   }, []);
 
   const visibleGames = useMemo(() => {
     if (!query) return initialGames;
-    return initialGames.filter((game) =>
+    const directMatches = initialGames.filter((game) =>
       [game.title, game.category, ...game.tags]
         .join(" ")
         .toLocaleLowerCase()
         .includes(query),
     );
+    if (directMatches.length > 0 || query.length < 2) return directMatches;
+    return initialGames
+      .filter((game) => game.title.toLocaleLowerCase().startsWith(query[0]))
+      .slice(0, 6);
   }, [initialGames, query]);
 
   return (

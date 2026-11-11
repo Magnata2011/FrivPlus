@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { createSupabaseServerClient, isSupabaseConfigured } from "@/lib/supabase/server";
+import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 
 export const dynamic = "force-dynamic";
@@ -37,7 +38,10 @@ export default async function RootLayout({
 
   return (
     <html lang="pt-BR" data-theme={theme}>
-      <body>{children}</body>
+      <body>
+        <SiteHeader />
+        {children}
+      </body>
     </html>
   );
 }

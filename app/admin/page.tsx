@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { LogoutButton } from "@/components/logout-button";
+import { ChangelogAdminForm } from "@/components/changelog-admin-form";
 import { MaintenanceToggle } from "@/components/maintenance-toggle";
 import { getMaintenanceEnabled, isMaintenanceAdminEmail } from "@/lib/maintenance";
 import { createSupabaseServerClient, isSupabaseConfigured } from "@/lib/supabase/server";
@@ -51,18 +51,6 @@ export default async function AdminPage() {
 
   return (
     <>
-      <header className="site-header">
-        <div className="wrap header-inner">
-          <Link className="brand" href="/">
-            <span className="brand-mark">F</span>
-            <span>FrivPlus</span>
-          </Link>
-          <div className="profile-actions">
-            <Link className="account-link" href="/catalog">Abrir catálogo</Link>
-            <LogoutButton />
-          </div>
-        </div>
-      </header>
       <main className="wrap admin-page">
         <div className="eyebrow">Administração</div>
         <h1>Painel do administrador</h1>
@@ -88,6 +76,15 @@ export default async function AdminPage() {
             <p>{user.email ?? "E-mail indisponível"}</p>
           </div>
           <Link className="button button-outline" href="/profile">Gerenciar perfil</Link>
+        </section>
+
+        <section className="admin-card admin-card-changelog" aria-labelledby="changelog-heading">
+          <div>
+            <span className="admin-card-label">Novidades</span>
+            <h2 id="changelog-heading">Criar changelog</h2>
+            <p>Publique um aviso com título e mensagem na página inicial.</p>
+          </div>
+          <ChangelogAdminForm />
         </section>
 
         <section className="admin-card" aria-labelledby="future-heading">

@@ -53,15 +53,6 @@ export default async function PublicProfilePage({
 
   return (
     <>
-      <header className="site-header">
-        <div className="wrap header-inner">
-          <Link className="brand" href="/">
-            <span className="brand-mark">F</span>
-            <span>FrivPlus</span>
-          </Link>
-          <Link className="account-link" href="/">Voltar ao catálogo</Link>
-        </div>
-      </header>
       <main className="wrap profile-page">
         <div className="profile-preview">
           <div

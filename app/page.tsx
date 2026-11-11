@@ -1,11 +1,14 @@
 import { GameCatalogPage } from "@/components/game-catalog-page";
+import { ChangelogNotices } from "@/components/changelog-notices";
 import { getMaintenanceEnabled } from "@/lib/maintenance";
+import { getPublicChangelogs } from "@/lib/changelogs";
 import Link from "next/link";
 
 export default async function HomePage() {
   const maintenanceEnabled = await getMaintenanceEnabled();
 
   if (maintenanceEnabled) {
+    const { changelogs, error } = await getPublicChangelogs();
     return (
       <main className="maintenance-page">
         <section className="maintenance-poster" aria-labelledby="maintenance-title">
@@ -27,6 +30,7 @@ export default async function HomePage() {
           <Link className="button button-outline maintenance-continue" href="/catalog">
             Continuar mesmo assim
           </Link>
+          <ChangelogNotices changelogs={changelogs} error={error} />
         </section>
         <footer className="maintenance-footer">
           Obrigado pela compreensão.

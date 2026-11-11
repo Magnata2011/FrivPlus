@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
+import { AvatarCropper } from "@/components/avatar-cropper";
 
 export type EditableProfile = {
   username: string | null;
@@ -24,11 +25,23 @@ export function ProfileEditor({
   const [saving, setSaving] = useState(false);
   const [avatarUrl, setAvatarUrl] = useState(initialAvatarUrl);
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
+  const [avatarCropFile, setAvatarCropFile] = useState<File | null>(null);
+  const [avatarPreviewUrl, setAvatarPreviewUrl] = useState<string | null>(null);
   const [uploadingAvatar, setUploadingAvatar] = useState(false);
   const [bannerUrl, setBannerUrl] = useState(initialBannerUrl);
   const [bannerFile, setBannerFile] = useState<File | null>(null);
   const [uploadingBanner, setUploadingBanner] = useState(false);
   const [savingTheme, setSavingTheme] = useState(false);
+
+  useEffect(() => {
+    if (!avatarFile) {
+      setAvatarPreviewUrl(null);
+      return;
+    }
+    const url = URL.createObjectURL(avatarFile);
+    setAvatarPreviewUrl(url);
+    return () => URL.revokeObjectURL(url);
+  }, [avatarFile]);
 
   async function saveTheme(theme: EditableProfile["theme"]) {
     if (theme === profile.theme || savingTheme) return;
@@ -165,12 +178,12 @@ export function ProfileEditor({
   return (
     <section className="profile-card">
       <div className="profile-avatar-area">
-        {avatarUrl ? (
+        {avatarPreviewUrl || avatarUrl ? (
           <div
             className="profile-avatar profile-avatar-image"
             role="img"
             aria-label="Foto de perfil"
-            style={{ backgroundImage: `url("${avatarUrl}")` }}
+            style={{ backgroundImage: `url("${avatarPreviewUrl ?? avatarUrl}")` }}
           />
         ) : (
           <div className="profile-avatar profile-avatar-placeholder" aria-hidden="true">
@@ -189,19 +202,40 @@ export function ProfileEditor({
             className="field-input"
             type="file"
             accept="image/png,image/jpeg,image/webp"
-            onChange={(event) => setAvatarFile(event.target.files?.[0] ?? null)}
+            onChange={(event) => {
+              const file = event.target.files?.[0] ?? null;
+              event.target.value = "";
+              if (!file) return;
+              setAvatarFile(null);
+              if (file.size > 3 * 1024 * 1024) {
+                setError("Escolha uma imagem de até 3 MB.");
+                return;
+              }
+              setError("");
+              setAvatarCropFile(file);
+            }}
           />
           <span className="field-hint">PNG, JPG ou WebP; até 3 MB. A imagem ficará pública.</span>
         </label>
         <button
           className="button button-outline"
-          disabled={!avatarFile || uploadingAvatar}
+          disabled={!avatarFile || uploadingAvatar || Boolean(avatarCropFile)}
           onClick={uploadAvatar}
           type="button"
         >
           {uploadingAvatar ? "Enviando foto..." : "Enviar foto"}
         </button>
       </div>
+      {avatarCropFile && (
+        <AvatarCropper
+          file={avatarCropFile}
+          onCancel={() => setAvatarCropFile(null)}
+          onSave={(file) => {
+            setAvatarFile(file);
+            setAvatarCropFile(null);
+          }}
+        />
+      )}
       <div className="banner-upload">
         <div
           className="banner-upload-preview"
