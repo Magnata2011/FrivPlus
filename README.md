@@ -16,9 +16,10 @@ Catálogo público de jogos. As contas são opcionais; é possível abrir os jog
 2. Execute `supabase/migrations/20261110000000_site_maintenance.sql` no SQL Editor do Supabase.
 3. Execute também `supabase/migrations/20261111010000_user_profiles.sql` para criar perfis privados automaticamente quando novas contas forem cadastradas.
 4. Execute `supabase/migrations/20261111020000_profile_avatars.sql` para habilitar fotos de perfil.
-5. Copie `.env.example` para `.env.local` e preencha as variáveis do Supabase, `NEXT_PUBLIC_SITE_URL` e `MAINTENANCE_ADMIN_EMAIL` com o e-mail da conta autorizada.
-6. No Supabase, defina a URL do site e permita os callbacks `http://localhost:3000/auth/callback**` e `https://SEU-DOMINIO/auth/callback**`.
-7. Configure as mesmas variáveis no ambiente de produção da Vercel. `SUPABASE_SERVICE_ROLE_KEY` é usada somente no servidor para salvar a configuração e nunca deve ser exposta no navegador.
+5. Execute `supabase/migrations/20261111030000_profile_theme.sql` para habilitar a preferência de tema por conta.
+6. Copie `.env.example` para `.env.local` e preencha as variáveis do Supabase, `NEXT_PUBLIC_SITE_URL` e `MAINTENANCE_ADMIN_EMAIL` com o e-mail da conta autorizada.
+7. No Supabase, defina a URL do site e permita os callbacks `http://localhost:3000/auth/callback**` e `https://SEU-DOMINIO/auth/callback**`.
+8. Configure as mesmas variáveis no ambiente de produção da Vercel. `SUPABASE_SERVICE_ROLE_KEY` é usada somente no servidor para salvar a configuração e nunca deve ser exposta no navegador.
 
 O cadastro pode exigir confirmação por e-mail, conforme a configuração do Supabase. A chave `SUPABASE_SERVICE_ROLE_KEY` é necessária somente no servidor para salvar a configuração de manutenção e nunca deve ser exposta no navegador.
 

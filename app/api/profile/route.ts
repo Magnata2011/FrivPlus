@@ -29,7 +29,7 @@ export async function GET() {
 
   const { data: profile, error } = await supabase
     .from("profiles")
-    .select("id, username, display_name, bio, avatar_path, created_at, updated_at")
+    .select("id, username, display_name, bio, avatar_path, theme, created_at, updated_at")
     .eq("id", user.id)
     .single();
 
@@ -72,26 +72,49 @@ export async function PATCH(request: Request) {
     return NextResponse.json({ error: "Dados do perfil inválidos." }, { status: 400 });
   }
 
-  const values = payload as { username?: unknown; displayName?: unknown; bio?: unknown };
-  if (
-    typeof values.username !== "string" ||
-    typeof values.displayName !== "string" ||
-    typeof values.bio !== "string"
-  ) {
-    return NextResponse.json({ error: "Preencha os campos do perfil corretamente." }, { status: 400 });
+  const values = payload as Record<string, unknown>;
+  const profileFieldsPresent = ["username", "displayName", "bio"].some((key) => key in values);
+  const updates: {
+    username?: string | null;
+    display_name?: string;
+    bio?: string;
+    theme?: "dark" | "light";
+  } = {};
+
+  if (profileFieldsPresent) {
+    if (
+      typeof values.username !== "string" ||
+      typeof values.displayName !== "string" ||
+      typeof values.bio !== "string"
+    ) {
+      return NextResponse.json({ error: "Preencha os campos do perfil corretamente." }, { status: 400 });
+    }
+
+    const username = values.username.trim().toLowerCase();
+    const displayName = values.displayName.trim();
+    const bio = values.bio.trim();
+    if (username && !/^[a-z0-9_]{3,24}$/.test(username)) {
+      return NextResponse.json(
+        { error: "O usuário deve ter de 3 a 24 letras, números ou sublinhados." },
+        { status: 400 },
+      );
+    }
+    if (displayName.length > 60 || bio.length > 500) {
+      return NextResponse.json({ error: "Nome ou biografia acima do limite permitido." }, { status: 400 });
+    }
+    updates.username = username || null;
+    updates.display_name = displayName;
+    updates.bio = bio;
   }
 
-  const username = values.username.trim().toLowerCase();
-  const displayName = values.displayName.trim();
-  const bio = values.bio.trim();
-  if (username && !/^[a-z0-9_]{3,24}$/.test(username)) {
-    return NextResponse.json(
-      { error: "O usuário deve ter de 3 a 24 letras, números ou sublinhados." },
-      { status: 400 },
-    );
+  if ("theme" in values) {
+    if (values.theme !== "dark" && values.theme !== "light") {
+      return NextResponse.json({ error: "Escolha um tema válido." }, { status: 400 });
+    }
+    updates.theme = values.theme;
   }
-  if (displayName.length > 60 || bio.length > 500) {
-    return NextResponse.json({ error: "Nome ou biografia acima do limite permitido." }, { status: 400 });
+  if (Object.keys(updates).length === 0) {
+    return NextResponse.json({ error: "Nenhuma alteração válida foi enviada." }, { status: 400 });
   }
 
   const supabase = await createSupabaseServerClient();
@@ -106,13 +129,9 @@ export async function PATCH(request: Request) {
 
   const { data: profile, error } = await supabase
     .from("profiles")
-    .update({
-      username: username || null,
-      display_name: displayName,
-      bio,
-    })
+    .update(updates)
     .eq("id", user.id)
-    .select("id, username, display_name, bio, created_at, updated_at")
+    .select("id, username, display_name, bio, theme, created_at, updated_at")
     .single();
 
   if (error || !profile) {
@@ -123,5 +142,5 @@ export async function PATCH(request: Request) {
     return NextResponse.json({ error: "Não foi possível salvar o perfil." }, { status: 500 });
   }
 
-  return NextResponse.json({ profile });
+  return NextResponse.json({ profile, theme: profile.theme });
 }

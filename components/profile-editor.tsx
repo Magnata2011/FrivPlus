@@ -6,6 +6,7 @@ export type EditableProfile = {
   username: string | null;
   display_name: string;
   bio: string;
+  theme: "dark" | "light";
 };
 
 export function ProfileEditor({
@@ -22,6 +23,39 @@ export function ProfileEditor({
   const [avatarUrl, setAvatarUrl] = useState(initialAvatarUrl);
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
   const [uploadingAvatar, setUploadingAvatar] = useState(false);
+  const [savingTheme, setSavingTheme] = useState(false);
+
+  async function saveTheme(theme: EditableProfile["theme"]) {
+    if (theme === profile.theme || savingTheme) return;
+    setError("");
+    setNotice("");
+    setSavingTheme(true);
+
+    try {
+      const response = await fetch("/api/profile", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ theme }),
+      });
+      const result = await response.json() as { theme?: EditableProfile["theme"]; error?: string };
+      if (response.status === 401) {
+        window.location.assign("/login?next=%2Fprofile");
+        return;
+      }
+      if (!response.ok || result.theme !== theme) {
+        setError(result.error ?? "Não foi possível salvar o tema.");
+        return;
+      }
+
+      setProfile((current) => ({ ...current, theme }));
+      document.documentElement.dataset.theme = theme;
+      setNotice(`Tema ${theme === "dark" ? "escuro" : "claro"} ativado para sua conta.`);
+    } catch {
+      setError("Erro de conexão ao salvar o tema.");
+    } finally {
+      setSavingTheme(false);
+    }
+  }
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -131,6 +165,33 @@ export function ProfileEditor({
           {uploadingAvatar ? "Enviando foto..." : "Enviar foto"}
         </button>
       </div>
+      <section className="profile-appearance" aria-labelledby="profile-appearance-title">
+        <div>
+          <h2 id="profile-appearance-title">Aparência</h2>
+          <p>Essa preferência fica salva somente na sua conta.</p>
+        </div>
+        <div className="theme-options" role="group" aria-label="Tema da conta">
+          <button
+            className={`button ${profile.theme === "dark" ? "button-primary" : "button-outline"}`}
+            type="button"
+            aria-pressed={profile.theme === "dark"}
+            disabled={savingTheme}
+            onClick={() => void saveTheme("dark")}
+          >
+            Modo escuro
+          </button>
+          <button
+            className={`button ${profile.theme === "light" ? "button-primary" : "button-outline"}`}
+            type="button"
+            aria-pressed={profile.theme === "light"}
+            disabled={savingTheme}
+            onClick={() => void saveTheme("light")}
+          >
+            Modo claro
+          </button>
+          {savingTheme && <span className="field-hint" role="status">Salvando tema...</span>}
+        </div>
+      </section>
       <form className="profile-form" onSubmit={submit}>
         <label className="label">
           Nome de exibição
