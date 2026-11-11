@@ -31,7 +31,7 @@ export function GameCatalogPage({ maintenanceEnabled }: { maintenanceEnabled: bo
               type="search"
               placeholder="Buscar jogo..."
             />
-            <AccountNavigation maintenanceEnabled={maintenanceEnabled} />
+            <AccountNavigation />
           </div>
         </div>
       </header>

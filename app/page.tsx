@@ -1,5 +1,4 @@
 import { GameCatalogPage } from "@/components/game-catalog-page";
-import { MaintenanceAdminControl } from "@/components/maintenance-admin-control";
 import { getMaintenanceEnabled } from "@/lib/maintenance";
 import Link from "next/link";
 
@@ -25,7 +24,6 @@ export default async function HomePage() {
             <span className="maintenance-status-dot" />
             Manutenção em andamento
           </span>
-          <MaintenanceAdminControl enabled={maintenanceEnabled} />
           <Link className="button button-outline maintenance-continue" href="/catalog">
             Continuar mesmo assim
           </Link>

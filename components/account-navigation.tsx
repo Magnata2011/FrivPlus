@@ -1,9 +1,8 @@
 import Link from "next/link";
-import { MaintenanceToggle } from "@/components/maintenance-toggle";
 import { isMaintenanceAdminEmail } from "@/lib/maintenance";
 import { createSupabaseServerClient, isSupabaseConfigured } from "@/lib/supabase/server";
 
-export async function AccountNavigation({ maintenanceEnabled }: { maintenanceEnabled: boolean }) {
+export async function AccountNavigation() {
   if (!isSupabaseConfigured()) {
     return (
       <nav className="account-nav" aria-label="Conta">
@@ -31,10 +30,7 @@ export async function AccountNavigation({ maintenanceEnabled }: { maintenanceEna
         <>
           <Link className="button button-outline" href="/profile">Minha conta</Link>
           {isMaintenanceAdminEmail(user.email) && (
-            <>
-              <Link className="button button-outline" href="/admin">Painel admin</Link>
-              <MaintenanceToggle enabled={maintenanceEnabled} />
-            </>
+            <Link className="button button-outline" href="/admin">Painel admin</Link>
           )}
         </>
       ) : (

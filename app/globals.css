@@ -260,15 +260,8 @@ img { display: block; max-width: 100%; }
   box-shadow: 0 0 12px #f0ad4e99;
 }
 .maintenance-footer { color: var(--faint); font-size: .82rem; text-align: center; }
-.maintenance-admin-link { display: inline-block; margin-top: 24px; color: var(--faint); font-size: .78rem; }
-.maintenance-admin-link:hover { color: var(--muted); }
-.maintenance-admin-actions { display: grid; justify-items: center; gap: 2px; margin-top: 22px; }
-.maintenance-admin-actions .maintenance-admin-link { margin-top: 8px; }
 .maintenance-continue { margin-top: 18px; }
 .maintenance-control { display: grid; justify-items: center; gap: 8px; }
-.maintenance-admin-error { margin: 20px 0 0; color: #ffc2c7; font-size: .85rem; }
-.header-actions > .account-nav > .maintenance-control { display: flex; }
-.header-actions > .account-nav .maintenance-control .button { min-height: 38px; padding: 7px 10px; font-size: .8rem; }
 .maintenance-control .form-error { max-width: 360px; }
 
 @media (max-width: 760px) {
