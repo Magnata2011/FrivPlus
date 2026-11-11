@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { FriendshipButton } from "@/components/friendship-button";
 import { createSupabaseServerClient, isSupabaseConfigured } from "@/lib/supabase/server";
 
 export const dynamic = "force-dynamic";
@@ -86,7 +87,10 @@ export default async function PublicProfilePage({
             </div>
             <div className="profile-preview-identity">
               <h1>{displayName}</h1>
-              <span>@{profile.username}</span>
+              <div className="public-profile-identity">
+                <span>@{profile.username}</span>
+                <FriendshipButton username={profile.username} />
+              </div>
             </div>
             <section className="profile-preview-about" aria-labelledby="profile-about-title">
               <h2 id="profile-about-title">Sobre mim</h2>

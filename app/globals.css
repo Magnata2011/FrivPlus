@@ -156,6 +156,34 @@ img { display: block; max-width: 100%; }
 .profile-page > p { color: var(--muted); }
 .profile-card { margin-top: 24px; padding: 22px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
 .profile-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.profile-settings-tabs { display: flex; gap: 6px; margin: 24px 0; border-bottom: 1px solid var(--line); }
+.profile-settings-tabs a { padding: 10px 14px; border-bottom: 2px solid transparent; color: var(--muted); font-weight: 600; }
+.profile-settings-tabs a[aria-current="page"] { border-color: var(--accent); color: var(--text); }
+.profile-settings-tabs .profile-settings-delete-tab { color: #ff3155; }
+.profile-settings-tabs .profile-settings-delete-tab[aria-current="page"] { border-color: #ff3155; color: #ff3155; }
+.profile-settings-tabs a:hover { color: var(--text); }
+.profile-settings-tabs .profile-settings-delete-tab:hover { color: #ff6b83; }
+.delete-account-panel {
+  max-width: 760px;
+  padding: 24px;
+  border: 1px solid #ff24485c;
+  border-radius: var(--radius);
+  background: linear-gradient(145deg, #ff244812, var(--surface) 48%);
+}
+.delete-account-eyebrow { color: #ff3155; }
+.delete-account-panel h2 { margin: 8px 0; font: 700 1.5rem var(--font-display); }
+.delete-account-panel > p { color: var(--muted); }
+.delete-account-warning { padding: 12px; border: 1px solid #ff24485c; border-radius: 9px; color: #ff9aab !important; }
+.delete-account-form { display: grid; gap: 18px; margin-top: 24px; }
+.delete-account-confirm { display: flex; align-items: center; gap: 9px; color: var(--text); }
+.delete-account-confirm input { width: 18px; height: 18px; accent-color: #ff2448; }
+.delete-account-username { color: #ff3155; font-size: 1rem; }
+.button-danger-bright { justify-self: start; border-color: #ff2448; background: #ff2448; color: #fff; }
+.button-danger-bright:hover:not(:disabled) { background: #db1537; }
+.friendship-action { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.friendship-action .form-error { max-width: 360px; }
+.friendship-status { display: inline-flex; align-items: center; min-height: 42px; color: var(--muted); font-weight: 600; }
+.public-profile-identity { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
 .account-email-card {
   display: flex;
   justify-content: space-between;
@@ -354,6 +382,8 @@ img { display: block; max-width: 100%; }
   .game-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; }
   .game-card-body { padding: 10px; }
   .section-heading { align-items: start; flex-direction: column; }
+  .delete-account-panel { padding: 18px; }
+  .button-danger-bright { justify-self: stretch; }
 }
 
 .profile-appearance {

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { LogoutButton } from "@/components/logout-button";
 import { ProfileEditor } from "@/components/profile-editor";
+import { ProfileSettingsTabs } from "@/components/profile-settings-tabs";
 import { isMaintenanceAdminEmail } from "@/lib/maintenance";
 import { createSupabaseServerClient, isSupabaseConfigured } from "@/lib/supabase/server";
 
@@ -83,6 +84,7 @@ export default async function EditProfilePage() {
         <div className="eyebrow">Sua conta</div>
         <h1>Personalizar perfil</h1>
         <p>Atualize as informações que aparecem na vista do seu perfil.</p>
+        <ProfileSettingsTabs active="profile" />
         <section className="account-email-card" aria-label="E-mail da conta">
           <div>
             <strong>E-mail da conta</strong>
