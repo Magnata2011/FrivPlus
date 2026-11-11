@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { LogoutButton } from "@/components/logout-button";
-import { ProfileEditor } from "@/components/profile-editor";
 import { isMaintenanceAdminEmail } from "@/lib/maintenance";
 import { createSupabaseServerClient, isSupabaseConfigured } from "@/lib/supabase/server";
 
@@ -38,7 +37,7 @@ export default async function ProfilePage() {
 
   const { data: profile, error: profileError } = await supabase
     .from("profiles")
-    .select("username, display_name, bio, avatar_path, theme")
+    .select("username, display_name, bio, avatar_path")
     .eq("id", user.id)
     .single();
 
@@ -58,6 +57,7 @@ export default async function ProfilePage() {
   const avatarUrl = profile.avatar_path
     ? supabase.storage.from("avatars").getPublicUrl(profile.avatar_path).data.publicUrl
     : null;
+  const displayName = profile.display_name || profile.username || "Seu perfil";
 
   return (
     <>
@@ -77,19 +77,36 @@ export default async function ProfilePage() {
         </div>
       </header>
       <main className="wrap profile-page">
-        <div className="eyebrow">Sua conta</div>
-        <h1>Meu perfil</h1>
-        <p>Gerencie seus dados públicos e confira o e-mail vinculado à sua conta.</p>
-        <section className="account-email-card" aria-label="E-mail da conta">
-          <div>
-            <strong>E-mail da conta</strong>
-            <p>{user.email ?? "E-mail indisponível"}</p>
+        <div className="profile-preview">
+          <div className="profile-preview-banner" aria-hidden="true" />
+          <div className="profile-preview-content">
+            <div className="profile-preview-heading">
+              {avatarUrl ? (
+                <div
+                  className="profile-avatar profile-avatar-image profile-preview-avatar"
+                  role="img"
+                  aria-label={`Foto de ${displayName}`}
+                  style={{ backgroundImage: `url("${avatarUrl}")` }}
+                />
+              ) : (
+                <div className="profile-avatar profile-avatar-placeholder profile-preview-avatar" aria-hidden="true">
+                  {displayName.slice(0, 1).toUpperCase()}
+                </div>
+              )}
+              <div className="profile-preview-identity">
+                <h1>{displayName}</h1>
+                <span>{profile.username ? `@${profile.username}` : "FrivPlus"}</span>
+              </div>
+              <Link className="button button-primary profile-customize-button" href="/profile/edit">
+                Personalizar perfil
+              </Link>
+            </div>
+            <section className="profile-preview-about" aria-labelledby="profile-about-title">
+              <h2 id="profile-about-title">Sobre mim</h2>
+              <p>{profile.bio || "Este perfil ainda não tem uma biografia."}</p>
+            </section>
           </div>
-          <span className={user.email_confirmed_at ? "email-status email-verified" : "email-status"}>
-            {user.email_confirmed_at ? "E-mail confirmado" : "E-mail não confirmado"}
-          </span>
-        </section>
-        <ProfileEditor profile={profile} avatarUrl={avatarUrl} />
+        </div>
       </main>
     </>
   );

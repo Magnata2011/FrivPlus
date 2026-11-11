@@ -152,6 +152,49 @@ img { display: block; max-width: 100%; }
 .profile-avatar { width: 64px; height: 64px; border-radius: 50%; background: var(--surface-raised); }
 .profile-avatar-placeholder { display: grid; place-items: center; color: var(--accent-hover); font: 700 1.6rem var(--font-display); }
 .profile-avatar-image { background-position: center; background-size: cover; }
+.profile-preview {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.profile-preview-banner {
+  height: clamp(150px, 24vw, 230px);
+  background:
+    radial-gradient(ellipse at 80% 10%, #9278f280, transparent 38%),
+    linear-gradient(125deg, #34256d, #7958e8 58%, #b49bff);
+}
+.profile-preview-content { padding: 0 28px 28px; }
+.profile-preview-heading {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  margin-top: -44px;
+}
+.profile-preview-avatar {
+  width: 96px;
+  height: 96px;
+  flex: 0 0 auto;
+  border: 5px solid var(--surface);
+}
+.profile-preview-identity { min-width: 0; flex: 1; padding-bottom: 5px; }
+.profile-preview-identity h1 {
+  margin: 0;
+  overflow: hidden;
+  font: 700 clamp(1.6rem, 4vw, 2.2rem)/1.1 var(--font-display);
+  letter-spacing: -.05em;
+  text-overflow: ellipsis;
+}
+.profile-preview-identity span { color: var(--muted); font-size: .9rem; }
+.profile-customize-button { margin-bottom: 8px; white-space: nowrap; }
+.profile-preview-about {
+  max-width: 700px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.profile-preview-about h2 { margin: 0 0 7px; font: 600 1rem var(--font-display); }
+.profile-preview-about p { margin: 0; color: var(--muted); white-space: pre-wrap; overflow-wrap: anywhere; }
 .avatar-upload { display: flex; align-items: flex-end; gap: 12px; margin-bottom: 24px; }
 .avatar-upload .label { flex: 1; }
 .profile-form { display: grid; gap: 18px; }
@@ -326,4 +369,8 @@ img { display: block; max-width: 100%; }
 
 @media (max-width: 560px) {
   .profile-appearance { align-items: flex-start; flex-direction: column; }
+  .profile-preview-content { padding: 0 18px 22px; }
+  .profile-preview-heading { flex-wrap: wrap; gap: 10px 12px; }
+  .profile-preview-identity { flex-basis: calc(100% - 110px); }
+  .profile-customize-button { margin: 5px 0 0; }
 }
