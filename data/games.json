@@ -135,98 +135,98 @@
   {
     "id": "bitlife",
     "title": "BitLife",
-    "cardImage": "/game-card-placeholder.svg",
+    "cardImage": "https://imgs.search.brave.com/O8jKnRHnIKAxag3fHY1-pUDeMA9-NxJ1rQLRBBzlIZU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9iaXRs/aWZlZnJlZS5vbmxp/bmUvd3AtY29udGVu/dC91cGxvYWRzLzIw/MjUvMDMvQml0TGlm/ZS1DYW5keXdyaXRl/ci53ZWJw",
     "url": "games/bitlife/index.html",
     "tags": ["Simulação", "Casual"]
   },
   {
     "id": "buckshot-roulette",
     "title": "Buckshot Roulette",
-    "cardImage": "/game-card-placeholder.svg",
+    "cardImage": "https://imgs.search.brave.com/xNB4qcBxfuQ2tP3xoq_4meZ04bFXayLP3DiQAt_578Y/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2U2LzAx/LzFjL2U2MDExYzM3/YmI2NzYwNzRhMDI2/OWMxMTY4NGNmMDYw/LmpwZw",
     "url": "games/buckshot-roulette/index.html",
     "tags": ["Terror", "Estratégia"]
   },
   {
     "id": "geometry-dash",
     "title": "Geometry Dash",
-    "cardImage": "/game-card-placeholder.svg",
+    "cardImage": "https://imgs.search.brave.com/nY6306e-62Ei0I1-f5H9xdbChqA50Qy719bDKnNeP1I/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/c3BlZWRydW4uY29t/L3N0YXRpYy9nYW1l/L282Z3hreGQyL2Nv/dmVyLmpwZz92PTU1/ZTgzYTY",
     "url": "games/geometry-dash/index.html",
     "tags": ["Ritmo", "Plataforma"]
   },
   {
     "id": "grand-theft-auto-3",
     "title": "Grand Theft Auto III",
-    "cardImage": "/game-card-placeholder.svg",
+    "cardImage": "https://imgs.search.brave.com/iPzvKIy7061zBNYWdm2hNjkmNVymUpIhIB9uPSY32Kk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9waWNm/aWxlcy5hbHBoYWNv/ZGVycy5jb20vMTcx/L3RodW1iLTE5MjAt/MTcxMjIuanBn",
     "url": "games/grand-theft-auto-3/index.html",
     "tags": ["Ação", "Mundo aberto"]
   },
   {
     "id": "hollow-knight-silksong",
     "title": "Hollow Knight: Silksong",
-    "cardImage": "/game-card-placeholder.svg",
+    "cardImage": "https://imgs.search.brave.com/3BqySbQHKlPs9wTE9bhViHIeEZ26wDDM2DXI9EHYtOM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk1qQTROV0Ux/WVdNdE5qUTRaQzAw/WTJRM0xXRmpNR0V0/TkdWaE0yRm1Zekpq/TXpNMVhrRXlYa0Zx/Y0djQC5qcGc",
     "url": "games/hollow-knight-silksong/index.html",
     "tags": ["Ação", "Aventura"]
   },
   {
     "id": "lethal-company",
     "title": "Lethal Company",
-    "cardImage": "/game-card-placeholder.svg",
+    "cardImage": "https://imgs.search.brave.com/YNJxOa9J10b_hPA1on9_p0QHOO8sH_Y97ns3xUDOGRU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk5UUTRNVGht/WVdZdE5EUXlZUzAw/WVRRMkxUZ3pNbU10/WXpKaE16a3hPR0kx/TjJKa1hrRXlYa0Zx/Y0djQC5qcGc",
     "url": "games/lethal-company/index.html",
     "tags": ["Terror", "Multiplayer"]
   },
   {
     "id": "miside",
     "title": "MiSide",
-    "cardImage": "/game-card-placeholder.svg",
+    "cardImage": "https://imgs.search.brave.com/IZX3sUGRnIzOdZcbG3KTr6w7O0ywl968ObjF0aj_erA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk1HRmlNR1F6/TlRFdE5tVmpNUzAw/T0RrNExXSTNNRFl0/TW1NeU5HSmlOalEy/TkRKaVhrRXlYa0Zx/Y0djQC5qcGc",
     "url": "games/miside/index.html",
-    "tags": ["Terror", "Aventura"]
+    "tags": ["Terror", "Aventura","Contém bugs estranhos"]
   },
   {
     "id": "one-shot-world-machine-edition",
     "title": "OneShot: World Machine Edition",
-    "cardImage": "/game-card-placeholder.svg",
+    "cardImage": "https://imgs.search.brave.com/F7jwrA1uQSvRKIct4UYQx6CH7ToPI4j9VS7GjInZi8Y/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9nYW1l/aHVudGVyLmNvbS5i/ci9jZG4tY2dpL2lt/YWdlL3dpZHRoPTgy/OCxxdWFsaXR5PTcy/LGZvcm1hdD1hdXRv/LGZpdD1zY2FsZS1k/b3duL2NvdmVycy9v/bmVzaG90LXdvcmxk/LW1hY2hpbmUtZWRp/dGlvbi53ZWJw",
     "url": "games/one-shot-world-machine-edition/index.html",
     "tags": ["Aventura", "Indie"]
   },
   {
     "id": "peak",
     "title": "PEAK",
-    "cardImage": "/game-card-placeholder.svg",
+    "cardImage": "https://imgs.search.brave.com/zAgcBIk4sy4ar9jhyIZxtzBQC0pRXyrTFlvQ1b--jYo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/cGVhay1nYW1lLmNv/bS9pbWFnZXMvd2hh/dC1pcy1wZWFrLndl/YnA",
     "url": "games/peak/index.html",
     "tags": ["Aventura", "Multiplayer"]
   },
   {
     "id": "people-playground",
     "title": "People Playground",
-    "cardImage": "/game-card-placeholder.svg",
+    "cardImage": "https://imgs.search.brave.com/3P0cDBHlNDUNSyllXRw1OBnfKU2vdefKv3s0MhWbKs8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90aHVt/Ym5haWxzLnBjZ2Ft/aW5nd2lraS5jb20v/MS8xMS9QZW9wbGVf/UGxheWdyb3VuZF9j/b3Zlci5qcGcvMzAw/cHgtUGVvcGxlX1Bs/YXlncm91bmRfY292/ZXIuanBn",
     "url": "games/people-playground/index.html",
     "tags": ["Sandbox", "Simulação"]
   },
   {
     "id": "raft",
     "title": "Raft",
-    "cardImage": "/game-card-placeholder.svg",
+    "cardImage": "https://imgs.search.brave.com/ZUwO7mOQNjao-vRiSrsAzJ74eq-BhTnsJQQLbiofgVU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdG9y/ZS1pbWFnZXMucy1t/aWNyb3NvZnQuY29t/L2ltYWdlL2FwcHMu/MzI0NjMuMTQxMDIw/NjI2Mzk3ODE3MjIu/NTczMjY2ZTctNjg2/Yi00NGZiLTllNDgt/YTI1ODViYzIxNzBm/LjU0MjRmNjQ5LTUx/NTQtNDAyZi04OGU1/LTkwNWRhZTY4NWYy/Mj9xPTkwJnc9MTc3/Jmg9MjY1",
     "url": "games/raft/index.html",
     "tags": ["Sobrevivência", "Aventura"]
   },
   {
     "id": "repo",
     "title": "R.E.P.O.",
-    "cardImage": "/game-card-placeholder.svg",
+    "cardImage": "https://imgs.search.brave.com/v39i6BkdJ0Db0YFDHdDFyklaaTKoIO0eDJr_R4AWXfg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMtcHJkLmlnbmlt/Z3MuY29tLzIwMjUv/MDIvMjcvcmVwby1i/dXR0b24tMTc0MDY3/MjEwNDEzOC5qcGc_/Y3JvcD0xOjEsc21h/cnQmZm9ybWF0PWpw/ZyZhdXRvPXdlYnAm/cXVhbGl0eT04MA",
     "url": "games/repo/index.html",
     "tags": ["Terror", "Cooperativo"]
   },
   {
     "id": "terraria",
     "title": "Terraria",
-    "cardImage": "/game-card-placeholder.svg",
+    "cardImage": "https://imgs.search.brave.com/Y_6sjBXdCGrOUEUt-hrFPBCbCIdWF-VU91ADlgTdhzc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMxLmlnbmltZ3Mu/Y29tLzIwMTkvMDEv/MTcvdGVycmFyaWEt/LS1idXR0b24tMTU0/Nzc0NTg4Njk1Ny5q/cGc_Y3JvcD0xOjEs/c21hcnQmZm9ybWF0/PWpwZyZhdXRvPXdl/YnAmcXVhbGl0eT04/MA",
     "url": "games/terraria/index.html",
     "tags": ["Sandbox", "Aventura"]
   },
   {
     "id": "ultrakill",
     "title": "ULTRAKILL",
-    "cardImage": "/game-card-placeholder.svg",
+    "cardImage": "https://imgs.search.brave.com/pi0tgbnHiaHgNI5wkTdkR-KC0sTjg2GPRrV8Im5KEKQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk5HSXlaREU0/T1RZdE5qQmhPUzAw/TnpGa0xUa3lZV010/WXpBek5XVXhaVGht/TURCbFhrRXlYa0Zx/Y0djQC5qcGc",
     "url": "games/ultrakill/index.html",
     "tags": ["Ação", "FPS"]
   }
