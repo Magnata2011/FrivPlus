@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" fill="none">
+  <defs>
+    <linearGradient id="background" x1="30" y1="24" x2="610" y2="340" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#34256d"/>
+      <stop offset="1" stop-color="#111316"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientTransform="matrix(0 240 -390 0 490 40)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9278f2" stop-opacity=".8"/>
+      <stop offset="1" stop-color="#7958e8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <path fill="url(#background)" d="M0 0h640v360H0z"/>
+  <path fill="url(#glow)" d="M0 0h640v360H0z"/>
+  <rect x="250" y="106" width="140" height="140" rx="38" fill="#7958e8"/>
+  <path d="M301 148v56l48-28-48-28Z" fill="#fff"/>
+  <text x="320" y="292" fill="#d7d0f7" font-family="Arial,sans-serif" font-size="18" font-weight="600" letter-spacing="3" text-anchor="middle">IMAGEM EM BREVE</text>
+</svg>

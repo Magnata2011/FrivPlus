@@ -131,5 +131,103 @@
     "cardImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFtEUlPCEl4SjxRh6Nvbe-p3vH7WsQpnxqPUvrpNLMBvXtwEN8lKci8Pg&s=10",
     "url": "https://byalvaro19.github.io/deltarune/",
     "tags": ["Singleplayer", "Indie", "Casual"]
+  },
+  {
+    "id": "bitlife",
+    "title": "BitLife",
+    "cardImage": "/game-card-placeholder.svg",
+    "url": "games/bitlife/index.html",
+    "tags": ["Simulação", "Casual"]
+  },
+  {
+    "id": "buckshot-roulette",
+    "title": "Buckshot Roulette",
+    "cardImage": "/game-card-placeholder.svg",
+    "url": "games/buckshot-roulette/index.html",
+    "tags": ["Terror", "Estratégia"]
+  },
+  {
+    "id": "geometry-dash",
+    "title": "Geometry Dash",
+    "cardImage": "/game-card-placeholder.svg",
+    "url": "games/geometry-dash/index.html",
+    "tags": ["Ritmo", "Plataforma"]
+  },
+  {
+    "id": "grand-theft-auto-3",
+    "title": "Grand Theft Auto III",
+    "cardImage": "/game-card-placeholder.svg",
+    "url": "games/grand-theft-auto-3/index.html",
+    "tags": ["Ação", "Mundo aberto"]
+  },
+  {
+    "id": "hollow-knight-silksong",
+    "title": "Hollow Knight: Silksong",
+    "cardImage": "/game-card-placeholder.svg",
+    "url": "games/hollow-knight-silksong/index.html",
+    "tags": ["Ação", "Aventura"]
+  },
+  {
+    "id": "lethal-company",
+    "title": "Lethal Company",
+    "cardImage": "/game-card-placeholder.svg",
+    "url": "games/lethal-company/index.html",
+    "tags": ["Terror", "Multiplayer"]
+  },
+  {
+    "id": "miside",
+    "title": "MiSide",
+    "cardImage": "/game-card-placeholder.svg",
+    "url": "games/miside/index.html",
+    "tags": ["Terror", "Aventura"]
+  },
+  {
+    "id": "one-shot-world-machine-edition",
+    "title": "OneShot: World Machine Edition",
+    "cardImage": "/game-card-placeholder.svg",
+    "url": "games/one-shot-world-machine-edition/index.html",
+    "tags": ["Aventura", "Indie"]
+  },
+  {
+    "id": "peak",
+    "title": "PEAK",
+    "cardImage": "/game-card-placeholder.svg",
+    "url": "games/peak/index.html",
+    "tags": ["Aventura", "Multiplayer"]
+  },
+  {
+    "id": "people-playground",
+    "title": "People Playground",
+    "cardImage": "/game-card-placeholder.svg",
+    "url": "games/people-playground/index.html",
+    "tags": ["Sandbox", "Simulação"]
+  },
+  {
+    "id": "raft",
+    "title": "Raft",
+    "cardImage": "/game-card-placeholder.svg",
+    "url": "games/raft/index.html",
+    "tags": ["Sobrevivência", "Aventura"]
+  },
+  {
+    "id": "repo",
+    "title": "R.E.P.O.",
+    "cardImage": "/game-card-placeholder.svg",
+    "url": "games/repo/index.html",
+    "tags": ["Terror", "Cooperativo"]
+  },
+  {
+    "id": "terraria",
+    "title": "Terraria",
+    "cardImage": "/game-card-placeholder.svg",
+    "url": "games/terraria/index.html",
+    "tags": ["Sandbox", "Aventura"]
+  },
+  {
+    "id": "ultrakill",
+    "title": "ULTRAKILL",
+    "cardImage": "/game-card-placeholder.svg",
+    "url": "games/ultrakill/index.html",
+    "tags": ["Ação", "FPS"]
   }
 ]
