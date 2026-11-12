@@ -93,11 +93,9 @@ export function CatalogSearch({ games }: { games: PublicGame[] }) {
               <ul>
                 {gameResults.map((game) => (
                   <li key={game.id}>
-                    <a
+                    <Link
                       className="profile-search-result"
-                      href={game.gameUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href={`/play/${encodeURIComponent(game.id)}`}
                       onClick={() => window.dispatchEvent(new CustomEvent("frivplus:playing-game", {
                         detail: { gameId: game.id },
                       }))}
@@ -107,7 +105,7 @@ export function CatalogSearch({ games }: { games: PublicGame[] }) {
                         <strong>{game.title}</strong>
                         <span>{game.category}</span>
                       </span>
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>

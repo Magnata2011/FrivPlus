@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import type { PublicGame } from "@/lib/types";
 
@@ -43,10 +44,8 @@ export function Catalog({ initialGames }: { initialGames: PublicGame[] }) {
         <ul className="game-grid">
           {visibleGames.map((game) => (
             <li className="game-card" key={game.id}>
-              <a
-                href={game.gameUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href={`/play/${encodeURIComponent(game.id)}`}
                 onClick={() => window.dispatchEvent(new CustomEvent("frivplus:playing-game", {
                   detail: { gameId: game.id },
                 }))}
@@ -61,7 +60,7 @@ export function Catalog({ initialGames }: { initialGames: PublicGame[] }) {
                     {game.tags.slice(0, 2).map((tag) => <span className="tag" key={tag}>{tag}</span>)}
                   </div>
                 </div>
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
