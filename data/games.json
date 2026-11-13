@@ -99,10 +99,17 @@
   },
   {
     "id": "hl2",
-    "title": "Half Life 2",
+    "title": "Half Life 2 (Externo)",
     "cardImage": "https://imgproxy.eneba.games/0aVmusLO7VBCuV7uFYOBG-SXDGbkuoRemWJJ4y1otS8/rs:fit:300/ar:1/czM6Ly9wcm9kdWN0/cy5lbmViYS5nYW1l/cy9wcm9kdWN0cy9k/OGItVm1qQzBXWnZZ/Z25QelNoeFZrNjhN/X0t3eTF4R3J3UERU/RktmNy04LmpwZw",
-    "url": "games/hl2/index.html",
-    "tags": ["Em Manutenção."]
+    "url": "https://alexboops.github.io/half-life-2-port/",
+    "tags": ["Singleplayer", "Ação", "FPS"]
+  },
+  {
+    "id": "hl1",
+    "title": "Half-Life",
+    "cardImage": "https://imgs.search.brave.com/ywKLw8RqXSSYagM3uHBS0M1R54XJUGbM-DvCCUsxC8k/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9ob3ds/b25ndG9iZWF0LmNv/bS9nYW1lcy8yNTZw/eC1IYWxmLUxpZmVf/Q292ZXJfQXJ0Lmpw/Zz93aWR0aD0yNTA",
+    "url": "games/hl1/index.html",
+    "tags": ["Singleplayer", "Ação", "FPS"]
   },
   {
     "id": "celeste",
@@ -232,7 +239,7 @@
   },
   {
     "id": "gta-v-web",
-    "title": "GTA V (Web)",
+    "title": "GTA V (Externo)",
     "cardImage": "https://imgs.search.brave.com/I65CJrpvcfM2yPmtVGdra2TcbKxnG8G5GCZ4A6Y1okg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJzLmNvbS9p/bWFnZXMvdGh1bWJu/YWlsL2d0YS01LXBo/b25lLWNvbGxhZ2Ut/cG9zdGVyLTZ0MWlh/cGFkZGs1OXB5aWou/anBn",
     "url": "https://gta5-web-port.vercel.app/play",
     "tags": ["Ação", "Mundo aberto", "Sandbox"]
