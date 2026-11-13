@@ -79,11 +79,11 @@ export function GamePlayer({ game }: { game: PublicGame }) {
           </button>
           <a
             className="button button-outline"
-            href={game.gameUrl}
+            href={game.externalPlayUrl ?? game.gameUrl}
             target="_blank"
             rel="noopener noreferrer"
           >
-            Abrir em outra aba
+            {game.externalPlayUrl ? "Jogar online" : "Abrir em outra aba"}
           </a>
           <button
             className="button button-primary game-player-save"

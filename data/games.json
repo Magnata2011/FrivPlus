@@ -229,5 +229,13 @@
     "cardImage": "https://imgs.search.brave.com/pi0tgbnHiaHgNI5wkTdkR-KC0sTjg2GPRrV8Im5KEKQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk5HSXlaREU0/T1RZdE5qQmhPUzAw/TnpGa0xUa3lZV010/WXpBek5XVXhaVGht/TURCbFhrRXlYa0Zx/Y0djQC5qcGc",
     "url": "games/ultrakill/index.html",
     "tags": ["Ação", "FPS"]
+  },
+  {
+    "id": "gta-v-web",
+    "title": "GTA V (Web)",
+    "cardImage": "https://imgs.search.brave.com/I65CJrpvcfM2yPmtVGdra2TcbKxnG8G5GCZ4A6Y1okg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJzLmNvbS9p/bWFnZXMvdGh1bWJu/YWlsL2d0YS01LXBo/b25lLWNvbGxhZ2Ut/cG9zdGVyLTZ0MWlh/cGFkZGs1OXB5aWou/anBn",
+    "url": "https://hammadshakeelai.github.io/gta5-web/",
+    "playUrl": "https://gta5-87g.pages.dev/?low=1&fps=30&res=1280x720&shadows=0",
+    "tags": ["Ação", "Mundo aberto", "Sandbox"]
   }
 ]

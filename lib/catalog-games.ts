@@ -8,5 +8,8 @@ export const catalogGames = games.map((game) => ({
   coverUrl: game.cardImage,
   category: game.tags[0] ?? "Jogos",
   tags: game.tags,
-  gameUrl: new URL(game.url, LEGACY_GAMES_BASE_URL).toString(),
+  gameUrl: /^https?:\/\//.test(game.url)
+    ? game.url
+    : new URL(game.url, LEGACY_GAMES_BASE_URL).toString(),
+  externalPlayUrl: game.playUrl,
 }));
