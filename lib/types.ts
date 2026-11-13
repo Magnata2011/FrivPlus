@@ -5,5 +5,5 @@ export type PublicGame = {
   category: string;
   tags: string[];
   gameUrl: string;
-  externalPlayUrl?: string;
+  openExternal: boolean;
 };

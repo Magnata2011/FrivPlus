@@ -45,7 +45,9 @@ export function Catalog({ initialGames }: { initialGames: PublicGame[] }) {
           {visibleGames.map((game) => (
             <li className="game-card" key={game.id}>
               <Link
-                href={`/play/${encodeURIComponent(game.id)}`}
+                href={game.openExternal ? game.gameUrl : `/play/${encodeURIComponent(game.id)}`}
+                target={game.openExternal ? "_blank" : undefined}
+                rel={game.openExternal ? "noopener noreferrer" : undefined}
                 onClick={() => window.dispatchEvent(new CustomEvent("frivplus:playing-game", {
                   detail: { gameId: game.id },
                 }))}

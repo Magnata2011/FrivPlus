@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { GamePlayer } from "@/components/game-player";
 import { catalogGames } from "@/lib/catalog-games";
 
@@ -11,6 +11,7 @@ export default async function PlayPage({
   const game = catalogGames.find((item) => item.id === gameId);
 
   if (!game) notFound();
+  if (game.openExternal) redirect(game.gameUrl);
 
   return (
     <main className="wrap">
