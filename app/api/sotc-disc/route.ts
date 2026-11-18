@@ -1,7 +1,10 @@
 import { NextResponse } from "next/server";
 
+// Backend URL for the disc image. Defaults to the R2 public URL placeholder;
+// override via the SOTC_DISC_URL env var in the Vercel project settings.
 const BLOB_URL =
-  "https://pwbtoy9sjfgs1jav.public.blob.vercel-storage.com/shadow-of-the-colossus/disc.iso";
+  process.env.SOTC_DISC_URL ||
+  "https://REPLACE_WITH_R2_PUBLIC_URL/shadow-of-the-colossus/disc.iso";
 
 const CORS_HEADERS: Record<string, string> = {
   "Access-Control-Allow-Origin": "*",

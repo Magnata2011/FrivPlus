@@ -1,0 +1,12 @@
+[
+  {
+    "AllowedOrigins": [
+      "https://magnata2011.github.io",
+      "https://frivplus.vercel.app"
+    ],
+    "AllowedMethods": ["GET", "HEAD"],
+    "AllowedHeaders": ["Range", "Content-Type", "Accept"],
+    "ExposeHeaders": ["Content-Length", "Content-Range", "Accept-Ranges", "Content-Type", "ETag"],
+    "MaxAgeSeconds": 86400
+  }
+]
