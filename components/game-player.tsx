@@ -53,7 +53,7 @@ export function GamePlayer({ game }: { game: PublicGame }) {
           className="game-player-iframe"
           src={game.gameUrl}
           title={game.title}
-          allow="autoplay; fullscreen; gamepad; encrypted-media; picture-in-picture"
+          allow="autoplay; fullscreen; gamepad; encrypted-media; picture-in-picture; cross-origin-isolated"
           referrerPolicy="strict-origin-when-cross-origin"
         />
       </div>
